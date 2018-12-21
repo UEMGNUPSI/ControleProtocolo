@@ -118,12 +118,7 @@
             <span>Documentos do Colegiado</span></a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fa fa-paper-plane" aria-hidden="true"></i>
-            <span>Solicitação de Diplomas</span></a>
-        </li>
-
+        
         <li class="nav-item">
           <a class="nav-link" href="#">
             <i class="fas fa-fw fa-folder"></i>

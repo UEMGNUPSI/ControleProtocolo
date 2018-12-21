@@ -130,12 +130,7 @@
             <span>Documentos do Colegiado</span></a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="solicitacaodiploma.php">
-            <i class="fa fa-paper-plane" aria-hidden="true"></i>
-            <span>Solicitação de Diplomas</span></a>
-        </li>
-
+       
         <li class="nav-item">
           <a class="nav-link" href="pastainfo.php">
             <i class="fas fa-fw fa-folder"></i>
@@ -151,7 +146,7 @@
         	 <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-              Lista de Entrega Documentos</div>
+              Lista de Documentos Colegiado</div>
             <div class="card-body">
               <div class="table-responsive">             
               
@@ -171,19 +166,19 @@
                   
                    <?php 
                               
-                        $servername = "127.0.0.1";
-                        $database = "protocolos";
-                        $username = "root";
-                        $password = "";
-
-                        $id=$_GET['id'];
-                                        
-                          $conn = mysqli_connect($servername, $username, $password, $database);
-                                //Carrega os dados
-                          $sql = "SELECT * FROM addprotocolos WHERE Id='$id'";
-                          $consulta = mysqli_query($conn, $sql);
-                            
-                          while( $dados = mysqli_fetch_assoc($consulta)){                                    
+                              $servername = "127.0.0.1";
+                              $database = "protocolos";
+                              $username = "root";
+                              $password = "";
+      
+                              $id=$_GET['id'];
+                                              
+                                $conn = mysqli_connect($servername, $username, $password, $database);
+                                      //Carrega os dados
+                                $sql = "SELECT * FROM addprotocolos WHERE Id='$id'";
+                                $consulta = mysqli_query($conn, $sql);
+                                  
+                                while( $dados = mysqli_fetch_assoc($consulta)){                                    
                                 echo "<tbody>";
                                 
                                 echo "<tr>";                      
@@ -203,10 +198,9 @@
                               ?>                         
                               <form>    
                                 <input type="hidden" name="id" value="<?php echo $dados['Id']; ?>"> 
-                                 
-                                <button type="submit" class=" mr-3 mb-3" formaction="alteracolegiado.php" ><i class="fas fa-pen-square" title="Editar" aria-hidden="true"></i></button>  
+                                <button type="submit" class=" mr-3 mb-3" formaction="altera_protocolos.php" ><i class="fas fa-pen-square" title="Editar" aria-hidden="true"></i></button>  
                                 <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['ra']; ?>" onclick="excluirModal()"><i class="fa fa-trash" title="Excluir" aria-hidden="true" ></i></button>                             
-                                </form>
+                             </form>
 
                               <!-- EXCLUIR PROTOCOLO-->  
 
@@ -227,7 +221,7 @@
                                       <div class="modal-footer">        
                                         <form>                                               
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                            <a class="btn btn-primary" href="#">Excluir</a>            
+                                            <a class="btn btn-primary" href="funções/exclui_doc_coleg.php?id=<?php echo $dados['Id']; ?>">Excluir</a>            
                                         </form>
                                       </div>
                                    

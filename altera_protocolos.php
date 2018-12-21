@@ -92,18 +92,24 @@
 					</div>
 				</li>
 
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fa fa-book" aria-hidden="true"></i>
-						<span>Entrega do Certificado de Pós</span></a>
-						<div class="dropdown-menu" aria-labelledby="pagesDropdown">            
-							<a class="dropdown-item" href="verificacertificados.php">Verficar Certificados</a>  
+				<<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-book" aria-hidden="true"></i>
+            <span>Entrega do Certificado de Pós e Solicitação <br> de Diplomas</span></a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
+            <a class="dropdown-item" href="verificacertificados.php">Verficar Certificados</a>  
 
-							<div class="dropdown-divider"></div>            
-							<a class="dropdown-item" href="addcertificado.php">Adicionar Certificados</a>          
+                <div class="dropdown-divider"></div>            
+                <a class="dropdown-item" href="addcertificado.php">Adicionar Certificados</a>
 
-						</div>
-					</li>
+                <div class="dropdown-divider"></div>            
+                <a class="dropdown-item" href="verificadiploma.php">Verificar Solicitações</a>
+
+                <div class="dropdown-divider"></div>            
+                <a class="dropdown-item" href="solicitacaodiploma.php">Adicionar Solicitações</a>          
+            
+          </div>
+        </li>
 
 					<li class="nav-item">
 						<a class="nav-link" href="doccolegiado.php">
@@ -111,12 +117,7 @@
 							<span>Documentos do Colegiado</span></a>
 						</li>
 
-						<li class="nav-item">
-							<a class="nav-link" href="solicitacaodiploma.php">
-								<i class="fa fa-paper-plane" aria-hidden="true"></i>
-								<span>Solicitação de Diplomas</span></a>
-							</li>
-
+						
 							<li class="nav-item">
 								<a class="nav-link" href="pastainfo.php">
 									<i class="fas fa-fw fa-folder"></i>
@@ -139,7 +140,7 @@
 									$conn = mysqli_connect($servername, $username, $password, $database);
 									$id = $_GET['id'];
 //Carrega os dados
-									$sql = "SELECT * FROM documentoscolegiado WHERE id = '$id'";
+									$sql = "SELECT * FROM addprotocolos WHERE Id = '$id'";
 									$consulta = mysqli_query($conn, $sql);
 
 									while( $dados = mysqli_fetch_assoc($consulta)){                                    
@@ -157,20 +158,36 @@
 
 											<div class="col-sm-12 col-md-10 col-lg-8">
 
-												<form method="post" action="funções/edita_doc_coleg.php?id=<?php echo $dados['id']; ?>">
+												<form method="post" action="funções/edita_doc_coleg.php?id=<?php echo $dados['Id'];?>">
 
 													<div class="form-row ml-5">
 
 														<div class="form-group col-sm-6 ">
 
-															<label for="inputNumProto">Registro Acadêmico:</label>
-															<input type="text" class="form-control" id="ra" name="ra" placeholder="Digite número do RA" required="">
+															<label for="inputNumProto">N° Protocolo:</label>
+															<input type="text" class="form-control" id="numproto" name="numproto" placeholder="<?php echo $dados['numproto']; ?>" required="">
 
 														</div>
 
+														<div class="form-group col-sm-6 ">
 
+															<label for="inputRa">Registro Acadêmico:</label>
+															<input type="text" class="form-control" id="ra" name="ra" placeholder="<?php echo $dados['ra']; ?>" required="">
 
+														</div>
+													</div>	
 
+													<div class="form-row ml-5">
+													<div class="form-group col-sm-12 ">
+
+															<label for="inputRequerente">Requerente:</label>
+															<input type="text" class="form-control" id="requerente" name="requerente" placeholder="<?php echo $dados['nome']; ?>" required="">
+
+														</div>
+
+													</div>
+
+													<div class="form-row ml-5">
 
 														<div class="form-group col-sm-6">
 
@@ -201,7 +218,15 @@
 
 														</div>
 
+														<div class="form-group col-sm-6 ">
+
+															<label for="inputNumProto">Data:</label>
+															<input type="date" class="form-control" id="data" name="data" required="">
+
+														</div>
+
 													</div>
+
 													<div class="form-row ml-5">
 
 														<div class="form-group col-sm-12 ">
@@ -216,9 +241,8 @@
 													<div class="form-row ml-5">
 
 														<div class="col-sm-12">
-															<form action ="edita_doc_coleg.php" method="post">
-																<button type="submit" class="btn btn-primary">Alterar</button>
-															</form>                        
+															
+																<button type="submit" class="btn btn-primary">Alterar</button>															                    
 
 														</div>  
 

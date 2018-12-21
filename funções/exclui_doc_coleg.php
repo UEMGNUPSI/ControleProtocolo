@@ -9,7 +9,7 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 
 $id = $_GET['id'];
 
-$sql = "DELETE FROM documentoscolegiado WHERE id = $id ";
+$sql = "DELETE FROM addprotocolos WHERE Id = $id ";
 $update = mysqli_query ($conn, $sql);
 
 if($update)

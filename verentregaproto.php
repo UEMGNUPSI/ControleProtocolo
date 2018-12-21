@@ -131,12 +131,7 @@
             <span>Documentos do Colegiado</span></a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="solicitacaodiploma.php">
-            <i class="fa fa-paper-plane" aria-hidden="true"></i>
-            <span>Solicitação de Diplomas</span></a>
-        </li>
-
+        
         <li class="nav-item">
           <a class="nav-link" href="pastainfo.php">
             <i class="fas fa-fw fa-folder"></i>
@@ -187,7 +182,7 @@
                                         
                           $conn = mysqli_connect($servername, $username, $password, $database);
                                 //Carrega os dados
-                          $sql = "SELECT * FROM addentregaprotocolos WHERE Id='$id'";
+                          $sql = "SELECT * FROM addprotocolos WHERE Id='$id'";
                           $consulta = mysqli_query($conn, $sql);
                             
                           while( $dados = mysqli_fetch_assoc($consulta)){                                    
@@ -214,7 +209,7 @@
                                 
                               ?>                         
                               <form>    
-                                <input type="hidden" name="id" value="<?php echo $dados['id']; ?>"> 
+                                <input type="hidden" name="id" value="<?php echo $dados['Id']; ?>"> 
                                 <button type="submit" class=" mr-3 mb-3" formaction="alteraentrega.php" ><i class="fas fa-pen-square text-dark" title="Editar" aria-hidden="true"></i></button>  
                                 <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['numproto']; ?>" onclick="excluirModal()"><i class="fa fa-trash text-dark" title="Excluir" aria-hidden="true" ></i></button>                              
                                 </form>
@@ -238,7 +233,7 @@
                                       <div class="modal-footer">        
                                         <form>                                               
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                            <a class="btn btn-primary" href="funções/excluientregadoc.php?id=<?php echo $dados['id']; ?>">Excluir</a>            
+                                            <a class="btn btn-primary" href="funções/exclui_doc_coleg.php?id=<?php echo $dados['id']; ?>">Excluir</a>            
                                         </form>
                                       </div>
                                    

@@ -140,12 +140,7 @@
             <span>Documentos do Colegiado</span></a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="solicitacaodiploma.php">
-            <i class="fa fa-paper-plane" aria-hidden="true"></i>
-            <span>Solicitação de Diplomas</span></a>
-        </li>
-
+       
         <li class="nav-item">
           <a class="nav-link" href="pastainfo.php">
             <i class="fas fa-fw fa-folder"></i>
@@ -204,11 +199,10 @@
                                 $id=$dados['id'];
                               ?>                                  
                               
-                                <form>    
-                                <input type="hidden" name="id" value="<?php echo $dados['id']; ?>"> 
-                                <button type="submit" class=" mr-4" formaction="alterarencaminhamento.php" ><i class="fas fa-pen-square text-primary" title="Editar" aria-hidden="true"></i></button>  
-
-                                <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['id']; ?>" onclick="excluirModal()"><i class="fa fa-trash text-primary" title="Excluir"aria-hidden="true" ></i></button>                              
+                               <form>   
+                                  <input type="hidden" name="id" value="<?php echo $dados['id']; ?>"> 
+                                  <button type="submit" class=" mr-4" formaction="alterarencaminhamento.php" ><i class="fas fa-pen-square text-primary" title="Editar" aria-hidden="true"></i></button>  
+                                  <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['id']; ?>" onclick="excluirModal()"><i class="fa fa-trash text-primary" title="Excluir"aria-hidden="true" ></i></button>                              
                                 </form>
                               
                               

@@ -7,12 +7,15 @@ $password = "";
 $conn = mysqli_connect($servername, $username, $password, $database);
 
 $id = $_GET['id'];
+$numproto = $_POST['numproto'];
+$requerente = $_POST['requerente'];
+$data = $_POST['data'];
 $ra = $_POST['ra'];
 $curso = $_POST['curso'];
-$observacao = $_POST['obsevacao'];
+$observacao = $_POST['observacao'];
 
 
-$sql = "UPDATE documentoscolegiado SET ra = '$ra', curso ='$curso',obsevacao = '$observacao' WHERE id='$id'";
+$sql = "UPDATE addprotocolos SET ra = '$ra', curso ='$curso',obsevacaocolegiado = '$observacao',numproto = '$numproto',nome = '$requerente',data = '$data' WHERE Id='$id'";
 
 $update = mysqli_query($conn, $sql);
 
