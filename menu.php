@@ -230,9 +230,6 @@
                 </a>
               </div>
             </div>
-
-            
- 
           </div>
 
           <div id="encaminhamentoDoc" style="display: none;">
@@ -254,63 +251,16 @@
 
               <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" method="post" action="">
                   <div class="input-group" >
-                    <input type="text" class="form-control input-search" alt="lista-clientes" placeholder="Busca por..." name="pesquisa" id="pesquisa" >
-                    <div class="input-group-append">
-                      <button class="btn btn-primary mb-3" type="button">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
+                    <input type="text" class="form-control input-search" alt="lista-clientes" placeholder="Pesquisar Encaminhamento..." name="pesquisa" id="pesquisa" style="width: 240px;">
+                    
                   </div>
               </form>
 
-               
-              <div class="table-responsive">         
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th id="thencaminhamento">Encaminhamentos</th>
-                      <th id="threquerente">Requerente</th>
-                      <th id="th">Data do vencimento</th>                     
-                      
-                    </tr>
-                  </thead>
-
-                  
-                   <?php 
-                              
-                        $servername = "127.0.0.1";
-                        $database = "protocolos";
-                        $username = "root";
-                        $password = "";
-                                        
-                          $conn = mysqli_connect($servername, $username, $password, $database);
-                                //Carrega os dados
-                          $sql = "SELECT * FROM addprotocolos";
-                          $consulta = mysqli_query($conn, $sql);
-                            
-                          while( $dados = mysqli_fetch_assoc($consulta)){                                    
-                                echo "<tbody>"; ?>
-                                <tr class="resultado">                             
-                                <td>
-                                  <a href="#" class="text-primary"><?php echo $dados['encaminhamento']; ?></a>
-                                </td>
-                               <?php 
-                               echo "<td>" .$dados['nome']."</td>";
-                                  $dt = $dados['datavencimento']; 
-                                  $dtt = date('d/m/Y',strtotime($dt));                                              
-                                echo "<td>" .$dtt."</td>";                                                            
-                                
-                                 
-                              ?>
-                                </tr>
-                                </tbody>                         
-                                
-                    <?php } ?> 
-                          <tr class="resultado"> 
-
-                        </tr>                                                             
-                </table>  
-            </div>
+              <ul class="resultado">
+                 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+                 <script type="text/javascript" src="personalizado.js"></script> 
+              </ul>            
+              
           </div>  
         </div>
       </div>   

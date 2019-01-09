@@ -211,55 +211,45 @@
                                 echo "</tbody>";
                                 
                               ?>                         
-                              <form>    
-                                <input type="hidden" name="id" value="<?php echo $dados['Id']; ?>"> 
-                                <button type="submit" class=" mr-3 mb-3" formaction="alteraprotos.php" ><i class="fas fa-pen-square" aria-hidden="true"></i></button>  
-                                <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['Id']; ?>" onclick="excluirModal()"><i class="fa fa-trash " aria-hidden="true" ></i></button>
-                                <button type="submit" class=" ml-3 " formaction="gerarpdf.php" ><i class="fas fa-download"></i></button>                                
-                                </form>
+      <form>    
+        <input type="hidden" name="id" value="<?php echo $dados['Id']; ?>"> 
+        <button type="submit" class=" mr-3 mb-3" formaction="alteraprotos.php" title="Editar"><i class="fas fa-pen-square" aria-hidden="true"></i></button>  
+        <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['Id']; ?>" onclick="excluirModal()" title="Excluir"><i class="fa fa-trash " aria-hidden="true"></i></button>
+        <button type="submit" class="ml-3" title="Baixar Arquivo" formaction="#"><i class="fas fa-download"></i></button>
+        <button type="submit" class="ml-3" title="Salvar Arquivo" formaction="#"><i class="fas fa-upload"></i></button>                                
+      </form>
 
-                              <!-- EXCLUIR PROTOCOLO-->  
+<!-- EXCLUIR PROTOCOLO-->  
 
-                                <div class="modal fade" id="excluirModal<?php echo $dados['Id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir este curso?</h5>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">×</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body">
-                                        <p>
-                                          Número de Protocolo: <?php echo $dados['numproto']; ?>                                            
-                                        </p>
-                                      </div>
-                                      <div class="modal-footer">        
-                                        <form>                                               
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                            <a class="btn btn-primary" href="funções/excluiproto.php?id=<?php echo $dados['Id']; ?>">Excluir</a>            
-                                        </form>
-                                      </div>
-                                   
-                                   </div>
-                                  
-                                  </div>   
-                              
-                               </div> 
-
-                    <?php } ?>                                          
-                          
-                      </table>              
-                      
-
+        <div class="modal fade" id="excluirModal<?php echo $dados['Id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir este curso?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+            <div class="modal-body">
+              <p>
+                Número de Protocolo: <?php echo $dados['numproto']; ?>                                            
+              </p>
             </div>
-
-          </div>
-
-
-       	</div>
-
-      </div>
+              <div class="modal-footer">        
+                <form>                                               
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                  <a class="btn btn-primary" href="funções/excluiproto.php?id=<?php echo $dados['Id']; ?>">Excluir</a>            
+                </form>
+              </div>     
+            </div>
+          </div>                          
+        </div>
+    <?php } ?>                                                                  
+  </table>              
+</div>
+</div>
+</div>
+</div>
 
  <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

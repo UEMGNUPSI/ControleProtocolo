@@ -165,7 +165,7 @@
                           $sql = "SELECT * FROM addentregaprotocolos";
                           $consulta = mysqli_query($conn, $sql);
                             
-                          while( $dados = mysqli_fetch_assoc($consulta)){                                                                
+                          while( $dados = mysqli_fetch_assoc($consulta)){                                                                                
                               ?>   
                               <form action="post">  
                                  <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">                      

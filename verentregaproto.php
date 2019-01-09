@@ -192,34 +192,33 @@
                                         
                           $conn = mysqli_connect($servername, $username, $password, $database);
                                 //Carrega os dados
-                          $sql = "SELECT * FROM addprotocolos WHERE Id='$id'";
+                          $sql = "SELECT * FROM addentregaprotocolos WHERE id='$id'";
                           $consulta = mysqli_query($conn, $sql);
                             
                           while( $dados = mysqli_fetch_assoc($consulta)){                                    
-                                echo "<tbody>";
+                                echo "<tbody>";                                
+                                echo "<tr>";                                                
                                 
-                                echo "<tr>";                                
-                                
-                                echo "<td>" .$dados['numproto']."</td>";
-                                echo "<td>" .$dados['nome']."</td>";
-                                echo "<td>" .$dados['atendente']."</td>";
-                                echo "<td>" .$dados['curso']."</td>";
-                                echo "<td>" .$dados['periodo']."</td>";
-                                echo "<td>" .$dados['data']."</td>";
-                                echo "<td>" .$dados['dataretirada']."</td>";
-                                echo "<td>" .$dados['entregue']."</td>";
-                                echo "<td>" .$dados['descricao']."</td>";      
-                                echo "<td>" .$dados['observacao']."</td>";                                           
-                                echo "<td>" .$dados['dae']."</td>";
-                                echo "<td>" .$dados['encaminhamento']."</td>";
-                                
-                                echo "</tr>";   
-                                                      
+                                echo "<td>".$dados['numproto']."</td>";
+                                echo "<td>".$dados['nome']."</td>";
+                                echo "<td>".$dados['atendente']."</td>";
+                                echo "<td>".$dados['curso']."</td>";
+                                echo "<td>".$dados['periodo']."</td>";
+                                echo "<td>".$dados['data']."</td>";
+                                echo "<td>".$dados['dataretirada']."</td>";
+                                echo "<td>".$dados['entregue']."</td>";
+                                echo "<td>".$dados['descricao']."</td>";
+                                echo "<td>".$dados['observacao']."</td>";
+                                echo "<td>".$dados['dae']."</td>";
+                                echo "<td>".$dados['encaminhamento']."</td>";
+
+
+                                echo "</tr>";                                                      
                                 echo "</tbody>";
                                 
                               ?>                         
                               <form>    
-                                <input type="hidden" name="id" value="<?php echo $dados['Id']; ?>"> 
+                                <input type="hidden" name="id" value="<?php echo $dados['id']; ?>"> 
                                 <button type="submit" class=" mr-3 mb-3" formaction="alteraentrega.php" ><i class="fas fa-pen-square text-dark" title="Editar" aria-hidden="true"></i></button>  
                                 <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['numproto']; ?>" onclick="excluirModal()"><i class="fa fa-trash text-dark" title="Excluir" aria-hidden="true" ></i></button>                              
                                 </form>
@@ -243,7 +242,7 @@
                                       <div class="modal-footer">        
                                         <form>                                               
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                            <a class="btn btn-primary" href="funções/exclui_doc_coleg.php?id=<?php echo $dados['id']; ?>">Excluir</a>            
+                                            <a class="btn btn-primary" href="funções/excluientregadoc.php?id=<?php echo $dados['id']; ?>">Excluir</a>            
                                         </form>
                                       </div>
                                    
