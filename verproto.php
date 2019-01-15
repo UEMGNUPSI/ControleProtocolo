@@ -10,20 +10,22 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">      
+    <link rel="stylesheet" type="text/css" href="css/file.css" />
+    
     <script>
          function excluirModal() {
            $('#excluirModal').modal('show');
            event.preventDefault();
-         }       
+         }    
     </script>
   <style type="text/css">   
-  button{
-     background-color: white;
-     
-     border-color: white;
-  }
-</style>
+    button{
+       background-color: white;
+       
+       border-color: white;
+    }
+  </style>
 </head>
 <body id="page-top">
 
@@ -156,7 +158,7 @@
         	 <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-              Lista de Cursos</div>
+              Lista de Protocolos</div>
             <div class="card-body">
               <div class="table-responsive">             
               
@@ -214,9 +216,7 @@
       <form>    
         <input type="hidden" name="id" value="<?php echo $dados['Id']; ?>"> 
         <button type="submit" class=" mr-3 mb-3" formaction="alteraprotos.php" title="Editar"><i class="fas fa-pen-square" aria-hidden="true"></i></button>  
-        <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['Id']; ?>" onclick="excluirModal()" title="Excluir"><i class="fa fa-trash " aria-hidden="true"></i></button>
-        <button type="submit" class="ml-3" title="Baixar Arquivo" formaction="#"><i class="fas fa-download"></i></button>
-        <button type="submit" class="ml-3" title="Salvar Arquivo" formaction="#"><i class="fas fa-upload"></i></button>                                
+        <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['Id']; ?>" onclick="excluirModal()" title="Excluir"><i class="fa fa-trash " aria-hidden="true"></i></button>                             
       </form>
 
 <!-- EXCLUIR PROTOCOLO-->  
@@ -248,10 +248,69 @@
   </table>              
 </div>
 </div>
+ <?php       
+        
+        $servername = "127.0.0.1";
+        $database = "protocolos";
+        $username = "root";
+        $password = "";
+                                         
+        $conn = mysqli_connect($servername, $username, $password, $database);
+      if(isset($_POST['enviar-formulario'])):
+        
+        $nome_imagem = $_FILES['arquivo']['name'];
+        //echo "Nome da Imagem do produto: $nome_imagem <br>";
+        
+        //Salvar no banco de dados
+        $result_produto = "INSERT INTO documentos (documentos) VALUES ('$nome_imagem')";
+        $resultado_produto = mysqli_query($conn, $result_produto);
+        $ultimo_id = $_GET['id'];
+        //Pasta onde o arquivo vai ser salvo
+        $_UP['pasta'] = 'imagens/produtos/'.$ultimo_id.'/';
+        //echo "Ultimo Id Inserido: $ultimo_id <br>";
+        if(is_dir($ultimo_id)){
+              
+            //Criar a pasta de foto do produto
+            mkdir($_UP['pasta'], 0777);
+            
+            //Verificar se é possive mover o arquivo para a pasta escolhida
+            if(move_uploaded_file($_FILES['arquivo']['tmp_name'],$_UP['pasta'].$nome_imagem)){
+              echo "Imagem salva com sucesso!<br>";
+            }
+      }else{
+         if(move_uploaded_file($_FILES['arquivo']['tmp_name'],$_UP['pasta'].$nome_imagem)){
+          echo "Imagem salva com sucesso!<br>";
+        }
+      }
+    endif;
+    ?> 
+
+<form method="POST"  enctype="multipart/form-data">
+  <input type="file" name="arquivo"/><br><br>
+  <input type="submit" value="Cadastrar" name="enviar-formulario">
+</form> 
+
+  <div class="card mt-3">
+      <div class="card-header ">
+        <i class="fas fa-table"></i>
+          Lista de Arquivos Salvos</div>
+        <div class="card-body ">
+           <!-- <?php
+              $path = 'imagens/produtos/'.$ultimo_id.'/';
+              $diretorio = dir($path);
+               
+              while($arquivo = $diretorio -> read()){
+              echo "<a href='".$path.$arquivo."'>".$arquivo."</a><br />";
+              }
+              $diretorio -> close();
+            ?> -->
+        </div>
+    </div>
+     
 </div>
 </div>
 
- <!-- Logout Modal-->
+      <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -275,3 +334,5 @@
   </body>
 
 </html>
+
+
