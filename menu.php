@@ -98,7 +98,7 @@
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
             <a class="dropdown-item" href="listacursos.php">Lista de Cursos</a>            
             <div class="dropdown-divider"></div>            
-            <a class="dropdown-item" href="addcurso.php">Adicionar um curso</a>  
+            <a class="dropdown-item" href="addcurso.php">Adicionar curso</a>  
             <div class="dropdown-divider"></div> 
             <a class="dropdown-item" href="listaencaminahmento.php">Lista de <br>Encaminhamento</a>            
             <div class="dropdown-divider"></div>            
@@ -115,7 +115,7 @@
             <a class="dropdown-item" href="verificaprotocolos.php">Verficar Protocolos</a>  
 
                 <div class="dropdown-divider"></div>            
-                <a class="dropdown-item" href="addprotocolos.php">Adicionar Protocolos</a>          
+                <a class="dropdown-item" href="addprotocolos.php">Registrar Protocolos</a>          
             
           </div>
         </li>

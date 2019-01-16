@@ -68,7 +68,7 @@
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
             <a class="dropdown-item" href="listacursos.php">Lista de Cursos</a>            
             <div class="dropdown-divider"></div>            
-            <a class="dropdown-item" href="addcurso.php">Adicionar um curso</a>    
+            <a class="dropdown-item" href="addcurso.php">Adicionar curso</a>    
             <div class="dropdown-divider"></div> 
             <a class="dropdown-item" href="listaencaminahmento.php">Lista de <br>Encaminhamento</a>            
             <div class="dropdown-divider"></div>            
@@ -150,7 +150,7 @@
 
             <div class="form-group col-sm-6 ">            
               <label for="inputNome">Curso:</label>
-              <input type="text" class="form-control" name="curso" id="inputNome" placeholder="Curso" required="">            
+              <input type="text" class="form-control" name="curso" id="inputNome"  required="">            
             </div>
 
           </div>

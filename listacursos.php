@@ -20,13 +20,8 @@
     </script>
 <style type="text/css">
   
-   tr {
-    text-align: center;
-
-  }
-  td {
-    text-align: center;
-    width: 50%;
+  td{
+      text-align: center;
   }
   button{
      background-color: white;
@@ -176,17 +171,10 @@
               Lista de Cursos</div>
             <div class="card-body">
               <div class="table-responsive">             
-              
+               
 
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th colspan="2">Cursos</th>                     
-                      
-                    </tr>
-                  </thead>
-
-                  
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"  >
+  
                    <?php 
                               
                         $servername = "127.0.0.1";
@@ -196,10 +184,11 @@
                                         
                           $conn = mysqli_connect($servername, $username, $password, $database);
                                 //Carrega os dados
-                          $sql = "SELECT * FROM curso";
+                          $sql = "SELECT * FROM curso ORDER BY curso ASC";
                           $consulta = mysqli_query($conn, $sql);
                             
-                          while( $dados = mysqli_fetch_assoc($consulta)){                                    
+                          while( $dados = mysqli_fetch_assoc($consulta)){   
+                                                           
                                 echo "<tbody>";
                                 echo "<tr>";                                
                                 echo "<td>" .$dados['curso']."</td>";                                                 
@@ -211,9 +200,9 @@
                               
                                 <form>    
                                 <input type="hidden" name="id" value="<?php echo $dados['id']; ?>"> 
-                                <button type="submit" class=" mr-4" formaction="alteracurso.php" ><i class="fas fa-pen-square text-primary" title="Editar" aria-hidden="true"></i></button>  
+                                <button type="submit" style ="cursor: pointer;" class=" mr-4" formaction="alteracurso.php" ><i class="fas fa-pen-square text-primary" title="Editar" aria-hidden="true"></i></button>  
 
-                                <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['id']; ?>" onclick="excluirModal()"><i class="fa fa-trash text-primary" title="Excluir"aria-hidden="true" ></i></button>                              
+                                <button type="submit" style ="cursor: pointer;" data-toggle="modal" data-target="#excluirModal<?php echo $dados['id']; ?>" onclick="excluirModal()"><i class="fa fa-trash text-primary" title="Excluir"aria-hidden="true" ></i></button>                              
                                 </form>
                               
                               
@@ -227,7 +216,7 @@
                                     <div class="modal-content">
                                       <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir este curso?</h5>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <button  class="close" type="button" data-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true">×</span>
                                         </button>
                                       </div>

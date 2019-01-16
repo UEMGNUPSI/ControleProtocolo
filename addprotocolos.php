@@ -86,7 +86,7 @@
             <a class="dropdown-item" href="verificaprotocolos.php">Verficar Protocolos</a>  
 
                 <div class="dropdown-divider"></div>            
-                <a class="dropdown-item" href="addprotocolos.php">Adicionar Protocolos</a>          
+                <a class="dropdown-item" href="addprotocolos.php">Registrar Protocolos</a>          
             
           </div>
         </li>
@@ -239,7 +239,7 @@
 
           <div class="form-group col-sm-6">
               
-              <label for="inputVencimento">Data de Vencimento:</label>
+              <label for="inputVencimento">Vencimento em:</label>
               <select id="inputVencimento" class="form-control" name="vencimento">
 
                 <option selected>Selecione...</option>

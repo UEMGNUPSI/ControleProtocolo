@@ -79,7 +79,7 @@
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
             <a class="dropdown-item" href="listacursos.php">Lista de Cursos</a>            
             <div class="dropdown-divider"></div>            
-            <a class="dropdown-item" href="addcurso.php">Adicionar um curso</a> 
+            <a class="dropdown-item" href="addcurso.php">Adicionar  curso</a> 
             <div class="dropdown-divider"></div> 
             <a class="dropdown-item" href="listaencaminahmento.php">Lista de <br>Encaminhamento</a>            
             <div class="dropdown-divider"></div>            
@@ -97,7 +97,7 @@
             <a class="dropdown-item" href="verificaprotocolos.php">Verficar Protocolos</a>  
 
                 <div class="dropdown-divider"></div>            
-                <a class="dropdown-item" href="addprotocolos.php">Adicionar Protocolos</a>          
+                <a class="dropdown-item" href="addprotocolos.php">Registrar Protocolos</a>          
             
           </div>
         </li>
@@ -154,9 +154,7 @@
         <div class="container-fluid">
 
         	 <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-table"></i>
-              Lista de Cursos</div>
+            
             <div class="card-body">
               <div class="table-responsive">             
               
@@ -201,7 +199,7 @@
                                 echo "<td>" .$dados['atendente']."</td>";
                                 echo "<td>" .$dados['curso']."</td>";
                                 echo "<td>" .$dados['historico']."</td>";
-                                echo "<td>" .$dados['data']."</td>";
+                                echo "<td>" .date("d/m/Y", strtotime ($dados['data']));"</td>";
                                 echo "<td>" .$dados['hora']."</td>";      
                                 echo "<td>" .$dados['observacao']."</td>"; 
                                 echo "<td>" .$dados['encaminhamento']."</td>";                                           

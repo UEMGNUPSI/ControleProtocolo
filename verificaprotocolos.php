@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 </head>
+<style>
+h1 {
+  font-size: 3.3em;
+  font-weight: 100;
+}
+</style>
 <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -145,7 +151,7 @@
 
 
           <div class="col-12 text-center my-5">
-               <h1 class="display-4"><i class="fa fa-paper-plane text-primary mr-3 mb-5" aria-hidden="true"></i>Lista de Protocolos</h1>
+               <h1 ><i class="fa fa-paper-plane text-primary mr-3 mb-5" aria-hidden="true"></i>Lista de Protocolos</h1>
            </div>
 
            <div class="row">
