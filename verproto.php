@@ -248,54 +248,68 @@
   </table>              
 </div>
 </div>
- <?php       
-        
+ <?php      
         $servername = "127.0.0.1";
         $database = "protocolos";
         $username = "root";
         $password = "";
                                          
         $conn = mysqli_connect($servername, $username, $password, $database);
-      if(isset($_POST['enviar-formulario'])):
-        
-        $nome_imagem = $_FILES['arquivo']['name'];
-        //echo "Nome da Imagem do produto: $nome_imagem <br>";
-        
-        //Salvar no banco de dados
-        $result_produto = "INSERT INTO documentos (documentos) VALUES ('$nome_imagem')";
-        $resultado_produto = mysqli_query($conn, $result_produto);
-        $ultimo_id = $_GET['id'];
-        //Pasta onde o arquivo vai ser salvo
-        $_UP['pasta'] = 'imagens/produtos/'.$ultimo_id.'/';
-        //echo "Ultimo Id Inserido: $ultimo_id <br>";
-        if(is_dir($ultimo_id)){
-              
-            //Criar a pasta de foto do produto
-            mkdir($_UP['pasta'], 0777);
-            
-            //Verificar se é possive mover o arquivo para a pasta escolhida
-            if(move_uploaded_file($_FILES['arquivo']['tmp_name'],$_UP['pasta'].$nome_imagem)){
-              echo "Imagem salva com sucesso!<br>";
+         
+       //Verificar se o usuário clicou no botão, clicou no botão acessa o IF e tenta cadastrar, caso contrario acessa o ELSE
+        $SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
+        if ($SendCadImg) {
+            //Receber os dados do formulário
+            $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+            $nome_imagem = $_FILES['imagem']['name'];
+            //var_dump($_FILES['imagem']);
+            //Inserir no BD
+            $result_img = "INSERT INTO imagens (nome, imagem) VALUES (:nome, :imagem)";
+            $insert_msg = $conn->prepare($result_img);
+            $insert_msg->bindParam(':nome', $nome);
+            $insert_msg->bindParam(':imagem', $nome_imagem);
+
+            //Verificar se os dados foram inseridos com sucesso
+            if ($insert_msg->execute()) {
+                //Recuperar último ID inserido no banco de dados
+                $ultimo_id = $conn->lastInsertId();
+
+                //Diretório onde o arquivo vai ser salvo
+                $diretorio = 'imagens/' . $ultimo_id.'/';
+
+                //Criar a pasta de foto 
+                mkdir($diretorio, 0755);
+                
+                if(move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio.$nome_imagem)){
+                   echo "<p style='color:green;'>Dados salvo com sucesso e upload da imagem realizado com sucesso</p>";                    
+                }else{
+                    echo "<p><span style='color:green;'>Dados salvo com sucesso. </span><span style='color:red;'>Erro ao realizar o upload da imagem</span></p>";                    
+                }        
+            } else {
+               echo "<p style='color:red;'>Erro ao salvar os dados</p>";                
             }
-      }else{
-         if(move_uploaded_file($_FILES['arquivo']['tmp_name'],$_UP['pasta'].$nome_imagem)){
-          echo "Imagem salva com sucesso!<br>";
+        } else {
+           echo "<p style='color:red;'>Erro ao salvar os dados</p>";          
         }
-      }
-    endif;
+                
     ?> 
 
-<form method="POST"  enctype="multipart/form-data">
-  <input type="file" name="arquivo"/><br><br>
-  <input type="submit" value="Cadastrar" name="enviar-formulario">
-</form> 
+<form method="POST" action="#" enctype="multipart/form-data">
+    <label>Nome:</label>
+    <input type="text" name="nome" placeholder="Digitar o nome"><br><br>
 
-  <div class="card mt-3">
+    <label>Imagem</label>
+    <input type="file" name="imagem"><br><br>
+            
+    <input name="SendCadImg" type="submit" value="Cadastrar">
+</form>
+
+  <div class="card mb-3">
       <div class="card-header ">
         <i class="fas fa-table"></i>
           Lista de Arquivos Salvos</div>
         <div class="card-body ">
-           <!-- <?php
+          <!--  <?php
               $path = 'imagens/produtos/'.$ultimo_id.'/';
               $diretorio = dir($path);
                
@@ -334,5 +348,3 @@
   </body>
 
 </html>
-
-
