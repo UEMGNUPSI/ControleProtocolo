@@ -156,7 +156,7 @@ h1 {
 
            <div class="row">
             
-            <div class="col-12  ">
+            <div class="col-12">
 
                   <form method="get" action="verproto.php">
 
@@ -169,7 +169,7 @@ h1 {
                                          
                           $conn = mysqli_connect($servername, $username, $password, $database);
                                 //Carrega os dados
-                          $sql = "SELECT * FROM addprotocolos";
+                          $sql = "SELECT * FROM addprotocolos ORDER BY";
                           $consulta = mysqli_query($conn, $sql);
                             
                           while( $dados = mysqli_fetch_assoc($consulta)){                                                                

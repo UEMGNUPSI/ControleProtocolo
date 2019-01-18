@@ -161,7 +161,7 @@
                                          
                           $conn = mysqli_connect($servername, $username, $password, $database);
                                 //Carrega os dados
-                          $sql = "SELECT * FROM addprotocolos";
+                          $sql = "SELECT * FROM addprotocolos ORDER BY ra ASC";
                           $consulta = mysqli_query($conn, $sql);
                             
                           while( $dados = mysqli_fetch_assoc($consulta)){                                                                

@@ -156,13 +156,9 @@
         <div class="container-fluid">
 
         	 <div class="card mb-3">
-<<<<<<< HEAD
-            
-=======
             <div class="card-header">
               <i class="fas fa-table"></i>
               Lista de Protocolos</div>
->>>>>>> bfa9b730efffeb712f19b63016ff135b7d134aff
             <div class="card-body">
               <div class="table-responsive">             
               

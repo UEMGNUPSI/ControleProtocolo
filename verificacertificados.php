@@ -161,7 +161,7 @@
                                          
                           $conn = mysqli_connect($servername, $username, $password, $database);
                                 //Carrega os dados
-                          $sql = "SELECT * FROM addentregapos";
+                          $sql = "SELECT * FROM addentregapos ORDER BY nome ASC";
                           $consulta = mysqli_query($conn, $sql);
                             
                           while( $dados = mysqli_fetch_assoc($consulta)){                                                                
