@@ -1,17 +1,24 @@
-$(function(){
-	$("#pesquisa").keyup(function(){
-		//Recuperar o valor do campo
-		var pesquisa = $(this).val();
-		
-		//Verificar se há algo digitado
-		if(pesquisa != ''){
-			var dados = {
-				palavra : pesquisa
-			}
-			$.post('proc_pesq_user.php', dados, function(retorna){
-				//Mostra dentro da ul os resultado obtidos 
-				$(".resultado").html(retorna);
-			});
-		}
-	});
+$(document).ready(function(){
+
+    $('#campo').keyup(function() {
+
+        $('form').submit(function(){
+            var dados = $(this).serialize();
+
+            $.ajax({
+                url: 'proc_pesq_user.php',
+                method: 'POST',
+                dataType: 'html',
+                data: dados,
+                success: function(data){
+                    $('#resultado').empty().html(data);
+                }
+            });
+
+            return false;
+        });
+
+        $('form').trigger('submit');
+
+    });
 });

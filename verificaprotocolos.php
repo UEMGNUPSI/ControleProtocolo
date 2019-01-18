@@ -13,12 +13,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 </head>
-<style>
-h1 {
-  font-size: 3.3em;
-  font-weight: 100;
-}
-</style>
 <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -151,14 +145,14 @@ h1 {
 
 
           <div class="col-12 text-center my-5">
-               <h1 ><i class="fa fa-paper-plane text-primary mr-3 mb-5" aria-hidden="true"></i>Lista de Protocolos</h1>
+               <h1 class="display-4" ><i class="fa fa-paper-plane text-primary mr-3 mb-5" aria-hidden="true"></i>Lista de Protocolos</h1>
            </div>
 
            <div class="row">
             
             <div class="col-12">
 
-                  <form method="get" action="verproto.php">
+                <div class = 'row'>
 
                 <?php 
                               
@@ -169,18 +163,18 @@ h1 {
                                          
                           $conn = mysqli_connect($servername, $username, $password, $database);
                                 //Carrega os dados
-                          $sql = "SELECT * FROM addprotocolos ORDER BY";
+                          $sql = "SELECT * FROM addprotocolos ORDER BY nome ASC";
                           $consulta = mysqli_query($conn, $sql);
                             
                           while( $dados = mysqli_fetch_assoc($consulta)){                                                                
                               ?>   
-                              <form>  
+                              <form method="get" action="verproto.php" class="col-5">  
                                  <input type="hidden" name="id" value="<?php echo $dados['Id']; ?>">                      
-                                  <button type="submit" class="btn btn-primary ml-5 mb-3" formaction="verproto.php" style="width: 40%;"><?php echo $dados['nome']; ?></button>    
+                                  <button type="submit" class="btn btn-primary ml-5 mb-3" formaction="verproto.php" style="width: 100%;"><?php echo $dados['nome']; ?></button>    
                               </form>
                         <?php } ?>    
 
-                      </form>    
+                      </div>   
   
                     </div>
          

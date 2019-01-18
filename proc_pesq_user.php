@@ -1,22 +1,56 @@
-<?php
-//Incluir a conexão com banco de dados
-    $servername = "127.0.0.1";
-    $database = "protocolos";
-    $username = "root";
-    $password = "";
-                                         
-        $conn = mysqli_connect($servername, $username, $password, $database);
+<?php 
+	$servidor="127.0.0.1";
+    $usuario="root";
+    $senha="";
+    $bancodedados="protocolos";
 
-		$encaminhamentos = filter_input(INPUT_POST, 'palavra', FILTER_SANITIZE_STRING);
+    $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-		//Pesquisar no banco de dados nome do usuario referente a palavra digitada
-		$result_user = "SELECT * FROM addprotocolos WHERE encaminhamento LIKE '%$encaminhamentos%' LIMIT 20";
-		$resultado_user = mysqli_query($conn, $result_user);
+	if (isset($_POST['campo']))
+		$campo= "%".trim($_POST['campo'])."%";
 
-		if(($resultado_user) AND ($resultado_user->num_rows != 0 )){
-			while($row = mysqli_fetch_assoc($resultado_user)){
-				echo "<li>".$row['encaminhamento']."</li>";				
-			}
-		}else{
-			echo "Nenhum encaminhamento encontrado ...";
-}
+	//tesste            a
+	//tesste a
+
+	$sql = "select encaminhamento,nome,datavencimento from addprotocolos where encaminhamento";
+
+	if (isset($_POST['campo']))
+		$sql = $sql . ' like ? ';
+
+	$sql=$mysqli->prepare($sql);
+
+	if (isset($_POST['campo']))
+		$sql->bind_param("s",$campo);
+	
+	$sql->execute();
+	$sql->bind_result($encaminhamento,$nome,$datavencimento);
+
+	echo "
+	    <table>
+	        <thead>
+	        <tr>
+	            <td>Encaminhamento</td>
+	            <td>Requerente</td>
+	            <td>Data de Vencimento</td>
+	        </tr>
+	        </thead>
+
+	        <tbody>
+	        ";
+
+	        while($sql->fetch()){
+
+	        echo "
+	        <tr>
+	            <td>$encaminhamento</td>
+	            <td>$nome</td>
+	            <td>$datavencimento</td>
+	        </tr>
+	        ";
+	        }
+
+	        echo "
+	        </tbody>
+	    </table>
+	";
+ ?>

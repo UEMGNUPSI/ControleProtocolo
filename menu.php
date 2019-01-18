@@ -10,39 +10,19 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    </script>
-    <script type="text/javascript" src="pesquisa.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">   
+    <script src="https://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
+    <script  type="text/javascript" src="personalizado.js"></script>
 
     <script type="text/javascript">
-      
       function Mudarestado(el) {
         var display = document.getElementById(el).style.display;
         if(display == "none")
             document.getElementById(el).style.display = 'block';
         else
             document.getElementById(el).style.display = 'none';
-    } 
-              
-    </script> 
-    <style type="text/css">
-     #threquerente{
-      width: 50%;
-     }
-     #th{
-      width: 5%;
-     }
-     #thencaminhamento{
-      width: 15%;
-     }
-      button{
-        background-color: white;
-        border-style: solid;
-        border-color: white;
-    </style>
-      
-          
+    }               
+    </script>          
 </head>
 <body id="page-top">
 
@@ -247,20 +227,55 @@
               <i class="fas fa-table"></i>
               Protocolos
               </div>
+
             <div class="card-body">
 
-              <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" method="post" action="">
-                  <div class="input-group" >
-                    <input type="text" class="form-control input-search" alt="lista-clientes" placeholder="Pesquisar Encaminhamento..." name="pesquisa" id="pesquisa" style="width: 240px;">
-                    
-                  </div>
-              </form>
+                <form class="mb-3" method="POST">
+                    Buscar por: <input type="text" name="campo" id="campo">
+                </form>
 
-              <ul class="resultado">
-                 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-                 <script type="text/javascript" src="personalizado.js"></script> 
-              </ul>            
-              
+                <div id="resultado">
+                  <?php 
+                    $servidor="localhost";
+                    $usuario="root";
+                    $senha="";
+                    $bancodedados="protocolos";
+
+                    $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
+
+                    $sql=$mysqli->prepare('select encaminhamento,nome,datavencimento from addprotocolos');
+                    $sql->execute();
+                    $sql->bind_result($encaminhamento,$nome,$datavencimento);
+
+                    echo "
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Encaminhamento</td>
+                                    <td>Requerente</td>
+                                    <td>Data de Vencimento</td>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                    ";
+
+                    while($sql->fetch()){
+
+                    echo "
+                        <tr>
+                            <td>$encaminhamento</td>
+                            <td>$nome</td>
+                            <td>$datavencimento</td>
+                        </tr>
+                    ";
+                    }
+
+                    echo "
+                        </tbody>
+                    </table>
+                    ";  ?>
+                </div>             
           </div>  
         </div>
       </div>   

@@ -26,12 +26,21 @@
      
     $conn = mysqli_connect($servername, $username, $password, $database);
 
-    if($vencimento=='5 dias'){             
-           $somadata =  date('d/m/Y', strtotime('+ 5 days',strtotime($data))); 
-           $salvadata = date("Y-m-d ",strtotime($somadata));    
+    if($vencimento=='5 dias'){    
+           $conversao = strtotime($data);   
+
+            $conversao2 =      date('Y-m-d',$conversao);
+           $somadata =  strtotime("$conversao2 +5 days"); 
+           
+           
+           $salvadata = date('Y-m-d',$somadata);    
         }else{          
-           $somadata =  date('d/m/Y', strtotime('+ 3 days',strtotime($data)));  
-            $salvadata = date("Y-m-d ",strtotime($somadata));      
+           $conversao = strtotime($data);   
+            $conversao2 = date('Y-m-d',$conversao);
+           $somadata =  strtotime("$conversao2 + 3 days"); 
+           
+           $salvadata = date('Y-m-d',$somadata); 
+            echo $salvadata;       
         }
     
     $sql = $conn->query("SELECT * FROM addprotocolos WHERE  id='$numproto'");

@@ -373,3 +373,26 @@ body.sidebar-toggled footer.sticky-footer {
     width: calc(100% - 90px);
   }
 }
+table{
+  width: 100%;
+}
+
+table thead td{
+   
+    background: #333;
+    color:#FFF;
+    height: 40px;
+    text-align:center;
+}
+
+table tbody td{
+    
+    height: 40px;
+    text-align:center;
+}
+
+button{
+        background-color: white;
+        border-style: solid;
+        border-color: white;
+}
