@@ -211,16 +211,125 @@
               </div>
             </div>
           </div>
-
+<!--------------------------------------------------------- Entrega de Documentos ----------------------------------------->
           <div id="encaminhamentoDoc" style="display: none;">
-             tabela encaminhamentos doc
-          </div>
+             <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Entrega de Documentos
+              </div>
 
-          <div id="encaminhamentoColegiado" style="display: none;">
-            tabela encaminhamentos colegiado
-          </div>
+            <div class="card-body">
 
+                <form class="mb-3" method="POST">
+                    Buscar por: <input type="text" name="campo2" id="campo2">
+                </form>
 
+                <div id="resultado2">
+                  <?php 
+                    $servidor="localhost";
+                    $usuario="root";
+                    $senha="";
+                    $bancodedados="protocolos";
+
+                    $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
+
+                    $sql=$mysqli->prepare('select encaminhamento,nome from addentregaprotocolos');
+                    $sql->execute();
+                    $sql->bind_result($encaminhamentocolegiado,$nome);
+
+                    echo "
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Encaminhamento</td>
+                                    <td>Requerente</td>
+                                    <td>Data de Vencimento</td>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                    ";
+
+                    while($sql->fetch()){
+
+                    echo "
+                        <tr>
+                            <td>$encaminhamentocolegiado</td>
+                            <td>$nome</td>                            
+                        </tr>
+                    ";
+                    }
+
+                    echo "
+                        </tbody>
+                    </table>
+                    ";  ?>
+                </div>             
+          </div>  
+        </div>
+      </div>    
+<!--------------------------------------------------------- Colegiado ----------------------------------------->
+          <div id="encaminhamentoColegiado" style="display: none;">            
+             <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Colegiado
+              </div>
+
+            <div class="card-body">
+
+                <form class="mb-3" method="POST">
+                    Buscar por: <input type="text" name="campo1" id="campo1">
+                </form>
+
+                <div id="resultado1">
+                  <?php 
+                    $servidor="localhost";
+                    $usuario="root";
+                    $senha="";
+                    $bancodedados="protocolos";
+
+                    $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
+
+                    $sql=$mysqli->prepare('select encaminhamentocolegiado,nome,datavencimento from addprotocolos');
+                    $sql->execute();
+                    $sql->bind_result($encaminhamentocolegiado,$nome,$datavencimento);
+
+                    echo "
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Encaminhamento</td>
+                                    <td>Requerente</td>
+                                    <td>Data de Vencimento</td>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                    ";
+
+                    while($sql->fetch()){
+
+                    echo "
+                        <tr>
+                            <td>$encaminhamentocolegiado</td>
+                            <td>$nome</td>
+                            <td>$datavencimento</td>
+                        </tr>
+                    ";
+                    }
+
+                    echo "
+                        </tbody>
+                    </table>
+                    ";  ?>
+                </div>             
+          </div>  
+        </div>
+      </div>     
+
+<!---------------------------------------------------------Protocolos----------------------------------------->
           <div id="encaminhamentoProto" style="display: none;">
              <div class="card mb-3">
             <div class="card-header">
@@ -281,6 +390,7 @@
       </div>   
     </div>
   </div> 
+
       
 
     <!-- Logout Modal-->
