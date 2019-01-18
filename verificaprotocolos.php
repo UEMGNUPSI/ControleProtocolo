@@ -150,9 +150,9 @@
 
            <div class="row">
             
-            <div class="col-12  ">
+            <div class="col-12">
 
-                  <form method="get" action="verproto.php">
+                <div class = 'row'>
 
                 <?php 
                               
@@ -163,18 +163,18 @@
                                          
                           $conn = mysqli_connect($servername, $username, $password, $database);
                                 //Carrega os dados
-                          $sql = "SELECT * FROM addprotocolos";
+                          $sql = "SELECT * FROM addprotocolos ORDER BY nome ASC";
                           $consulta = mysqli_query($conn, $sql);
                             
                           while( $dados = mysqli_fetch_assoc($consulta)){                                                                
                               ?>   
-                              <form>  
+                              <form method="get" action="verproto.php" class="col-5">  
                                  <input type="hidden" name="id" value="<?php echo $dados['Id']; ?>">                      
-                                  <button type="submit" class="btn btn-primary ml-5 mb-3" formaction="verproto.php" style="width: 40%;"><?php echo $dados['nome']; ?></button>    
+                                  <button type="submit" class="btn btn-primary ml-5 mb-3" formaction="verproto.php" style="width: 100%;"><?php echo $dados['nome']; ?></button>    
                               </form>
                         <?php } ?>    
 
-                      </form>    
+                      </div>   
   
                     </div>
          

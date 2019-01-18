@@ -161,7 +161,7 @@
                                          
                           $conn = mysqli_connect($servername, $username, $password, $database);
                                 //Carrega os dados
-                          $sql = "SELECT * FROM solicitacaodiplomas";
+                          $sql = "SELECT * FROM solicitacaodiplomas ORDER BY atendente ASC";
                           $consulta = mysqli_query($conn, $sql);
                             
                           while( $dados = mysqli_fetch_assoc($consulta)){                                                                

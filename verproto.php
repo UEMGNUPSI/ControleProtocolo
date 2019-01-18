@@ -159,11 +159,17 @@
         <div class="container-fluid">
 
         	 <div class="card mb-3">
+<<<<<<< HEAD
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Lista de Protocolos</div>
+=======
         
             <div class="card-header">
               <i class="fas fa-table"></i>
               Lista de Protocolos</div>
 
+>>>>>>> 5a426a8f0c5ed664e289428d3111f27a49a8f7a3
             <div class="card-body">
               <div class="table-responsive">             
               
