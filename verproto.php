@@ -19,11 +19,14 @@
            event.preventDefault();
          }    
     </script>
-  <style type="text/css">   
+  <style type="text/css">     
     button{
        background-color: white;
-       
+       cursor: pointer;
        border-color: white;
+    }
+    input{
+      cursor: pointer;
     }
   </style>
 </head>
@@ -156,13 +159,11 @@
         <div class="container-fluid">
 
         	 <div class="card mb-3">
-<<<<<<< HEAD
-            
-=======
+        
             <div class="card-header">
               <i class="fas fa-table"></i>
               Lista de Protocolos</div>
->>>>>>> bfa9b730efffeb712f19b63016ff135b7d134aff
+
             <div class="card-body">
               <div class="table-responsive">             
               
@@ -252,76 +253,63 @@
   </table>              
 </div>
 </div>
- <?php      
-        $servername = "127.0.0.1";
-        $database = "protocolos";
-        $username = "root";
-        $password = "";
-                                         
-        $conn = mysqli_connect($servername, $username, $password, $database);
-         
-       //Verificar se o usuário clicou no botão, clicou no botão acessa o IF e tenta cadastrar, caso contrario acessa o ELSE
-        $SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
-        if ($SendCadImg) {
-            //Receber os dados do formulário
-            $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
-            $nome_imagem = $_FILES['imagem']['name'];
-            //var_dump($_FILES['imagem']);
-            //Inserir no BD
-            $result_img = "INSERT INTO imagens (nome, imagem) VALUES (:nome, :imagem)";
-            $insert_msg = $conn->prepare($result_img);
-            $insert_msg->bindParam(':nome', $nome);
-            $insert_msg->bindParam(':imagem', $nome_imagem);
-
-            //Verificar se os dados foram inseridos com sucesso
-            if ($insert_msg->execute()) {
-                //Recuperar último ID inserido no banco de dados
-                $ultimo_id = $conn->lastInsertId();
-
-                //Diretório onde o arquivo vai ser salvo
-                $diretorio = 'imagens/' . $ultimo_id.'/';
-
-                //Criar a pasta de foto 
-                mkdir($diretorio, 0755);
-                
-                if(move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio.$nome_imagem)){
-                   echo "<p style='color:green;'>Dados salvo com sucesso e upload da imagem realizado com sucesso</p>";                    
-                }else{
-                    echo "<p><span style='color:green;'>Dados salvo com sucesso. </span><span style='color:red;'>Erro ao realizar o upload da imagem</span></p>";                    
-                }        
-            } else {
-               echo "<p style='color:red;'>Erro ao salvar os dados</p>";                
-            }
-        } else {
-           echo "<p style='color:red;'>Erro ao salvar os dados</p>";          
-        }
-                
-    ?> 
-
-<form method="POST" action="#" enctype="multipart/form-data">
-    <label>Nome:</label>
-    <input type="text" name="nome" placeholder="Digitar o nome"><br><br>
-
-    <label>Imagem</label>
-    <input type="file" name="imagem"><br><br>
-            
-    <input name="SendCadImg" type="submit" value="Cadastrar">
+<form action="#" method="POST" enctype="multipart/form-data" class="ml-4 mb-3">
+      
+      <input type="file" name="fileUpload" id="fileUpload">
+      <input type="submit" value="Enviar">
 </form>
+<?php  
+  $ultimo_id = $_GET['id'];
+  $_UP['pasta'] = 'documentos/'.$ultimo_id.'/';
+
+  if(isset($_FILES['fileUpload'])):
+       // verifica a ação no botão
+       $nome_imagem = $_FILES['fileUpload']['name'];  
+
+    if(is_dir($_UP['pasta'])){
+    //Se a Pasta Existe  
+          if(move_uploaded_file($_FILES['fileUpload']['tmp_name'],$_UP['pasta'].$nome_imagem))
+              echo "<h6 class='ml-4'>Arquivo salvo com sucesso!<br></h6>";
+          else
+              echo "<h6 class='ml-4'>Não foi possível salvar o arquivo!<br></h6>";      
+    }else{
+    //Se a pasta não existe
+      //Criar a pasta de foto do produto
+          mkdir($_UP['pasta'], 0777);        
+      //Verificar se é possive mover o arquivo para a pasta escolhida
+          if(move_uploaded_file($_FILES['fileUpload']['tmp_name'],$_UP['pasta'].$nome_imagem))
+            echo "<h6 class='ml-4'>Arquivo salvo com sucesso!<br></h6>";
+          else
+            echo "<h6 class='ml-4'>Não foi possível salvar o arquivo!<br></h6>";
+        }
+ endif;
+?> 
+
+</div>
 
   <div class="card mb-3">
       <div class="card-header ">
         <i class="fas fa-table"></i>
           Lista de Arquivos Salvos</div>
         <div class="card-body ">
-          <!--  <?php
-              $path = 'imagens/produtos/'.$ultimo_id.'/';
-              $diretorio = dir($path);
-               
-              while($arquivo = $diretorio -> read()){
-              echo "<a href='".$path.$arquivo."'>".$arquivo."</a><br />";
+
+          <?php
+            $ultimo_id = $_GET['id'];
+            
+            if(is_dir($_UP['pasta'])){
+              $pasta = 'documentos/'.$ultimo_id.'/';
+              if ($handle = opendir($pasta)) {
+                 while (false !== ($arquivo = readdir($handle))) {
+                     if ($arquivo != "." && $arquivo != "..") {
+                         echo "<a href='".$pasta.$arquivo."' target='_blanck'>".$arquivo."</a><br>";
+                     } // fim do if de leitura de arquivo
+                 } // fim do while de leitura das pasta
+                 closedir($handle);
               }
-              $diretorio -> close();
-            ?> -->
+            }else
+                echo "Não foi salvo nenhum arquivo para este requerente!<br>";
+          ?>       
+
         </div>
     </div>
      
