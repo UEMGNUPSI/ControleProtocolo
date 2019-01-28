@@ -222,6 +222,7 @@
                                 <button type="submit" class=" mr-3 mb-3" formaction="alteraentrega.php" ><i class="fas fa-pen-square text-dark" title="Editar" aria-hidden="true"></i></button>  
                                 <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['numproto']; ?>" onclick="excluirModal()"><i class="fa fa-trash text-dark" title="Excluir" aria-hidden="true" ></i></button>                              
                                 </form>
+                                
 
                               <!-- EXCLUIR PROTOCOLO-->  
 
@@ -261,7 +262,69 @@
 
           </div>
 
+<!-- Inicio do upload -->
+<form action="#" method="POST" enctype="multipart/form-data" class="ml-4 mb-3">
+      
+      <input type="file" name="fileUpload" id="fileUpload">
+      <input type="submit" value="Enviar">
+</form>
+<?php  
+  $ultimo_id = $_GET['id'];
+  $_UP['pasta'] = 'documentos/entrega/'.$ultimo_id.'/';
 
+  if(isset($_FILES['fileUpload'])):
+       // verifica a ação no botão
+       $nome_imagem = $_FILES['fileUpload']['name'];  
+
+    if(is_dir($_UP['pasta'])){
+    //Se a Pasta Existe  
+          if(move_uploaded_file($_FILES['fileUpload']['tmp_name'],$_UP['pasta'].$nome_imagem))
+              echo "<h6 class='ml-4'>Arquivo salvo com sucesso!<br></h6>";
+          else
+              echo "<h6 class='ml-4'>Não foi possível salvar o arquivo!<br></h6>";      
+    }else{
+    //Se a pasta não existe
+      //Criar a pasta de foto do produto
+          mkdir($_UP['pasta'], 0777);        
+      //Verificar se é possive mover o arquivo para a pasta escolhida
+          if(move_uploaded_file($_FILES['fileUpload']['tmp_name'],$_UP['pasta'].$nome_imagem))
+            echo "<h6 class='ml-4'>Arquivo salvo com sucesso!<br></h6>";
+          else
+            echo "<h6 class='ml-4'>Não foi possível salvar o arquivo!<br></h6>";
+        }
+ endif;
+?> 
+
+</div>
+
+  <div class="card mb-3">
+      <div class="card-header ">
+        <i class="fas fa-table"></i>
+          Lista de Arquivos Salvos</div>
+        <div class="card-body ">
+
+          <?php
+            $ultimo_id = $_GET['id'];
+            
+            if(is_dir($_UP['pasta'])){
+              $pasta = 'documentos/entrega/'.$ultimo_id.'/';
+              if ($handle = opendir($pasta)) {
+                 while (false !== ($arquivo = readdir($handle))) {
+                     if ($arquivo != "." && $arquivo != "..") {
+                         echo "<a href='".$pasta.$arquivo."' target='_blanck'>".$arquivo."</a><br>";
+                     } // fim do if de leitura de arquivo
+                 } // fim do while de leitura das pasta
+                 closedir($handle);
+              }
+            }else
+                echo "Não foi salvo nenhum arquivo para este requerente!<br>";
+          ?>       
+
+        </div>
+    </div>
+     
+</div>
+</div>
        	</div>
 
       </div>
