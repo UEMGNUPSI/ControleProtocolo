@@ -150,7 +150,7 @@
             
             <div class="col-12  ">
 
-                  <form method="get" >
+              <div class = "row">
 
                 <?php 
                               
@@ -166,13 +166,13 @@
                             
                           while( $dados = mysqli_fetch_assoc($consulta)){                                                                
                               ?>   
-                              <form>  
+                              <form method="get" class="col-5">  
                                  <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">                      
-                                  <button type="submit" class="btn btn-primary ml-5 mb-3" formaction="versolicitacoes.php" style="width: 40%;"><?php echo $dados['requerente']; ?></button>    
+                                  <button type="submit" class="btn btn-primary ml-5 mb-3" formaction="versolicitacoes.php" style="width: 100%;"><?php echo $dados['requerente']; ?></button>    
                               </form>
                         <?php } ?>    
 
-                      </form>    
+                      </div>    
   
                     </div>
          

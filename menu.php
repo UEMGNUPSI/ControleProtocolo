@@ -12,7 +12,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">   
     <script src="https://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
-    <script  type="text/javascript" src="personalizado.js"></script>
+    <script type="text/javascript" src="js/funcs.js"></script>
+    <script type="text/javascript" src="js/funcs_coleg.js"></script>
+    <script type="text/javascript" src="js/funcs_docs.js"></script>
+    
 
     <script type="text/javascript">
       function Mudarestado(el) {
@@ -178,7 +181,7 @@
             </div>
          
             <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-danger o-hidden h-100">
+              <div class="card text-white bg-primary o-hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
                     <i class="far fa-copy"></i>
@@ -212,7 +215,7 @@
             </div>
           </div>
 <!--------------------------------------------------------- Entrega de Documentos ----------------------------------------->
-          <div id="encaminhamentoDoc" style="display: none;">
+        <div id="encaminhamentoDoc" style="display: none;">
              <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
@@ -221,11 +224,12 @@
 
             <div class="card-body">
 
-                <form class="mb-3" method="POST">
-                    Buscar por: <input type="text" name="campo2" id="campo2">
+                <form class="form-inline mb-3"  >
+                    <input class="form-control" type="search" placeholder="Buscar..." id="buscaDocs" onkeyup="buscarDocumentos(this.value)">
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
                 </form>
 
-                <div id="resultado2">
+                <div id="resultadoDocs">
                   <?php 
                     $servidor="localhost";
                     $usuario="root";
@@ -234,9 +238,9 @@
 
                     $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-                    $sql=$mysqli->prepare('select encaminhamento,nome from addentregaprotocolos');
+                    $sql=$mysqli->prepare('select encaminhamento,nome,data,datavencimento from addentregaprotocolos ORDER BY data DESC');
                     $sql->execute();
-                    $sql->bind_result($encaminhamentocolegiado,$nome);
+                    $sql->bind_result($encaminhamento,$nome,$data,$vencimento);
 
                     echo "
                         <table>
@@ -244,6 +248,7 @@
                                 <tr>
                                     <td>Encaminhamento</td>
                                     <td>Requerente</td>
+                                    <td>Data</td>
                                     <td>Data de Vencimento</td>
                                 </tr>
                             </thead>
@@ -252,11 +257,14 @@
                     ";
 
                     while($sql->fetch()){
-
+                    $datapostada = date("d/m/Y", strtotime ($data)); 
+                    $datavencimento3 = date("d/m/Y", strtotime ($vencimento));    
                     echo "
                         <tr>
-                            <td>$encaminhamentocolegiado</td>
-                            <td>$nome</td>                            
+                            <td>$encaminhamento</td>
+                            <td>$nome</td>
+                            <td>$datapostada</td>                            
+                            <td>$datavencimento3</td>
                         </tr>
                     ";
                     }
@@ -278,11 +286,12 @@
               </div>
 
             <div class="card-body">
-
-                <form class="mb-3" method="POST">
-                    Buscar por: <input type="text" name="campo1" id="campo1">
+              
+                <form class="form-inline mb-3">
+                    <input class="form-control" type="search" placeholder="Buscar..." id="buscaColeg"  onkeyup="buscarColegiado(this.value)">
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
                 </form>
-
+              
                 <div id="resultado1">
                   <?php 
                     $servidor="localhost";
@@ -292,9 +301,9 @@
 
                     $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-                    $sql=$mysqli->prepare('select encaminhamentocolegiado,nome,datavencimento from addprotocolos');
+                    $sql=$mysqli->prepare('select encaminhamentocolegiado,nome,data,datavencimento from addprotocolos ORDER BY data DESC');
                     $sql->execute();
-                    $sql->bind_result($encaminhamentocolegiado,$nome,$datavencimento);
+                    $sql->bind_result($encaminhamentocolegiado,$nome,$data1,$vencimento1);
 
                     echo "
                         <table>
@@ -302,6 +311,7 @@
                                 <tr>
                                     <td>Encaminhamento</td>
                                     <td>Requerente</td>
+                                    <td>Data</td>
                                     <td>Data de Vencimento</td>
                                 </tr>
                             </thead>
@@ -310,12 +320,14 @@
                     ";
 
                     while($sql->fetch()){
-
+                    $datapostada1 = date("d/m/Y", strtotime ($data1)); 
+                    $datavencimento2 = date("d/m/Y", strtotime ($vencimento1));        
                     echo "
                         <tr>
                             <td>$encaminhamentocolegiado</td>
                             <td>$nome</td>
-                            <td>$datavencimento</td>
+                            <td>$datapostada1</td>
+                            <td>$datavencimento2</td>
                         </tr>
                     ";
                     }
@@ -339,8 +351,9 @@
 
             <div class="card-body">
 
-                <form class="mb-3" method="POST">
-                    Buscar por: <input type="text" name="campo" id="campo">
+                 <form class="form-inline mb-3" >
+                    <input class="form-control" type="search" placeholder="Buscar..." id="busca" onkeyup="buscarNoticias(this.value)">
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
                 </form>
 
                 <div id="resultado">
@@ -352,9 +365,9 @@
 
                     $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-                    $sql=$mysqli->prepare('select encaminhamento,nome,datavencimento from addprotocolos');
+                    $sql=$mysqli->prepare('select encaminhamento,nome,data,datavencimento from addprotocolos ORDER BY data DESC');
                     $sql->execute();
-                    $sql->bind_result($encaminhamento,$nome,$datavencimento);
+                    $sql->bind_result($encaminhamento,$nome,$data2,$vencimento2);
 
                     echo "
                         <table>
@@ -362,6 +375,7 @@
                                 <tr>
                                     <td>Encaminhamento</td>
                                     <td>Requerente</td>
+                                    <td>Data</td>
                                     <td>Data de Vencimento</td>
                                 </tr>
                             </thead>
@@ -370,11 +384,13 @@
                     ";
 
                     while($sql->fetch()){
-
+                    $datapostada2 = date("d/m/Y", strtotime ($data2)); 
+                    $datavencimento = date("d/m/Y", strtotime ($vencimento2));    
                     echo "
                         <tr>
                             <td>$encaminhamento</td>
                             <td>$nome</td>
+                            <td>$datapostada2</td>
                             <td>$datavencimento</td>
                         </tr>
                     ";

@@ -191,10 +191,10 @@
                                 
                                 echo "<tr>";                                
                                                              
-                                echo "<td>" .utf8_encode($dados['nome'])."</td>";                                
-                                echo "<td>" .utf8_encode($dados['curso'])."</td>";  
-                                 echo "<td>" .utf8_encode($dados['numproto'])."</td>";                             
-                                echo "<td>" .utf8_encode($dados['datasolicitada'])."</td>";
+                                echo "<td>" .($dados['nome'])."</td>";                                
+                                echo "<td>" .($dados['curso'])."</td>";  
+                                 echo "<td>" .($dados['numproto'])."</td>";                             
+                                echo "<td>" .($dados['datasolicitada'])."</td>";
                                 
                                 echo "</tr>";   
                                                       

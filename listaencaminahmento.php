@@ -179,14 +179,7 @@
               
 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th colspan="2">Encaminhamentos</th>                     
-                      
-                    </tr>
-                  </thead>
-
-                  
+                                    
                    <?php 
                               
                         $servername = "127.0.0.1";

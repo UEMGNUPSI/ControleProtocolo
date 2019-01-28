@@ -159,17 +159,11 @@
         <div class="container-fluid">
 
         	 <div class="card mb-3">
-<<<<<<< HEAD
-            <div class="card-header">
-              <i class="fas fa-table"></i>
-              Lista de Protocolos</div>
-=======
         
             <div class="card-header">
               <i class="fas fa-table"></i>
               Lista de Protocolos</div>
 
->>>>>>> 5a426a8f0c5ed664e289428d3111f27a49a8f7a3
             <div class="card-body">
               <div class="table-responsive">             
               
@@ -259,6 +253,7 @@
   </table>              
 </div>
 </div>
+<!-- Inicio do upload -->
 <form action="#" method="POST" enctype="multipart/form-data" class="ml-4 mb-3">
       
       <input type="file" name="fileUpload" id="fileUpload">
@@ -266,7 +261,7 @@
 </form>
 <?php  
   $ultimo_id = $_GET['id'];
-  $_UP['pasta'] = 'documentos/'.$ultimo_id.'/';
+  $_UP['pasta'] = 'documentos/protocolos/'.$ultimo_id.'/';
 
   if(isset($_FILES['fileUpload'])):
        // verifica a ação no botão
@@ -303,7 +298,7 @@
             $ultimo_id = $_GET['id'];
             
             if(is_dir($_UP['pasta'])){
-              $pasta = 'documentos/'.$ultimo_id.'/';
+              $pasta = 'documentos/protocolos/'.$ultimo_id.'/';
               if ($handle = opendir($pasta)) {
                  while (false !== ($arquivo = readdir($handle))) {
                      if ($arquivo != "." && $arquivo != "..") {

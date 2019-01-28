@@ -20,9 +20,7 @@
     </script>
 <style type="text/css">
   
-  td{
-      text-align: center;
-  }
+  
   button{
      background-color: white;
      border-style: solid;

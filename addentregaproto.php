@@ -233,7 +233,7 @@
 
           <div class="form-row ml-5">
 
-          <div class="form-group col-sm-6">
+          <div class="form-group col-sm-4">
               
               <label for="inputCurso">Curso:</label>
               <select id="inputCurso" class="form-control" name="curso">
@@ -261,9 +261,21 @@
               </select>
 
             </div>
+            <div class="form-group col-sm-4">
+              
+              <label for="inputCurso">Vencimento:</label>
+              <select id="inputCurso" class="form-control" name="vencimento">
+
+                <option selected>Selecione...</option>
+                <option>3 Dias</option>
+                <option> 5 Dias</option>                    
+                     
+              </select>
+
+            </div>
             
 
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-4">
               
               <label for="inputDAE">DAE:</label>
               <input type="text" id="inputDAE" class="form-control" name="DAE" required="" placeholder="">
