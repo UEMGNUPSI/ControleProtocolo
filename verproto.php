@@ -158,11 +158,8 @@
 
         <div class="container-fluid">
 
-        	 <div class="card mb-3">
-        
-            <div class="card-header">
-              <h1 class="display-4"><i class="fa fa-paper-plane text-primary mr-3 mb-5" aria-hidden="true"></i>
-              Lista de Protocolos</h1></div>
+        	 <div class="card mb-3">      
+           
 
             <div class="card-body">
               <div class="table-responsive">             
