@@ -12,20 +12,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">   
     <script src="https://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
-   <!-- <script type="text/javascript" src="js/funcs.js"></script>
+    <script type="text/javascript" src="js/card.js"></script>
+    <script type="text/javascript" src="js/funcs.js"></script>
     <script type="text/javascript" src="js/funcs_coleg.js"></script>
-    <script type="text/javascript" src="js/funcs_docs.js"></script> -->
-    
+    <script type="text/javascript" src="js/funcs_docs.js"></script> 
 
-    <script type="text/javascript">
-      function Mudarestado(el) {
-        var display = document.getElementById(el).style.display;
-        if(display == "none")
-            document.getElementById(el).style.display = 'block';
-        else
-            document.getElementById(el).style.display = 'none';
-    }               
-    </script>          
+
 </head>
 <body id="page-top">
 
@@ -156,13 +148,13 @@
           
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="#">Encaminhamentos</a>
+                  <i class="fas fa-table mr-1"></i>Encaminhamentos
                 </li>              
             </ol>
-
+  <div class="content">   
           <!-- Icon Cards-->
           <div class="row " >
-            
+           
             <div class="col-xl-3 col-sm-6 mb-3">
               <div class="card text-white bg-primary o-hidden h-100">
                 <div class="card-body">
@@ -171,7 +163,7 @@
                   </div>
                   <div class="mr-5">Entrega de Documentos</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#" onclick="Mudarestado('encaminhamentoDoc')">
+                <a class="card-footer text-white clearfix small z-1" href="#" onclick="Mudarestado(true, false, false)">
                   <span class="float-left">Ver Detalhes</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -179,16 +171,17 @@
                 </a>
               </div>
             </div>
-         
+       
+       
             <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-primary o-hidden h-100">
+              <div class="card text-white bg-primary hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
                     <i class="far fa-copy"></i>
                   </div>
                   <div class="mr-5">Colegiado</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#" onclick="Mudarestado('encaminhamentoColegiado')">
+                <a class="card-footer text-white clearfix small z-1" href="#" onclick="Mudarestado(false, true, false)">
                   <span class="float-left">Ver Detalhes</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -205,7 +198,7 @@
                   </div>
                   <div class="mr-5">Protocolos</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#" onclick="Mudarestado('encaminhamentoProto')">
+                <a class="card-footer text-white clearfix small z-1" href="#" onclick="Mudarestado(false, false, true)">
                   <span class="float-left">Ver Detalhes</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -214,6 +207,7 @@
               </div>
             </div>
           </div>
+       </div>
 <!--------------------------------------------------------- Entrega de Documentos ----------------------------------------->
         <div id="encaminhamentoDoc" style="display: none;">
              <div class="card mb-3">
@@ -404,10 +398,84 @@
           </div>  
         </div>
       </div>   
-    </div>
-  </div> 
-
+       
+  <!--    Gerando Relatorio colegiado   -->
       
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Gerar Relatório Colegiado
+            </div>
+    <div class="row mb-3 justifiy-content-center">
+      
+      <div class="col-sm-12 col-md-10 col-lg-8">
+        
+        <form method="post" action="buscar_relatorio.php" >
+          
+          <div class="form-row ml-5 mt-3">
+
+            <div class="form-group col-sm-2 ">
+            <!--Data Inicial -->
+             <label for="inicial">Data Inicial:</label>
+             <input type="date" class="form-control"  name="dataInicial" >
+            
+            </div>
+
+            <div class="form-group col-sm-2 ">
+            <!-- Data Final -->
+            <label for="final">Data Final:</label>
+              <input type="date" class="form-control"  name="dataFinal" >
+            
+            </div>
+          </div>
+
+            <div class="form-row ml-5">
+
+          <div class="form-group col-sm-4">
+              
+              <label for="curso">Curso:</label>
+              <select  class="form-control" name="curso" >
+
+                <option selected>Selecione...</option>
+
+                     <?php 
+                              
+                        $servername = "127.0.0.1";
+                        $database = "protocolos";
+                        $username = "root";
+                        $password = "";
+                                         
+                          $conn = mysqli_connect($servername, $username, $password, $database);
+                                //Carrega os dados
+                          $sql = "SELECT * FROM curso";
+                          $consulta = mysqli_query($conn, $sql);
+
+                          while( $dados = mysqli_fetch_assoc($consulta)){                                    
+                                
+                                echo "<option>".$dados['curso']."</option>";                              
+                           }     
+                     ?>         
+                     
+              </select>
+
+            </div>
+          </div>
+
+            <div class="form-row ml-5">
+             <div class="form-group col-sm-3 ">
+           
+              <button type="submit" class="btn btn-primary" >Gerar Relatório</button>
+            
+            </div>             
+          </div>     
+          <div id="resultados"></div> 
+                         
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+ 
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
