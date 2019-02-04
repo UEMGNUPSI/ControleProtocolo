@@ -17,7 +17,7 @@
     <script type="text/javascript" src="js/funcs_coleg.js"></script>
     <script type="text/javascript" src="js/funcs_docs.js"></script> 
 
-
+.
 </head>
 <body id="page-top">
 
