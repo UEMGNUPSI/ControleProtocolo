@@ -151,12 +151,29 @@
                   <i class="fas fa-table mr-1"></i>Encaminhamentos
                 </li>              
             </ol>
-  <div class="content">   
+  <div class="content"> 
+  <?php 
+                    
+                    $servername = "127.0.0.1";
+                    $database = "protocolos";
+                    $username = "root";
+                    $password = "";
+                                     
+                      $conn = mysqli_connect($servername, $username, $password, $database);
+                      $datapc = date("Y-m-d");
+                      $timestamp = strtotime("$datapc +1days");
+                      $dataam = date("Y-m-d",$timestamp);
+                            //Carrega os dados
+                      $sql = "SELECT * FROM addentregaprotocolos WHERE datavencimento = '$dataam' ";
+                      $consulta = mysqli_query($conn, $sql);
+                      $dados = mysqli_fetch_assoc($consulta);
+          ?>  
           <!-- Icon Cards-->
+        
           <div class="row " >
            
             <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-primary o-hidden h-100">
+              <div class="card text-white <?php if (!$dados==NULL){ echo "bg-danger";} else {echo "bg-primary";} ?> o-hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
                    <i class="far fa-copy"></i>
@@ -172,9 +189,20 @@
               </div>
             </div>
        
-       
+            <?php 
+                    
+                   
+                      $datapc = date("Y-m-d");
+                      $timestamp = strtotime("$datapc +1days");
+                      $dataam = date("Y-m-d",$timestamp);
+                            //Carrega os dados
+                      $sql = "SELECT * FROM addprotocolos WHERE datavencimento = '$dataam' ";
+                      $consulta = mysqli_query($conn, $sql);
+                      $dados = mysqli_fetch_assoc($consulta);
+          ?>     
             <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-primary hidden h-100">
+
+              <div class="card text-white <?php if (!$dados==NULL){echo "bg-danger";}else {echo "bg-primary";} ?> hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
                     <i class="far fa-copy"></i>
@@ -191,7 +219,7 @@
             </div>
 
             <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card text-white <?php if (!$dados==NULL){echo "bg-danger";}else {echo "bg-primary";} ?> hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
                     <i class="far fa-copy"></i>
