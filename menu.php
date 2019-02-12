@@ -436,23 +436,24 @@
             </div>
     <div class="row mb-3 justifiy-content-center">
       
-      <div class="col-sm-12 col-md-10 col-lg-8">
-        
-        <form method="post" action="buscar_relatorio.php" >
+      <div class="col-sm-12 col-md-12 col-lg-12" id="escrever">
+       
+       <div id="resposta"></div>  
+        <form  id="formulario" method="post" action="buscar_relatorio.php" >
           
           <div class="form-row ml-5 mt-3">
 
             <div class="form-group col-sm-2 ">
             <!--Data Inicial -->
              <label for="inicial">Data Inicial:</label>
-             <input type="date" class="form-control"  name="dataInicial" >
+             <input type="date" class="form-control"  name="inicial" id="inicial" >
             
             </div>
 
             <div class="form-group col-sm-2 ">
             <!-- Data Final -->
             <label for="final">Data Final:</label>
-              <input type="date" class="form-control"  name="dataFinal" >
+              <input type="date" class="form-control"  name="final" id="final">
             
             </div>
           </div>
@@ -462,7 +463,7 @@
           <div class="form-group col-sm-4">
               
               <label for="curso">Curso:</label>
-              <select  class="form-control" name="curso" >
+              <select  class="form-control" name="curso" id="curso">
 
                 <option selected>Selecione...</option>
 
@@ -482,7 +483,7 @@
                                 
                                 echo "<option>".$dados['curso']."</option>";                              
                            }     
-                     ?>         
+                     ?>        
                      
               </select>
 
@@ -492,19 +493,28 @@
             <div class="form-row ml-5">
              <div class="form-group col-sm-3 ">
            
-              <button type="submit" class="btn btn-primary" >Gerar Relatório</button>
-            
+             <button type="submit" class="btn btn-primary" >Gerar Relatório</button>   
+          
             </div>             
-          </div>     
-          <div id="resultados"></div> 
-                         
+          </div>
+        
         </form>
+        <?php 
+  
+          if (isset($_GET['modal'])) { 
+            $modal = $_GET['modal'];
+            $curso = $_GET['curso'];
+
+             if($modal != 0){            
+              echo "</br>Foram encontrados $modal resultados para o curso: $curso.Para gerar o PDF<a href='gerar_pdf.php?curso=$curso'> clique aqui!</a>  ";
+             }else 
+              echo "Não foi encontrado nenhuma atividade neste curso durante o período especificado!";        
+          }
+            ?>
       </div>
     </div>
-  </div>
-</div>
- 
 
+  
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
