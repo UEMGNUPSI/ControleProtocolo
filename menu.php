@@ -26,7 +26,7 @@
       <a class="navbar-brand mr-1" href="menu.php">Uemg</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
+        
       </button>
 
        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">        
@@ -197,15 +197,15 @@
                       $dataam = date("Y-m-d",$timestamp);
                             //Carrega os dados
                       $sql = "SELECT * FROM addprotocolos WHERE datavencimento = '$dataam' ";
-                      $consulta = mysqli_query($conn, $sql);
-                      $dados = mysqli_fetch_assoc($consulta);
+                      $consultaa = mysqli_query($conn, $sql);
+                      $dadoss = mysqli_fetch_assoc($consultaa);
           ?>     
             <div class="col-xl-3 col-sm-6 mb-3">
 
-              <div class="card text-white <?php if (!$dados==NULL){echo "bg-danger";}else {echo "bg-primary";} ?> hidden h-100">
+              <div class="card text-white <?php if (!$dadoss==NULL){echo "bg-danger";}else {echo "bg-primary";} ?> hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
-                    <i class="far fa-copy"></i>
+                    <i class="fas fa-users"></i>
                   </div>
                   <div class="mr-5">Colegiado</div>
                 </div>
@@ -219,10 +219,10 @@
             </div>
 
             <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white <?php if (!$dados==NULL){echo "bg-danger";}else {echo "bg-primary";} ?> hidden h-100">
+            <div class="card text-white <?php if (!$dadoss==NULL){echo "bg-danger";}else {echo "bg-primary";} ?> hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
-                    <i class="far fa-copy"></i>
+                    <i class="fab fa-leanpub"></i>
                   </div>
                   <div class="mr-5">Protocolos</div>
                 </div>
@@ -268,7 +268,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <td>Encaminhamento</td>
+                                    <td >Encaminhamento</td>
                                     <td>Requerente</td>
                                     <td>Data</td>
                                     <td>Data de Vencimento</td>
@@ -279,22 +279,41 @@
                     ";
 
                     while($sql->fetch()){
-                    $datapostada = date("d/m/Y", strtotime ($data)); 
-                    $datavencimento3 = date("d/m/Y", strtotime ($vencimento));    
-                    echo "
-                        <tr>
-                            <td>$encaminhamento</td>
-                            <td>$nome</td>
-                            <td>$datapostada</td>                            
-                            <td>$datavencimento3</td>
-                        </tr>
-                    ";
+                      $datapostada = date("d/m/Y", strtotime ($data)); 
+                      $datavencimento3 = date("d/m/Y", strtotime ($vencimento));      
+
+                      $dataapc = date("Y-m-d");
+                      $timestaamp = strtotime("$dataapc +1days");
+                      $dataaam = date("Y-m-d",$timestaamp);        
+                    
+                      if ($dataaam >= $vencimento){
+                        echo "
+                            <tr style='color: red;'>
+                                <td >$encaminhamento</td>
+                                <td>$nome</td>
+                                <td>$datapostada</td>                            
+                                <td>$datavencimento3</td>
+                            </tr>
+                        ";
+                      }else {
+                         echo "
+                          <tr>
+                              <td>$encaminhamento</td>
+                              <td>$nome</td>
+                              <td>$datapostada</td>                            
+                              <td>$datavencimento3</td>
+                          </tr>
+                        ";
+                      }
                     }
 
                     echo "
                         </tbody>
                     </table>
-                    ";  ?>
+                    ";
+                    
+
+                    ?>
                 </div>             
           </div>  
         </div>
@@ -343,21 +362,38 @@
 
                     while($sql->fetch()){
                     $datapostada1 = date("d/m/Y", strtotime ($data1)); 
-                    $datavencimento2 = date("d/m/Y", strtotime ($vencimento1));        
-                    echo "
-                        <tr>
-                            <td>$encaminhamentocolegiado</td>
-                            <td>$nome</td>
-                            <td>$datapostada1</td>
-                            <td>$datavencimento2</td>
-                        </tr>
-                    ";
+                    $datavencimento2 = date("d/m/Y", strtotime ($vencimento1));    
+
+                      $dataapc = date("Y-m-d");
+                      $timestaamp = strtotime("$dataapc +1days");
+                      $dataaam = date("Y-m-d",$timestaamp);        
+                    
+                      if ($dataaam >= $vencimento1){
+                        echo "
+                            <tr style='color: red;'>
+                                <td >$encaminhamentocolegiado</td>
+                                <td>$nome</td>
+                                <td>$datapostada1</td>                            
+                                <td>$datavencimento2</td>
+                            </tr>
+                        ";
+                      }else {
+                         echo "
+                          <tr>
+                              <td>$encaminhamentocolegiado</td>
+                              <td>$nome</td>
+                              <td>$datapostada1</td>                            
+                              <td>$datavencimento2</td>
+                          </tr>
+                        ";
+                      }
                     }
 
                     echo "
                         </tbody>
                     </table>
-                    ";  ?>
+                    ";
+                      ?>
                 </div>             
           </div>  
         </div>
@@ -408,20 +444,36 @@
                     while($sql->fetch()){
                     $datapostada2 = date("d/m/Y", strtotime ($data2)); 
                     $datavencimento = date("d/m/Y", strtotime ($vencimento2));    
-                    echo "
-                        <tr>
-                            <td>$encaminhamento</td>
-                            <td>$nome</td>
-                            <td>$datapostada2</td>
-                            <td>$datavencimento</td>
-                        </tr>
-                    ";
+                      
+                      $dataapc = date("Y-m-d");
+                      $timestaamp = strtotime("$dataapc +1days");
+                      $dataaam = date("Y-m-d",$timestaamp);        
+                    
+                      if ($dataaam >= $vencimento2){
+                        echo "
+                            <tr style='color: red;'>
+                                <td >$encaminhamento</td>
+                                <td>$nome</td>
+                                <td>$datapostada</td>                            
+                                <td>$datavencimento</td>
+                            </tr>
+                        ";
+                      }else {
+                         echo "
+                          <tr>
+                              <td>$encaminhamento</td>
+                              <td>$nome</td>
+                              <td>$datapostada</td>                            
+                              <td>$datavencimento</td>
+                          </tr>
+                        ";
+                      }
                     }
 
                     echo "
                         </tbody>
                     </table>
-                    ";  ?>
+                    "; ?>
                 </div>             
           </div>  
         </div>
@@ -438,7 +490,6 @@
       
       <div class="col-sm-12 col-md-12 col-lg-12" id="escrever">
        
-       <div id="resposta"></div>  
         <form  id="formulario" method="post" action="buscar_relatorio.php" >
           
           <div class="form-row ml-5 mt-3">
@@ -506,14 +557,13 @@
             $curso = $_GET['curso'];
 
              if($modal != 0){            
-              echo "</br>Foram encontrados $modal resultados para o curso: $curso.Para gerar o PDF<a href='gerar_pdf.php?curso=$curso'> clique aqui!</a>  ";
+              echo "</br>Foram encontrados $modal resultados para o curso: $curso.Para gerar o PDF<a target='_blanck' href='gerar_pdf.php?curso=$curso'> clique aqui!</a>  ";
              }else 
               echo "Não foi encontrado nenhuma atividade neste curso durante o período especificado!";        
           }
             ?>
       </div>
     </div>
-
   
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

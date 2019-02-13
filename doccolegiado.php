@@ -16,6 +16,16 @@
 </head>
 <body id="page-top">
 
+   <?php 
+                              
+                        $servername = "127.0.0.1";
+                        $database = "protocolos";
+                        $username = "root";
+                        $password = "";
+                                         
+                          $conn = mysqli_connect($servername, $username, $password, $database);
+    ?>
+
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="menu.php">Uemg</a>
@@ -158,15 +168,8 @@
 
                 <div class='row' id="resultado">
                   
-
-                <?php 
-                              
-                        $servername = "127.0.0.1";
-                        $database = "protocolos";
-                        $username = "root";
-                        $password = "";
-                                         
-                          $conn = mysqli_connect($servername, $username, $password, $database);
+                        <?php
+               
                                 //Carrega os dados
                           $sql = "SELECT * FROM addprotocolos ORDER BY ra ASC";
                           $consulta = mysqli_query($conn, $sql);

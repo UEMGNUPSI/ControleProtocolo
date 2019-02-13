@@ -43,14 +43,29 @@ while ($noticias = mysqli_fetch_assoc($consulta)) {
 	$datavencimento = date("d/m/Y", strtotime ($data));
 	
 
-	echo  "         
-	        <tr>
-	            <td>$encaminhamento</td>
-	            <td>$nome</td>
-	            <td>$date</td>
-	            <td>$datavencimento</td>
-	        </tr>
-	        ";
+	$dataapc = date("Y-m-d");
+    $timestaamp = strtotime("$dataapc +1days");
+    $dataaam = date("Y-m-d",$timestaamp);        
+                    
+    if ($dataaam >= $datavencimento){
+       echo "
+            <tr style='color: red;'>
+            <td >$encaminhamento</td>
+            <td>$nome</td>
+            <td>$date</td>                            
+            <td>$datavencimento</td>
+            </tr>
+       ";
+    }else {
+        echo "
+            <tr>
+            <td>$encaminhamento</td>
+            <td>$nome</td>
+            <td>$date</td>                            
+            <td>$datavencimento</td>
+            </tr>            
+        ";
+        }
 }
  
 // Acentuação
