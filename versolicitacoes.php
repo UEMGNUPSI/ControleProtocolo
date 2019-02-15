@@ -194,7 +194,7 @@
                                 echo "<td>" .$dados['numproto']."</td>";
                                 echo "<td>" .$dados['requerente']."</td>";
                                 echo "<td>" .$dados['atendente']."</td>";                                 
-                                echo "<td>" .$dados['datasolicitada']."</td>";                                                                         
+                                echo "<td>" .date("d/m/Y", strtotime ($dados['datasolicitada']))."</td>";                                                                         
                                 
                                 echo "</tr>";   
                                                       

@@ -22,7 +22,7 @@
 <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
+      <i class="fas fa-university text-light mr-1"></i>
       <a class="navbar-brand mr-1" href="menu.php">Uemg</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
@@ -164,7 +164,7 @@
                       $timestamp = strtotime("$datapc +1days");
                       $dataam = date("Y-m-d",$timestamp);
                             //Carrega os dados
-                      $sql = "SELECT * FROM addentregaprotocolos WHERE datavencimento = '$dataam' ";
+                      $sql = "SELECT * FROM addentregaprotocolos WHERE datavencimento <= '$dataam' ";
                       $consulta = mysqli_query($conn, $sql);
                       $dados = mysqli_fetch_assoc($consulta);
           ?>  
@@ -196,7 +196,7 @@
                       $timestamp = strtotime("$datapc +1days");
                       $dataam = date("Y-m-d",$timestamp);
                             //Carrega os dados
-                      $sql = "SELECT * FROM addprotocolos WHERE datavencimento = '$dataam' ";
+                      $sql = "SELECT * FROM addprotocolos WHERE datavencimento <= '$dataam' ";
                       $consultaa = mysqli_query($conn, $sql);
                       $dadoss = mysqli_fetch_assoc($consultaa);
           ?>     
@@ -260,7 +260,7 @@
 
                     $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-                    $sql=$mysqli->prepare('select encaminhamento,nome,data,datavencimento from addentregaprotocolos ORDER BY data DESC');
+                    $sql=$mysqli->prepare('select encaminhamento,nome,data,datavencimento from addentregaprotocolos ORDER BY datavencimento ASC');
                     $sql->execute();
                     $sql->bind_result($encaminhamento,$nome,$data,$vencimento);
 
@@ -342,7 +342,7 @@
 
                     $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-                    $sql=$mysqli->prepare('select encaminhamentocolegiado,nome,data,datavencimento from addprotocolos ORDER BY data DESC');
+                    $sql=$mysqli->prepare('select encaminhamentocolegiado,nome,data,datavencimento from addprotocolos ORDER BY datavencimento ASC');
                     $sql->execute();
                     $sql->bind_result($encaminhamentocolegiado,$nome,$data1,$vencimento1);
 
@@ -423,7 +423,7 @@
 
                     $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-                    $sql=$mysqli->prepare('select encaminhamento,nome,data,datavencimento from addprotocolos ORDER BY data DESC');
+                    $sql=$mysqli->prepare('select encaminhamento,nome,data,datavencimento from addprotocolos ORDER BY datavencimento ASC');
                     $sql->execute();
                     $sql->bind_result($encaminhamento,$nome,$data2,$vencimento2);
 

@@ -204,8 +204,8 @@
                                 echo "<td>".$dados['atendente']."</td>";
                                 echo "<td>".$dados['curso']."</td>";
                                 echo "<td>".$dados['periodo']."</td>";
-                                echo "<td>".$dados['data']."</td>";
-                                echo "<td>".$dados['dataretirada']."</td>";
+                                echo "<td>".date("d/m/Y", strtotime ($dados['data']))."</td>";
+                                echo "<td>".date("d/m/Y", strtotime ($dados['dataretirada']))."</td>";
                                 echo "<td>".$dados['entregue']."</td>";
                                 echo "<td>".$dados['descricao']."</td>";
                                 echo "<td>".$dados['observacao']."</td>";

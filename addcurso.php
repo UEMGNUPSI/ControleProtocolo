@@ -150,7 +150,7 @@
 
             <div class="form-group col-sm-6 ">            
               <label for="inputNome">Curso:</label>
-              <input type="text" class="form-control" name="curso" id="inputNome"  required="">            
+              <input type="text" class="form-control" name="curso" id="inputNome" placeholder="Digite nome do curso" required="">            
             </div>
 
           </div>
