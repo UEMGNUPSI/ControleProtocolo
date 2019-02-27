@@ -10,12 +10,14 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">   
     <script src="https://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/card.js"></script>
     <script type="text/javascript" src="js/funcs.js"></script>
     <script type="text/javascript" src="js/funcs_coleg.js"></script>
     <script type="text/javascript" src="js/funcs_docs.js"></script> 
+    <script type="text/javascript" src="js/funcs_estado.js"></script> 
+    <script type="text/javascript" src="js/funcs_estadoProto.js"></script> 
 
 
 </head>
@@ -164,7 +166,7 @@
                       $timestamp = strtotime("$datapc +1days");
                       $dataam = date("Y-m-d",$timestamp);
                             //Carrega os dados
-                      $sql = "SELECT * FROM addentregaprotocolos WHERE datavencimento <= '$dataam' ";
+                      $sql = "SELECT * FROM addentregaprotocolos WHERE status= 0 AND datavencimento <= '$dataam' ";
                       $consulta = mysqli_query($conn, $sql);
                       $dados = mysqli_fetch_assoc($consulta);
           ?>  
@@ -196,7 +198,7 @@
                       $timestamp = strtotime("$datapc +1days");
                       $dataam = date("Y-m-d",$timestamp);
                             //Carrega os dados
-                      $sql = "SELECT * FROM addprotocolos WHERE datavencimento <= '$dataam' ";
+                      $sql = "SELECT * FROM addprotocolos WHERE status= 0 AND datavencimento <= '$dataam' ";
                       $consultaa = mysqli_query($conn, $sql);
                       $dadoss = mysqli_fetch_assoc($consultaa);
           ?>     
@@ -244,15 +246,16 @@
               Entrega de Documentos
               </div>
 
-            <div class="card-body">
+            <div class="card-body">    
 
-                <form class="form-inline mb-3"  >
-                    <input class="form-control" type="search" placeholder="Buscar..." id="buscaDocs" onkeyup="buscarDocumentos(this.value)">
-                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
-                </form>
+                <form class="form-group mb-3">        
+                    <input class="form-control" type="search" placeholder="Buscar..." id="buscaDocs" onkeyup="buscarDocumentos(this.value)" style="display: inline;width: 15%;">
+                    <button class="btn btn-primary " type="submit" style="float: right;" formaction="baixasxentregaproto.php">Ver Encaminhamentos</button>
+                </form>                        
 
                 <div id="resultadoDocs">
                   <?php 
+                 
                     $servidor="localhost";
                     $usuario="root";
                     $senha="";
@@ -260,9 +263,9 @@
 
                     $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-                    $sql=$mysqli->prepare('select encaminhamento,nome,data,datavencimento from addentregaprotocolos ORDER BY datavencimento ASC');
+                    $sql=$mysqli->prepare('select id,encaminhamento,nome,data,datavencimento from addentregaprotocolos WHERE status=0 ORDER BY datavencimento ASC');
                     $sql->execute();
-                    $sql->bind_result($encaminhamento,$nome,$data,$vencimento);
+                    $sql->bind_result($id,$encaminhamento,$nome,$data,$vencimento);
 
                     echo "
                         <table>
@@ -272,6 +275,7 @@
                                     <td>Requerente</td>
                                     <td>Data</td>
                                     <td>Data de Vencimento</td>
+                                    <td></td>
                                 </tr>
                             </thead>
 
@@ -289,21 +293,31 @@
                       if ($dataaam >= $vencimento){
                         echo "
                             <tr style='color: red;'>
-                                <td >$encaminhamento</td>
+                                <td>$encaminhamento</td>
                                 <td>$nome</td>
                                 <td>$datapostada</td>                            
-                                <td>$datavencimento3</td>
+                                <td>$datavencimento3</td>"; ?>
+                                <td>
+                                  <button id="confirmar" onclick="estadoDocs(<?php echo $id; ?>)" style="cursor: pointer;">
+                                   <i class='fas fa-check-circle'></i>
+                                  </button>
+                                </td>
                             </tr>
-                        ";
+                      <?php 
                       }else {
                          echo "
                           <tr>
                               <td>$encaminhamento</td>
                               <td>$nome</td>
                               <td>$datapostada</td>                            
-                              <td>$datavencimento3</td>
-                          </tr>
-                        ";
+                              <td>$datavencimento3</td> ";?>
+                               <td>
+                                  <button id="confirmar" onclick="estadoDocs(<?php echo $id; ?>)" style="cursor: pointer;">
+                                   <i class='fas fa-check-circle'></i>
+                                  </button>
+                                </td>
+                            </tr>
+                     <?php     
                       }
                     }
 
@@ -328,10 +342,11 @@
 
             <div class="card-body">
               
-                <form class="form-inline mb-3">
-                    <input class="form-control" type="search" placeholder="Buscar..." id="buscaColeg"  onkeyup="buscarColegiado(this.value)">
-                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+              <form class="form-group mb-3">        
+                    <input class="form-control" type="search" placeholder="Buscar..." id="buscaColeg"  onkeyup="buscarColegiado(this.value)" style="display: inline;width: 15%;">
+                    <button class="btn btn-primary " type="submit" style="float: right;" formaction="#">Ver Encaminhamentos</button>
                 </form>
+                
               
                 <div id="resultado1">
                   <?php 
@@ -342,9 +357,9 @@
 
                     $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-                    $sql=$mysqli->prepare('select encaminhamentocolegiado,nome,data,datavencimento from addprotocolos ORDER BY datavencimento ASC');
+                    $sql=$mysqli->prepare('select id,encaminhamentocolegiado,nome,data,datavencimento from addprotocolos WHERE status=0 ORDER BY datavencimento ASC');
                     $sql->execute();
-                    $sql->bind_result($encaminhamentocolegiado,$nome,$data1,$vencimento1);
+                    $sql->bind_result($id,$encaminhamentocolegiado,$nome,$data1,$vencimento1);
 
                     echo "
                         <table>
@@ -354,6 +369,7 @@
                                     <td>Requerente</td>
                                     <td>Data</td>
                                     <td>Data de Vencimento</td>
+                                    <td></td>
                                 </tr>
                             </thead>
 
@@ -374,18 +390,32 @@
                                 <td >$encaminhamentocolegiado</td>
                                 <td>$nome</td>
                                 <td>$datapostada1</td>                            
-                                <td>$datavencimento2</td>
+                                <td>$datavencimento2</td>";?>
+                               <td>
+                                  <button id="confirmar" onclick="estadoDocsProto(<?php echo $id; ?>)" style="cursor: pointer;">
+                                   <i class='fas fa-check-circle'></i>
+                                  </button>
+                                </td>
                             </tr>
-                        ";
+                     <?php  
+                           
+                        
                       }else {
                          echo "
                           <tr>
                               <td>$encaminhamentocolegiado</td>
                               <td>$nome</td>
                               <td>$datapostada1</td>                            
-                              <td>$datavencimento2</td>
-                          </tr>
-                        ";
+                              <td>$datavencimento2</td>" ;?>
+                               <td>
+                                  <button id="confirmar" onclick="estadoDocsProto(<?php echo $id; ?>)" style="cursor: pointer;">
+                                   <i class='fas fa-check-circle'></i>
+                                  </button>
+                                </td>
+                            </tr>
+                     <?php    
+                          
+                       
                       }
                     }
 
@@ -423,9 +453,9 @@
 
                     $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-                    $sql=$mysqli->prepare('select encaminhamento,nome,data,datavencimento from addprotocolos ORDER BY datavencimento ASC');
+                    $sql=$mysqli->prepare('select id,encaminhamento,nome,data,datavencimento from addprotocolos ORDER BY datavencimento ASC');
                     $sql->execute();
-                    $sql->bind_result($encaminhamento,$nome,$data2,$vencimento2);
+                    $sql->bind_result($id,$encaminhamento,$nome,$data2,$vencimento2);
 
                     echo "
                         <table>
@@ -435,6 +465,7 @@
                                     <td>Requerente</td>
                                     <td>Data</td>
                                     <td>Data de Vencimento</td>
+                                    <td></td>
                                 </tr>
                             </thead>
 
@@ -455,9 +486,14 @@
                                 <td >$encaminhamento</td>
                                 <td>$nome</td>
                                 <td>$datapostada</td>                            
-                                <td>$datavencimento</td>
+                                <td>$datavencimento</td>";?>
+                               <td>
+                                  <button id="confirmar" onclick="estadoDocsProto(<?php echo $id; ?>)" style="cursor: pointer;">
+                                   <i class='fas fa-check-circle'></i>
+                                  </button>
+                                </td>
                             </tr>
-                        ";
+                     <?php  
                       }else {
                          echo "
                           <tr>
@@ -465,8 +501,14 @@
                               <td>$nome</td>
                               <td>$datapostada</td>                            
                               <td>$datavencimento</td>
-                          </tr>
-                        ";
+                          ";?>
+                               <td>
+                                  <button id="confirmar" onclick="estadoDocsProto(<?php echo $id; ?>)" style="cursor: pointer;">
+                                   <i class='fas fa-check-circle'></i>
+                                  </button>
+                                </td>
+                            </tr>
+                     <?php  
                       }
                     }
 

@@ -13,7 +13,7 @@ $valor = $_GET['valor'];
 
  
 // Procura titulos no banco relacionados ao valor
-$sql ="SELECT * FROM addprotocolos WHERE encaminhamentocolegiado LIKE '%".$valor."%' ";
+$sql ="SELECT * FROM addprotocolos WHERE status=0  AND encaminhamentocolegiado LIKE '%".$valor."%' ";
 $consulta = mysqli_query($conn,$sql); 
 // Exibe todos os valores encontrados
 

@@ -13,7 +13,7 @@ $valor = $_GET['valor'];
 
 
 // Procura titulos no banco relacionados ao valor
-$sql ="SELECT * FROM addentregaprotocolos WHERE encaminhamento LIKE '%".$valor."%' ";
+$sql ="SELECT * FROM addentregaprotocolos WHERE encaminhamento LIKE '%".$valor."%'";
 $consulta = mysqli_query($conn,$sql); 
 // Exibe todos os valores encontrados
 
@@ -47,17 +47,7 @@ while ($noticias = mysqli_fetch_assoc($consulta)) {
     $timestaamp = strtotime("$dataapc +1days");
     $dataaam = date("Y-m-d",$timestaamp);        
                     
-    if ($dataaam >= $datavencimento){
-       echo "
-            <tr style='color: red;'>
-            <td >$encaminhamento</td>
-            <td>$nome</td>
-            <td>$date</td>                            
-            <td>$datavencimento</td>
-            </tr>
-       ";
-    }else {
-        echo "
+            echo "
             <tr>
             <td>$encaminhamento</td>
             <td>$nome</td>
@@ -66,7 +56,7 @@ while ($noticias = mysqli_fetch_assoc($consulta)) {
             </tr>            
         ";
         }
-}
+
  
 // Acentuação
 header("Content-Type: text/html; charset=ISO-8859-1",true);
