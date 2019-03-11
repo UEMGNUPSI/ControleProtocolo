@@ -18,6 +18,7 @@
     <script type="text/javascript" src="js/funcs_docs.js"></script> 
     <script type="text/javascript" src="js/funcs_estado.js"></script> 
     <script type="text/javascript" src="js/funcs_estadoProto.js"></script> 
+    <script type="text/javascript" src="js/funcs_estadoProtocolos.js"></script> 
 
 
 </head>
@@ -198,7 +199,7 @@
                       $timestamp = strtotime("$datapc +1days");
                       $dataam = date("Y-m-d",$timestamp);
                             //Carrega os dados
-                      $sql = "SELECT * FROM addprotocolos WHERE status= 0 AND datavencimento <= '$dataam' ";
+                      $sql = "SELECT * FROM addprotocolos WHERE statusColeg= 0 AND datavencimento <= '$dataam' ";
                       $consultaa = mysqli_query($conn, $sql);
                       $dadoss = mysqli_fetch_assoc($consultaa);
           ?>     
@@ -219,6 +220,18 @@
                 </a>
               </div>
             </div>
+
+            <?php 
+                    
+                   
+                      $datapc = date("Y-m-d");
+                      $timestamp = strtotime("$datapc +1days");
+                      $dataam = date("Y-m-d",$timestamp);
+                            //Carrega os dados
+                      $sql = "SELECT * FROM addprotocolos WHERE status= 0 AND datavencimento <= '$dataam' ";
+                      $consultaa = mysqli_query($conn, $sql);
+                      $dadoss = mysqli_fetch_assoc($consultaa);
+          ?>     
 
             <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white <?php if (!$dadoss==NULL){echo "bg-danger";}else {echo "bg-primary";} ?> hidden h-100">
@@ -344,7 +357,7 @@
               
               <form class="form-group mb-3">        
                     <input class="form-control" type="search" placeholder="Buscar..." id="buscaColeg"  onkeyup="buscarColegiado(this.value)" style="display: inline;width: 15%;">
-                    <button class="btn btn-primary " type="submit" style="float: right;" formaction="#">Ver Encaminhamentos</button>
+                    <button class="btn btn-primary " type="submit" style="float: right;" formaction="baixasColegiado.php">Ver Encaminhamentos</button>
                 </form>
                 
               
@@ -357,7 +370,7 @@
 
                     $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-                    $sql=$mysqli->prepare('select id,encaminhamentocolegiado,nome,data,datavencimento from addprotocolos WHERE status=0 ORDER BY datavencimento ASC');
+                    $sql=$mysqli->prepare('select id,encaminhamentocolegiado,nome,data,datavencimento from addprotocolos WHERE statusColeg=0 ORDER BY datavencimento ASC');
                     $sql->execute();
                     $sql->bind_result($id,$encaminhamentocolegiado,$nome,$data1,$vencimento1);
 
@@ -439,9 +452,9 @@
 
             <div class="card-body">
 
-                 <form class="form-inline mb-3" >
-                    <input class="form-control" type="search" placeholder="Buscar..." id="busca" onkeyup="buscarNoticias(this.value)">
-                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                <form class="form-group mb-3">
+                    <input class="form-control" type="search" placeholder="Buscar..." id="busca"  onkeyup="buscarNoticias(this.value)" style="display: inline;width: 15%;">
+                    <button class="btn btn-primary " type="submit" style="float: right;" formaction="baixasProtocolos.php">Ver Encaminhamentos</button>
                 </form>
 
                 <div id="resultado">
@@ -453,7 +466,7 @@
 
                     $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-                    $sql=$mysqli->prepare('select id,encaminhamento,nome,data,datavencimento from addprotocolos ORDER BY datavencimento ASC');
+                    $sql=$mysqli->prepare('select id,encaminhamento,nome,data,datavencimento from addprotocolos WHERE status=0 ORDER BY datavencimento ASC');
                     $sql->execute();
                     $sql->bind_result($id,$encaminhamento,$nome,$data2,$vencimento2);
 
@@ -488,7 +501,7 @@
                                 <td>$datapostada</td>                            
                                 <td>$datavencimento</td>";?>
                                <td>
-                                  <button id="confirmar" onclick="estadoDocsProto(<?php echo $id; ?>)" style="cursor: pointer;">
+                                  <button id="confirmar" onclick="estadoProto(<?php echo $id; ?>)" style="cursor: pointer;">
                                    <i class='fas fa-check-circle'></i>
                                   </button>
                                 </td>
@@ -503,7 +516,7 @@
                               <td>$datavencimento</td>
                           ";?>
                                <td>
-                                  <button id="confirmar" onclick="estadoDocsProto(<?php echo $id; ?>)" style="cursor: pointer;">
+                                  <button id="confirmar" onclick="estadoProto(<?php echo $id; ?>)" style="cursor: pointer;">
                                    <i class='fas fa-check-circle'></i>
                                   </button>
                                 </td>

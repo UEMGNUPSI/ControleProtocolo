@@ -12,10 +12,10 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 $id_estado = $_GET['valor'];
 
 // Procura titulos no banco relacionados ao valor
-$sqli ="UPDATE addentregaprotocolos SET status= 1 WHERE id='$id_estado'";
+$sqli ="UPDATE addprotocolos SET status= 1 WHERE id='$id_estado'";
 $consulta = mysqli_query($conn,$sqli); 
 // Exibe todos os valores encontrados
-$sql=$conn->prepare('select id,encaminhamento,nome,data,datavencimento from addentregaprotocolos WHERE status=0 ORDER BY datavencimento ASC');
+$sql=$conn->prepare('select id,encaminhamento,nome,data,datavencimento from addprotocolos WHERE status=0 ORDER BY datavencimento ASC');
 $sql->execute();
 $sql->bind_result($id,$encaminhamento,$nome,$data,$vencimento);
 
@@ -40,8 +40,8 @@ $sql->bind_result($id,$encaminhamento,$nome,$data,$vencimento);
                       $dataapc = date("Y-m-d");
                       $timestaamp = strtotime("$dataapc +1days");
                       $dataaam = date("Y-m-d",$timestaamp);  
-                      
-                      if ($dataaam >= $vencimento){
+
+                        if ($dataaam >= $vencimento){
                         echo "
                             <tr style='color: red;'>
                                 <td>$encaminhamento</td>
@@ -49,7 +49,7 @@ $sql->bind_result($id,$encaminhamento,$nome,$data,$vencimento);
                                 <td>$datapostada</td>                            
                                 <td>$datavencimento3</td>"; ?>
                                 <td>
-                                  <button id="confirmar" onclick="estadoDocs(<?php echo $id; ?>)" style="cursor: pointer;">
+                                  <button id="confirmar" onclick="estadoProto(<?php echo $id; ?>)" style="cursor: pointer;">
                                    <i class='fas fa-check-circle'></i>
                                   </button>
                                 </td>
@@ -63,7 +63,7 @@ $sql->bind_result($id,$encaminhamento,$nome,$data,$vencimento);
                               <td>$datapostada</td>                            
                               <td>$datavencimento3</td> ";?>
                                <td>
-                                  <button id="confirmar" onclick="estadoDocs(<?php echo $id; ?>)" style="cursor: pointer;">
+                                  <button id="confirmar" onclick="estadoProto(<?php echo $id; ?>)" style="cursor: pointer;">
                                    <i class='fas fa-check-circle'></i>
                                   </button>
                                 </td>
@@ -75,10 +75,8 @@ $sql->bind_result($id,$encaminhamento,$nome,$data,$vencimento);
                     echo "
                         </tbody>
                     </table>
-                    ";
+                    ";                      
  
 // Acentuação
-header("Content-Type: text/html; charset=ISO-8859-1",true);
-
 
  ?>

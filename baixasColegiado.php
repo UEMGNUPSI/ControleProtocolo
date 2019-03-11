@@ -9,7 +9,7 @@
 	    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">   
 	    <script src="https://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
 	    <link rel="stylesheet" type="text/css" media="screen" href="menu.css" /> 
-      <script type="text/javascript" src="js/funcs_baixaDoc.js"></script> 
+      <script type="text/javascript" src="js/funcs_baixaColeg.js"></script> 
 </head>
 <body>
 
@@ -18,13 +18,13 @@
         	
             <a href="menu.php" style="color: black;"><i class="fas fa-arrow-left" title="Voltar" style="float: left;font-size: 30px;"></i></a>
             <i class="fas fa-table "></i>
-              Entrega de Documentos
+              Colegiado
            
         </div>
 
             <div class="card-body">    
 
-            	 <div id="resultadoDocs">
+            	 <div id="resultados">
                   <?php 
                  
                     $servidor="localhost";
@@ -34,7 +34,7 @@
 
                     $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-                    $sql=$mysqli->prepare('select id,encaminhamento,nome,data,datavencimento from addentregaprotocolos WHERE status=1 ORDER BY datavencimento ASC');
+                    $sql=$mysqli->prepare('select id,encaminhamento,nome,data,datavencimento from addprotocolos WHERE statusColeg=1 ORDER BY datavencimento ASC');
                     $sql->execute();
                     $sql->bind_result($id,$encaminhamento,$nome,$data,$vencimento);
 
@@ -69,7 +69,7 @@
                                 <td>$datapostada</td>                            
                                 <td>$datavencimento3</td>"; ?>
                                 <td>
-                                  <button id="confirmar" onclick="estadoDocs(<?php echo $id; ?>)" style="cursor: pointer;">
+                                  <button id="confirmar" onclick="estadoColeg(<?php echo $id; ?>)" style="cursor: pointer;">
                                    <i class="fas fa-times" style="font-size: 20px;color: red;" title="Cancelar"></i>
                                   </button>
                                 </td>
