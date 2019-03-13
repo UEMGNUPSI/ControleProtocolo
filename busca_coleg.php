@@ -13,45 +13,73 @@ $valor = $_GET['valor'];
 
  
 // Procura titulos no banco relacionados ao valor
-$sql ="SELECT * FROM addprotocolos WHERE status=0  AND encaminhamentocolegiado LIKE '%".$valor."%' ";
-$consulta = mysqli_query($conn,$sql); 
-// Exibe todos os valores encontrados
 
-echo  "
-	    <table>
-	        <thead>
-	        <tr>
-	            <td>Encaminhamento</td>
-	            <td>Requerente</td>
-	            <td>Data</td>
-	            <td>Data de Vencimento</td>
-	        </tr>
-	        </thead>
+$sql=$conn->prepare("select id,encaminhamentocolegiado,nome,data,datavencimento from addprotocolos WHERE statusColeg=0 AND encaminhamentocolegiado LIKE '%".$valor."%' ORDER BY datavencimento ASC");
+$sql->execute();
+$sql->bind_result($id,$encaminhamentocolegiado,$nome,$data1,$vencimento1);
 
-	        <tbody>
+			echo "
+			    <table>
+			        <thead>
+			            <tr>
+			                <td>Encaminhamento</td>
+			                <td>Requerente</td>
+			                <td>Data</td>
+			                <td>Data de Vencimento</td>
+			                <td></td>
+			            </tr>
+			        </thead>
 
-	  ";
-while ($noticias = mysqli_fetch_assoc($consulta)) {
-	
-	$encaminhamento = $noticias['encaminhamentocolegiado'];
-	$nome = $noticias['nome'];
+			        <tbody>
+			";
 
-	$datapostada = $noticias['data'];
-	$date = date("d/m/Y", strtotime ($datapostada));
+			while($sql->fetch()){
+			$datapostada1 = date("d/m/Y", strtotime ($data1)); 
+			$datavencimento2 = date("d/m/Y", strtotime ($vencimento1));    
 
-	$data = $noticias['datavencimento'];
-	$datavencimento = date("d/m/Y", strtotime ($data));
-	
+			  $dataapc = date("Y-m-d");
+			  $timestaamp = strtotime("$dataapc +1days");
+			  $dataaam = date("Y-m-d",$timestaamp);        
 
-	echo  "         
-	        <tr>
-	            <td>$encaminhamento</td>
-	            <td>$nome</td>
-	            <td>$date</td>
-	            <td>$datavencimento</td>
-	        </tr>
-	        ";
-}
+			  if ($dataaam >= $vencimento1){
+			    echo "
+			        <tr style='color: red;'>
+			            <td >$encaminhamentocolegiado</td>
+			            <td>$nome</td>
+			            <td>$datapostada1</td>                            
+			            <td>$datavencimento2</td>";?>
+			           <td>
+			              <button id="confirmar" onclick="estadoDocsProto(<?php echo $id; ?>)" style="cursor: pointer;">
+			               <i class='fas fa-check-circle'></i>
+			              </button>
+			            </td>
+			        </tr>
+			 <?php  
+			       
+			    
+			  }else {
+			     echo "
+			      <tr>
+			          <td>$encaminhamentocolegiado</td>
+			          <td>$nome</td>
+			          <td>$datapostada1</td>                            
+			          <td>$datavencimento2</td>" ;?>
+			           <td>
+			              <button id="confirmar" onclick="estadoDocsProto(<?php echo $id; ?>)" style="cursor: pointer;">
+			               <i class='fas fa-check-circle'></i>
+			              </button>
+			            </td>
+			        </tr>
+			 <?php    
+			      
+			   
+			  }
+			}
+
+			echo "
+			    </tbody>
+			</table>
+			";
  
 // Acentuação
 header("Content-Type: text/html; charset=ISO-8859-1",true);

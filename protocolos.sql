@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 06-Fev-2019 às 17:30
+-- Generation Time: 13-Mar-2019 às 18:39
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -66,17 +66,19 @@ CREATE TABLE `addentregaprotocolos` (
   `dae` varchar(255) NOT NULL,
   `encaminhamento` varchar(255) NOT NULL,
   `vencimento` varchar(250) NOT NULL,
-  `datavencimento` date NOT NULL
+  `datavencimento` date NOT NULL,
+  `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `addentregaprotocolos`
 --
 
-INSERT INTO `addentregaprotocolos` (`id`, `numproto`, `nome`, `atendente`, `curso`, `periodo`, `data`, `dataretirada`, `entregue`, `descricao`, `observacao`, `dae`, `encaminhamento`, `vencimento`, `datavencimento`) VALUES
-(8, '5476527462', 'Pedro 2', 'Pedro', 'AdministraÃ§Ã£o', '2', '2019-01-01', '2019-01-01', 'tertrete', 'ertreter', 'terterte', '151515', 'Teste 3', '3 Dias', '2019-01-04'),
-(9, '51545454', 'Pedro Henrique de Souza Ferreira', 'Pedro Henrique', 'AdministraÃ§Ã£o', '2', '2019-02-02', '2019-01-01', 'kwenlf', 'foermpkl', 'ofnwerofmnwe', '81841', 'TesteMudar', '3 Dias', '2019-02-05'),
-(12, '54444444444444444444', 'Pedro henrque', 'pEDRO 222', 'AdministraÃ§Ã£o', '3333', '2019-04-05', '2019-04-05', '3333', '444', '4444', '11111', 'TesteMudar 2', '5 Dias', '2019-04-10');
+INSERT INTO `addentregaprotocolos` (`id`, `numproto`, `nome`, `atendente`, `curso`, `periodo`, `data`, `dataretirada`, `entregue`, `descricao`, `observacao`, `dae`, `encaminhamento`, `vencimento`, `datavencimento`, `status`) VALUES
+(8, '5476527462', 'Pedro 2', 'Pedro', 'AdministraÃ§Ã£o', '2', '2019-01-01', '2019-01-01', 'tertrete', 'ertreter', 'terterte', '151515', 'Teste 3', '3 Dias', '2019-11-04', 0),
+(9, '51545454', 'Pedro Henrique de Souza Ferreira', 'Pedro Henrique', 'AdministraÃ§Ã£o', '2', '2019-02-02', '2019-01-01', 'kwenlf', 'foermpkl', 'ofnwerofmnwe', '81841', 'TesteMudar', '3 Dias', '2019-02-20', 1),
+(12, '54444444444444444444', 'Pedro henrque', 'pEDRO 222', 'AdministraÃ§Ã£o', '3333', '2019-04-05', '2019-04-05', '3333', '444', '4444', '11111', 'TesteMudar 2', '5 Dias', '2019-12-13', 0),
+(13, '5654446', 'rtjhrthrt', 'grhrthrt', 'Geografia', 'gerger', '2019-01-01', '2019-05-28', 'ergerg', 'ergergerg', 'ergereger', 'ergerger', 'TesteMudar 2', '5 Dias', '2019-11-06', 1);
 
 -- --------------------------------------------------------
 
@@ -101,20 +103,23 @@ CREATE TABLE `addprotocolos` (
   `vencimento` varchar(255) NOT NULL,
   `dataretirada` date NOT NULL,
   `hora` time NOT NULL,
-  `datavencimento` date NOT NULL
+  `datavencimento` date NOT NULL,
+  `statusColeg` tinyint(1) NOT NULL,
+  `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `addprotocolos`
 --
 
-INSERT INTO `addprotocolos` (`Id`, `nome`, `atendente`, `curso`, `historico`, `data`, `observacao`, `numproto`, `ra`, `obsevacaocolegiado`, `cursocolegiado`, `encaminhamento`, `encaminhamentocolegiado`, `vencimento`, `dataretirada`, `hora`, `datavencimento`) VALUES
-(1231437, '7867868', '46755', 'Sistema de InformaÃ§Ã£o', 'fwwe', '2019-11-05', 'fwefwe', '7476765', 'fwefwe', 'wfef', 'MMM', 'TesteMudar 2', 'TesteMudar', '3 dias', '5555-12-25', '01:06:00', '2019-08-10'),
-(1231455, 'vococococococoococo', 'gggg', 'Sistemas de InformaÃ§Ã£o', '111441411414', '2019-01-01', 'wefdwefwe', '34534534534', '10-92998', 'fwewefwef', 'Geografia', 'Teste 3', 'TesteMudar 2', '3 dias', '2019-09-02', '18:00:00', '2019-01-04'),
-(1231456, 'PEDRO HENRQIUE', 'pedro', 'Direito', 'FTTTF', '2019-02-03', 'FGERGER', '94646463574', '10-93003', 'bsrgergwwegwge', 'Direito', 'TesteMudar 2', 'Teste 3', '3 dias', '2022-02-05', '19:00:00', '2019-02-06'),
-(1231457, 'pedoropjeoirjo', 'vwervwevw', 'Sistemas de InformaÃ§Ã£o', 'etreter', '2019-12-06', 'terter', '545465465', 'etrtre', 'eteee', 'Direito', 'TesteMudar', 'TesteMudar 2', '3 dias', '2019-09-08', '17:00:00', '2019-12-09'),
-(1231458, 'enrjklgnerh', 'opwekporiwepojk', 'Sistemas de InformaÃ§Ã£o', 'grerger', '2019-11-02', 'gergerre', '565465464', '1-9390283', 'egeger', 'Sistemas de InformaÃ§Ã£o', 'TesteMudar', 'TesteMudar', '3 dias', '2008-08-08', '05:22:00', '2019-11-05'),
-(1231459, 'ufghcgh', 'tujfyed', 'Geografia', 'ergergre', '2019-02-22', 'gergerg', '84465', '15-987987', 'gergerger', 'Geografia', 'TesteMudar', 'Teste 3', '3 dias', '2019-05-04', '22:00:00', '2019-02-25');
+INSERT INTO `addprotocolos` (`Id`, `nome`, `atendente`, `curso`, `historico`, `data`, `observacao`, `numproto`, `ra`, `obsevacaocolegiado`, `cursocolegiado`, `encaminhamento`, `encaminhamentocolegiado`, `vencimento`, `dataretirada`, `hora`, `datavencimento`, `statusColeg`, `status`) VALUES
+(1231437, '7867868', '46755', 'Sistema de InformaÃ§Ã£o', 'fwwe', '2019-11-05', 'fwefwe', '1', 'fwefwe', 'wfef', 'MMM', 'TesteMudar 2', 'TesteMudar', '3 dias', '5555-12-25', '01:06:00', '2019-08-10', 1, 1),
+(1231455, 'vococococococoococo', 'gggg', 'Sistemas de InformaÃ§Ã£o', '111441411414', '2019-01-13', 'wefdwefwe', '2', '10-92998', 'fwewefwef', 'Geografia', 'Teste 3', 'TesteMudar 2', '3 dias', '2019-09-02', '18:00:00', '2019-02-14', 0, 1),
+(1231457, 'pedoropjeoirjo', 'vwervwevw', 'Sistemas de InformaÃ§Ã£o', 'etreter', '2019-12-06', 'terter', '5', 'etrtre', 'eteee', 'Direito', 'TesteMudar', 'TesteMudar 2', '3 dias', '2019-09-08', '17:00:00', '2019-12-09', 1, 0),
+(1231458, 'enrjklgnerh', 'opwekporiwepojk', 'Sistemas de InformaÃ§Ã£o', 'grerger', '2019-11-02', 'gergerre', '6', '1-9390283', 'egeger', 'Sistemas de InformaÃ§Ã£o', 'TesteMudar', 'TesteMudar', '3 dias', '2008-08-08', '05:22:00', '2019-11-05', 1, 0),
+(1231459, 'ufghcgh', 'tujfyed', 'Geografia', 'ergergre', '2019-02-22', 'gergerg', '7', '15-987987', 'gergerger', 'Geografia', 'TesteMudar', 'Teste 3', '3 dias', '2019-05-04', '22:00:00', '2019-02-25', 0, 1),
+(1231460, 'eue', 'eu', 'Sistemas de InformaÃ§Ã£o', 'fwewefwe', '2019-05-01', 'fwefwefwe', '4', '43534', 'werwererwe', 'Sistemas de InformaÃ§Ã£o', 'Teste 3', 'Teste 3', '3 dias', '2019-12-05', '12:00:00', '2019-05-04', 0, 1),
+(1231461, 'grtgrtgrt', 'grrtgrtgrt', 'Sistemas de InformaÃ§Ã£o', 'ffw', '2019-02-08', 'fwefwefwef', '3', '34534534', 'gregerger', 'Sistemas de InformaÃ§Ã£o', 'TesteMudar 2', 'Teste 3', '5 dias', '2019-03-12', '12:12:00', '1970-01-06', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -195,7 +200,7 @@ CREATE TABLE `solicitacaodiplomas` (
 --
 
 INSERT INTO `solicitacaodiplomas` (`numproto`, `datasolicitada`, `atendente`, `requerente`, `id`) VALUES
-(0, '2019-04-05', 'gergergergergergerg', 'ergergerger', 2),
+(4857834, '2019-04-05', 'gergergergergergerg', 'ergergerger', 2),
 (8493656, '2019-04-05', 'WIHFIOWH', 'IUFWHEIUFWH', 3);
 
 --
@@ -258,13 +263,13 @@ ALTER TABLE `addentregapos`
 -- AUTO_INCREMENT for table `addentregaprotocolos`
 --
 ALTER TABLE `addentregaprotocolos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `addprotocolos`
 --
 ALTER TABLE `addprotocolos`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1231460;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1231462;
 
 --
 -- AUTO_INCREMENT for table `curso`

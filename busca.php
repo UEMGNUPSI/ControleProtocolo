@@ -12,45 +12,70 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 $valor = $_GET['valor'];
  
 // Procura titulos no banco relacionados ao valor
-$sql ="SELECT * FROM addprotocolos WHERE encaminhamento LIKE '%".$valor."%' ";
-$consulta = mysqli_query($conn,$sql); 
-// Exibe todos os valores encontrados
+$sql=$conn->prepare("select id,encaminhamento,nome,data,datavencimento from addprotocolos WHERE status=0 AND encaminhamento LIKE '%".$valor."%' ORDER BY datavencimento ASC");
+$sql->execute();
+$sql->bind_result($id,$encaminhamento,$nome,$data2,$vencimento2);
 
-echo  "
-	    <table>
-	        <thead>
-	        <tr>
-	            <td>Encaminhamento</td>
-	            <td>Requerente</td>
-	            <td>Data</td>
-	            <td>Data de Vencimento</td>
-	        </tr>
-	        </thead>
+                    echo "
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Encaminhamento</td>
+                                    <td>Requerente</td>
+                                    <td>Data</td>
+                                    <td>Data de Vencimento</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
 
-	        <tbody>
+                            <tbody>
+                    ";
 
-	  ";
-while ($noticias = mysqli_fetch_assoc($consulta)) {
-	
-	$encaminhamento = $noticias['encaminhamento'];
-	$nome = $noticias['nome'];
-	
-	$datapostada = $noticias['data'];
-	$date = date("d/m/Y", strtotime($datapostada));
+                    while($sql->fetch()){
+                    $datapostada2 = date("d/m/Y", strtotime ($data2)); 
+                    $datavencimento = date("d/m/Y", strtotime ($vencimento2));    
+                      
+                      $dataapc = date("Y-m-d");
+                      $timestaamp = strtotime("$dataapc +1days");
+                      $dataaam = date("Y-m-d",$timestaamp);        
+                    
+                      if ($dataaam >= $vencimento2){
+                        echo "
+                            <tr style='color: red;'>
+                                <td >$encaminhamento</td>
+                                <td>$nome</td>
+                                <td>$datapostada2</td>                            
+                                <td>$datavencimento</td>";?>
+                               <td>
+                                  <button id="confirmar" onclick="estadoProto(<?php echo $id; ?>)" style="cursor: pointer;">
+                                   <i class='fas fa-check-circle'></i>
+                                  </button>
+                                </td>
+                            </tr>
+                     <?php  
+                      }else {
+                         echo "
+                          <tr>
+                              <td>$encaminhamento</td>
+                              <td>$nome</td>
+                              <td>$datapostada2</td>                            
+                              <td>$datavencimento</td>
+                          ";?>
+                               <td>
+                                  <button id="confirmar" onclick="estadoProto(<?php echo $id; ?>)" style="cursor: pointer;">
+                                   <i class='fas fa-check-circle'></i>
+                                  </button>
+                                </td>
+                            </tr>
+                     <?php  
+                      }
+                    }
 
-	$data = $noticias['datavencimento'];
-	$datavencimento = date("d/m/Y", strtotime ($data));
-	
+                    echo "
+                        </tbody>
+                    </table>
+                    ";
 
-	echo  "         
-	        <tr>
-	            <td>$encaminhamento</td>
-	            <td>$nome</td>
-	            <td>$date</td>
-	            <td>$datavencimento</td>
-	        </tr>
-	        ";
-}
  
 // Acentuação
 header("Content-Type: text/html; charset=ISO-8859-1",true);
