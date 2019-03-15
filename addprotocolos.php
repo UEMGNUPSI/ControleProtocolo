@@ -158,19 +158,16 @@
           
           <div class="form-row ml-5">
 
-            <div class="form-group col-sm-5 " >
+            <div class="form-group col-sm-6 " >
             
               <label for="inputNumProto">Número Protocolo:</label>
               <input type="text" class="form-control"  id="inputNumProto" name="numproto" placeholder="Digite número do protocolo" required="" >
                         
             </div>
 
-           <div class="form-group col-sm-2 " >
-               <label for="NumProto"></label>
-               <input type="submit" class="form-control"  id="NumProto" name="numproto" value="Gerar N°" required="" >             
-            </div>
+           
 
-            <div class="form-group col-sm-5">
+            <div class="form-group col-sm-6">
             
               <label for="inputNomeAtendente">Atendente:</label>
               <input type="text" class="form-control" id="inputNomeAtendetne" name="nomeatendente" placeholder="Digite o nome Atendente" required="">
