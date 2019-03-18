@@ -612,9 +612,9 @@
             $curso = $_GET['curso'];
 
              if($modal != 0){            
-              echo "</br>Foram encontrados $modal resultados para o curso: $curso.Para gerar o PDF<a target='_blanck' href='gerar_pdf.php?curso=$curso'> clique aqui!</a>  ";
+              echo "<p class='ml-5'>Foram encontrados $modal resultados para o curso: $curso.Para gerar o PDF<a target='_blanck' href='gerar_pdf.php?curso=$curso'> clique aqui!</p> ";
              }else 
-              echo "Não foi encontrado nenhuma atividade neste curso durante o período especificado!";        
+              echo "<p class='ml-5'>Não foi encontrado nenhuma atividade neste curso durante o período especificado!</p>";        
           }
             ?>
       </div>
