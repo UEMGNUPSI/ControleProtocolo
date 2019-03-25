@@ -58,42 +58,24 @@
         </div>
       </form>
 
-      <!-- Navbar -->
-     
-
+  
     </nav>
 
     <div id="wrapper">
 
-      <!-- Sidebar -->
+      <!--Começo Sidebar -->
       <ul class="sidebar navbar-nav">
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-folder-open" aria-hidden="true"></i>
-            <span>Cursos e <br> Encaminhamentos</span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
-            <a class="dropdown-item" href="listacursos.php">Lista de Cursos</a>            
-            <div class="dropdown-divider"></div>            
-            <a class="dropdown-item" href="addcurso.php">Adicionar curso</a>  
-            <div class="dropdown-divider"></div> 
-            <a class="dropdown-item" href="listaencaminahmento.php">Lista de <br>Encaminhamento</a>            
-            <div class="dropdown-divider"></div>            
-            <a class="dropdown-item" href="addencaminhamento.php">Adicionar um <br>Encaminhamento</a>          
-          </div>
-        </li>
-
-        
+      
+     
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-book" aria-hidden="true"></i>
-            <span>Adicionar Protocolos</span></a>
+            <span>Protocolos</span></a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
-            <a class="dropdown-item" href="verificaprotocolos.php">Verficar Protocolos</a>  
+            <a class="dropdown-item" href="verificaprotocolos.php">Consultar</a>  
 
                 <div class="dropdown-divider"></div>            
-                <a class="dropdown-item" href="addprotocolos.php">Registrar Protocolos</a>          
+                <a class="dropdown-item" href="addprotocolos.php">Cadastrar</a>          
             
           </div>
         </li>
@@ -101,12 +83,12 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-book" aria-hidden="true"></i>
-            <span>Protocolo de Entrega de Documentos</span></a>
+            <span> Documentos</span></a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
-            <a class="dropdown-item" href="verficaentregaproto.php">Verficar Entrega de <br> Documentos</a>  
+            <a class="dropdown-item" href="verficaentregaproto.php">Consultar</a>  
 
                 <div class="dropdown-divider"></div>            
-                <a class="dropdown-item" href="addentregaproto.php">Adicionar Entrega de <br> Documentos</a>          
+                <a class="dropdown-item" href="addentregaproto.php">Cadastrar</a>          
             
           </div>
         </li>
@@ -114,44 +96,60 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-book" aria-hidden="true"></i>
-            <span>Entrega do Certificado de Pós e Solicitação <br> de Diplomas</span></a>
+            <span>Certificados</span></a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
-            <a class="dropdown-item" href="verificacertificados.php">Verficar Certificados</a>  
+            <a class="dropdown-item" href="verificacertificados.php">Consultar</a>  
 
                 <div class="dropdown-divider"></div>            
-                <a class="dropdown-item" href="addcertificado.php">Adicionar Certificados</a>
-
-                <div class="dropdown-divider"></div>            
-                <a class="dropdown-item" href="verificadiploma.php">Verificar Solicitações</a>
-
-                <div class="dropdown-divider"></div>            
-                <a class="dropdown-item" href="solicitacaodiploma.php">Adicionar Solicitações</a>          
+                <a class="dropdown-item" href="addcertificado.php">Cadastrar</a>                
             
           </div>
         </li>
+
+  
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-book" aria-hidden="true"></i>
+            <span> Diplomas</span></a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
+            <a class="dropdown-item" href="verificadiploma.php">Consultar</a>  
+
+                <div class="dropdown-divider"></div>            
+                <a class="dropdown-item" href="solicitacaodiploma.php">Cadastrar</a>          
+              
+          </div>
+        </li>   
 
         <li class="nav-item">
           <a class="nav-link" href="doccolegiado.php">
             <i class="fa fa-book" aria-hidden="true"></i>
-            <span>Documentos do Colegiado</span></a>
+            <span>Colegiado</span></a>
         </li>
 
-        
-        <li class="nav-item">
-          <a class="nav-link" href="pastainfo.php">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Pasta de Informações</span></a>
+  
+        <li class="nav-item dropup" style="position: absolute;bottom: 0;padding-bottom: 20px;">
+          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+            <i class="fa fa-folder-open" aria-hidden="true"></i>
+            <span>Ferramentas</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
+            <a class="dropdown-item" href="listacursos.php">Cursos</a>            
+            <div class="dropdown-divider"></div>            
+            <a class="dropdown-item" href="listaencaminahmento.php">Destinátarios</a>            
+            <div class="dropdown-divider"></div>   
+             <a class="dropdown-item" href="pastainfo.php">Informações</a>                   
+          </div>
         </li>
 
       </ul>   
-       
+    <!-- Final SideBar -->   
   <div id="content-wrapper">
 
         <div class="container-fluid ml-3">
           
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <i class="fas fa-table mr-1"></i>Encaminhamentos
+                  <i class="fas fa-table mr-1"></i>Envios
                 </li>              
             </ol>
   <div class="content"> 
