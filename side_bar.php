@@ -5,11 +5,11 @@
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-book" aria-hidden="true"></i>
           <span>Protocolos</span></a>
-          <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
-          <a class="dropdown-item" href="verificaprotocolos.php">Consultar</a>  
-
-              <div class="dropdown-divider"></div>            
-              <a class="dropdown-item" href="addprotocolos.php">Cadastrar</a>          
+          <div class="dropdown-menu" aria-labelledby="pagesDropdown"> 
+              <a class="dropdown-item" href="addprotocolos.php">Cadastrar</a>
+              <div class="dropdown-divider"></div>    
+                         
+          <a class="dropdown-item" href="verificaprotocolos.php">Consultar</a>       
           
         </div>
       </li>
@@ -19,10 +19,10 @@
           <i class="fa fa-book" aria-hidden="true"></i>
           <span> Documentos</span></a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
-          <a class="dropdown-item" href="verficaentregaproto.php">Consultar</a>  
-
-              <div class="dropdown-divider"></div>            
-              <a class="dropdown-item" href="addentregaproto.php">Cadastrar</a>          
+                         
+              <a class="dropdown-item" href="addentregaproto.php">Cadastrar</a>    
+              <div class="dropdown-divider"></div>    
+              <a class="dropdown-item" href="verficaentregaproto.php">Consultar</a>    
           
         </div>
       </li>
@@ -32,10 +32,10 @@
           <i class="fa fa-book" aria-hidden="true"></i>
           <span>Certificados</span></a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
-          <a class="dropdown-item" href="verificacertificados.php">Consultar</a>  
-
-              <div class="dropdown-divider"></div>            
+                 
               <a class="dropdown-item" href="addcertificado.php">Cadastrar</a>                
+              <div class="dropdown-divider"></div>  
+              <a class="dropdown-item" href="verificacertificados.php">Consultar</a>
           
         </div>
       </li>
@@ -46,11 +46,12 @@
           <i class="fa fa-book" aria-hidden="true"></i>
           <span> Diplomas</span></a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
-          <a class="dropdown-item" href="verificadiploma.php">Consultar</a>  
+          
+                       
+              <a class="dropdown-item" href="solicitacaodiploma.php">Cadastrar</a>      
+              <div class="dropdown-divider"></div>       
+              <a class="dropdown-item" href="verificadiploma.php">Consultar</a>  
 
-              <div class="dropdown-divider"></div>            
-              <a class="dropdown-item" href="solicitacaodiploma.php">Cadastrar</a>          
-            
         </div>
       </li>   
 
