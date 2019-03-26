@@ -87,10 +87,14 @@
               <i class="fas fa-table"></i>
               Lista de Cursos</div>
             <div class="card-body">
-              <div class="table-responsive">             
-               
+              <div class="table-responsive">   
+               <form action="addcurso.php">         
+                <input type="submit" style ="cursor: pointer;" class="mb-3 btn btn-primary"  value="Cadastrar" > 
+              <form>            
 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"  >
+                  <th class="text-center"> Cursos</th>
+                  <th class="text-center"> Ações</th>
   
                    <?php 
                               
@@ -105,7 +109,8 @@
                           $consulta = mysqli_query($conn, $sql);
                             
                           while( $dados = mysqli_fetch_assoc($consulta)){   
-                                                           
+                                
+
                                 echo "<tbody>";
                                 echo "<tr>";                                
                                 echo "<td>" .$dados['curso']."</td>";                                                 

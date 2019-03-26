@@ -64,7 +64,7 @@
             <div class="container-fluid">
 
 
-                <form method="post" action="funções/adicionarcurso.php">
+                <form method="post" >
 
                     <div class="form-row ml-5">
 
@@ -79,11 +79,13 @@
 
                     <div class="form-row ml-5 mb-3">
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Adicionar</button>
+                            <button type="submit" class="btn btn-primary" formaction="funções/adicionarcurso.php"  >Adicionar</button>
+                            
                         </div>
-                    </div>
 
+                    </div>
                 </form>
+
                 <?php 
                 if (isset($_GET['o'])) {
                   ?>

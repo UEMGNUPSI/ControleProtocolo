@@ -106,7 +106,7 @@
                                         
                           $conn = mysqli_connect($servername, $username, $password, $database);
                                 //Carrega os dados
-                          $sql = "SELECT * FROM encaminhamento";
+                          $sql = "SELECT * FROM encaminhamento ORDER BY encaminhamento ASC";
                           $consulta = mysqli_query($conn, $sql);
                             
                           while( $dados = mysqli_fetch_assoc($consulta)){                                    
