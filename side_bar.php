@@ -1,4 +1,15 @@
-<ul class="sidebar navbar-nav">
+ <?php                               
+  $servername = "127.0.0.1";
+  $database = "protocolos";
+  $username = "root";
+  $password = "";
+                   
+    $conn = mysqli_connect($servername, $username, $password, $database);
+
+   session_start();
+
+?>
+<ul class="sidebar navbar-nav" >
       
      
       <li class="nav-item dropdown">
@@ -62,10 +73,10 @@
       </li>
 
 
-      <li class="nav-item dropup" style="position: absolute;bottom: 0;padding-bottom: 20px;">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-          <i class="fa fa-folder-open" aria-hidden="true"></i>
-          <span>Ferramentas</span>
+      <li class="ml-3 dropup" style="position: fixed;bottom: 0;padding-bottom: 20px;">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: rgba(255, 255, 255, 0.5);" >
+          <i class="fa fa-folder-open" aria-hidden="true" style="color: rgba(255, 255, 255, 0.5);"></i>
+          <span style="color: rgba(255, 255, 255, 0.5);">Ferramentas</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">            
           <a class="dropdown-item" href="listacursos.php">Cursos</a>            

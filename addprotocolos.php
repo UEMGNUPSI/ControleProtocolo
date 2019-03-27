@@ -59,8 +59,12 @@
       <?php include_once 'side_bar.php';?>
 
 <div id="content-wrapper">
+      <?php 
+        
+          $login = $_SESSION['login'];
+       ?>
 
-        <div class="container-fluid">  
+        <div class="container-fluid" >  
 
           <div class="row mb-5 justifiy-content-center">
       
@@ -68,8 +72,8 @@
    
        <div class="row">
 
-      <div class="col-12 text-center my-5">
-        <h1 class="display-4"><i class="fa fa-paper-plane text-primary mr-3" aria-hidden="true"></i>Cadastro de Protocolos</h1>
+      <div class="col-12 text-center my-4">
+        <h1 style="font-weight: 330;"><i class="fa fa-paper-plane text-primary mr-3" aria-hidden="true" ></i>Cadastro de Protocolos</h3>
       </div>
     </div>
     
@@ -80,18 +84,25 @@
           <div class="form-row ml-5">
 
             <div class="form-group col-sm-6 " >
+             <?php 
+
+              $sql = "SELECT Id FROM addprotocolos ORDER BY Id DESC LIMIT 1";
+              $execute = mysqli_query($conn,$sql);
+              $dados = mysqli_fetch_assoc($execute);
+              $dadosId =  $dados['Id'] + 1;
+
+              ?>
             
               <label for="inputNumProto">Número Protocolo:</label>
-              <input type="text" class="form-control"  id="inputNumProto" name="numproto" placeholder="Digite número do protocolo" required="" >
-                        
-            </div>
-
+              <input type="text" class="form-control"  id="inputNumProto" name="numproto" value="<?php echo date('Ym').str_pad($dadosId , 4, "0", STR_PAD_LEFT); ?>" readonly="true">
+                  
+            </div>         
            
 
             <div class="form-group col-sm-6">
             
               <label for="inputNomeAtendente">Atendente:</label>
-              <input type="text" class="form-control" id="inputNomeAtendetne" name="nomeatendente" placeholder="Digite o nome Atendente" required="">
+              <input type="text" class="form-control" id="inputNomeAtendetne" name="nomeatendente" value="<?php echo $login; ?>" required="">
             
             </div>
 
@@ -102,13 +113,13 @@
                 <div class="form-group col-sm-6 ">
 
                   <label for="inputNomeAten">Requerente:</label>
-                  <input type="text" class="form-control" id="inputNomeAten" name="nomeatendido" placeholder="Digite o nome" required="">
+                  <input type="text" class="form-control" id="inputNomeAten" name="nomeatendido" placeholder="Digite o nome do Requerente" required="" >
 
                 </div>
 
               <div class="form-group col-sm-6">
               
-              <label for="inputEncaminhamento">Encaminhamento:</label>
+              <label for="inputEncaminhamento">Destinatário:</label>
               <select id="inputEncaminhamento" class="form-control" name="encaminhamento">
 
                 <option selected>Selecione...</option>
@@ -136,21 +147,28 @@
             </div>
 
           </div>
+             
+    
 
           <div class="form-row ml-5">
 
             <div class="form-group col-sm-6">
               
               <label for="inputData">Data</label>
-              <input type="date" class="form-control" id="inputData" name="data" required="">
+              <input type="date" class="form-control" id="inputData" name="data" required="" value="" >
 
-            </div>            
+            </div>   
+             <script type="text/javascript"> 
+                document.getElementById('inputData').valueAsDate = new Date();
+            </script> 
 
         
             <div class="form-group col-sm-6">
               
               <label for="inputHora">Hora:</label>
               <input type="time" class="form-control" id="inputHora" name="hora" required="">
+
+               
 
             </div>
           </div>
@@ -216,7 +234,7 @@
             <div class="form-group col-sm-6">
               
               <label for="inputHistorico">Histórico:</label>
-              <input type="text" id="inputHistorico" class="form-control" name="historico" required="" placeholder="">
+              <input type="text" id="inputHistorico" class="form-control" name="historico"  placeholder="">
 
             </div>  
 
@@ -241,7 +259,7 @@
     <div class="row">
 
       <div class="col-12 text-center my-5">
-        <h1 class="display-4"><i class="fa fa-paper-plane text-primary mr-3" aria-hidden="true"></i>Cadastro de Colegiado</h1>
+        <h1 style="font-weight: 330;"><i class="fa fa-paper-plane text-primary mr-3" aria-hidden="true"></i>Cadastro de Colegiado</h1>
       </div>
     </div>
         <div class="form-row ml-5">
@@ -249,7 +267,7 @@
             <div class="form-group col-sm-4 ">
              
               <label for="inputNumRA">Número RA:</label>
-              <input type="text" class="form-control" id="inputNumra" name="numra" placeholder="Digite número do RA" required="">
+              <input type="text" class="form-control" id="inputNumra" name="numra" placeholder="Digite número do RA" required="" minlength="1" maxlength="10">
             
             </div>
     
@@ -286,7 +304,7 @@
 
             <div class="form-group col-sm-4">
               
-                          <label for="inputEncaminhamentoColegiado">Encaminhamento:</label>
+                          <label for="inputEncaminhamentoColegiado">Destinatário:</label>
                           <select id="inputEncaminhamentoColegiado" class="form-control" name="encaminhamentocolegiado">
 
                           <option selected>Selecione...</option>

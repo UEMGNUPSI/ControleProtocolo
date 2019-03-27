@@ -75,10 +75,19 @@
                       <div class="form-row ml-5">
 
                             <div class="form-group col-sm-6 ">
-                            
+                               
+                                <?php 
+
+                                $sql = "SELECT Id FROM solicitacaodiplomas ORDER BY Id DESC LIMIT 1";
+                                $execute = mysqli_query($conn,$sql);
+                                $dados = mysqli_fetch_assoc($execute);
+                                $dadosId =  $dados['Id'] + 1;
+
+                                ?> 
+
                               <label for="inputNumProto">Número Protocolo:</label>
-                              <input type="text" class="form-control" id="inputNumProto" name="numproto" placeholder="Digite número do protocolo" required="">
-                            
+                              <input type="text" class="form-control" id="inputNumProto" name="numproto" value="<?php echo date('Ym').str_pad($dadosId , 4, "0", STR_PAD_LEFT); ?>" readonly="true">
+                             
                             </div>
 
                             <div class="form-group col-sm-6">

@@ -74,9 +74,17 @@
           <div class="form-row ml-5">
 
             <div class="form-group col-sm-6 ">
-            
+                 <?php 
+
+              $sql = "SELECT Id FROM addentregaprotocolos ORDER BY Id DESC LIMIT 1";
+              $execute = mysqli_query($conn,$sql);
+              $dados = mysqli_fetch_assoc($execute);
+              $dadosId =  $dados['Id'] + 1;
+
+              ?>
+
               <label for="inputNumProto">Número Protocolo:</label>
-              <input type="text" class="form-control" id="inputNumProto" name="numproto" placeholder="Digite número do protocolo" required="">
+              <input type="text" class="form-control" id="inputNumProto" name="numproto" placeholder="Digite número do protocolo" value="<?php echo date('Ym').str_pad($dadosId , 4, "0", STR_PAD_LEFT); ?>" readonly="true">
             
             </div>
 
@@ -100,7 +108,7 @@
 
                  <div class="form-group col-sm-6">
               
-              <label for="inputEncaminhamento">Encaminhamento:</label>
+              <label for="inputEncaminhamento">Destinatário:</label>
               <select id="inputEncaminhamento" class="form-control" name="encaminhamento">
 
                 <option selected>Selecione...</option>
@@ -137,6 +145,9 @@
               <input type="date" class="form-control" id="inputData" name="data" required="">
 
             </div>         
+            <script type="text/javascript"> 
+                document.getElementById('inputData').valueAsDate = new Date();
+            </script> 
 
         
             <div class="form-group col-sm-6">
