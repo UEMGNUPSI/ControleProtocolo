@@ -16,6 +16,7 @@
 				//echo "<script>alert('Este curso já está cadastrado');</script>";
 				echo"<script language='javascript' type='text/javascript'>window.location.href='/protocolos/addcurso.php?o=Este curso já está cadastrado';</script>";
 		exit();
+		
 		} else {
 			 if(!$conn->query("INSERT INTO curso(curso) VALUES ('$curso')")) die ('Os dados não foram inseridos');
 			  header('Location: /protocolos/addcurso.php');

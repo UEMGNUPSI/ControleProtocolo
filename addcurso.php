@@ -13,6 +13,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
+    <script>
+        $(function mostrarModal() {
+            $('#mostrarModal').modal('show');
+            event.preventDefault();
+        });
+    </script>
+
 </head>
 
 <body id="page-top">
@@ -64,13 +71,13 @@
             <div class="container-fluid">
 
 
-                <form method="post" >
+                <form method="post">
 
                     <div class="form-row ml-5">
 
                         <div class="form-group col-sm-6 ">
                             <label for="inputNome">Curso:</label>
-                            <input type="text" class="form-control" name="curso" id="inputNome" placeholder="Digite nome do curso" required="">
+                            <input type="text" class="form-control" maxlength="10" minlength="5" name="curso" id="inputNome" placeholder="Digite nome do curso" required="">
                         </div>
 
                     </div>
@@ -79,8 +86,8 @@
 
                     <div class="form-row ml-5 mb-3">
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary" formaction="funções/adicionarcurso.php"  >Adicionar</button>
-                            
+                            <button type="submit" id="btnMostraModal" class="btn btn-primary" data-toggle="modal" data-target="#mostrarModal" formaction="funções/adicionarcurso.php" onclick="mostrarModal()">Adicionar</button>
+
                         </div>
 
                     </div>
@@ -88,13 +95,13 @@
 
                 <?php 
                 if (isset($_GET['o'])) {
-                  ?>
+                    ?>
 
                 <p class="ml-5"><?php echo  $_GET['o']; ?></p>
 
                 <?php 
-              }
-              ?>
+            }
+            ?>
 
 
             </div>
@@ -102,25 +109,45 @@
         </div>
 
 
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="mostrarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja sair?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Curso cadastrado com sucesso!</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Selecione o logout para encerrrar sua atividade.</div>
+
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                        <a class="btn btn-primary" href="index.php">Logout</a>
+                        <form>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">voltar</button>
+                            <a class="btn btn-primary" href="funções/listacursos.php?"">Lista de Cursos</a>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+        <!-- Logout Modal-->
+        <div class=" modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja sair?</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">Selecione o logout para encerrrar sua atividade.</div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                                            <a class="btn btn-primary" href="index.php">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
                     </div>
-                </div>
-            </div>
-        </div>
 
 
 

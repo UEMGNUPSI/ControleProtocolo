@@ -93,9 +93,13 @@
               Lista de Encaminhamentos</div>
             <div class="card-body">
               <div class="table-responsive">             
-              
+              <form action = "addencaminhamento.php">
+              <input type="submit" style ="cursor: pointer;" class="mb-3 btn btn-primary"  value="Cadastrar" > 
+              <form>            
 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <th class="text-center"> Cursos</th>
+                  <th class="text-center"> Ações</th>
                                     
                    <?php 
                               

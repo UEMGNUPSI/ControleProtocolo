@@ -68,16 +68,18 @@
           <div class="form-row ml-5">
             <div class="form-group col-sm-6 ">            
               <label for="inputEncaminhamento">Encaminhamento:</label>
-              <input type="text" class="form-control" name="encaminhamento" id="inputEncaminhamento" placeholder="Encaminhamento" required="">            
+              <input type="text" class="form-control" maxlength="50" minlength ="5" name="encaminhamento" id="inputEncaminhamento" placeholder="Encaminhamento" required="">            
             </div>
 
           </div>
 
           
-
+         
           <div class="form-row ml-5 mb-3">              
             <div class="col-sm-10">                
-              <button type="submit" class="btn btn-primary">Adicionar</button>
+              <button  data-toggle ="modal" data-target ="#mostrarModal" type="submit" class="btn btn-primary">Adicionar</button>
+              
+              
             </div>
           </div>
 
@@ -97,8 +99,28 @@
         </div>       
 
     </div>
-        
-      
+    
+    <div class="modal fade" id="mostrarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Curso cadastrado com sucesso!</h5>
+                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                   
+                                                    <div class="modal-footer">
+                                                        <form>
+                                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                                                            <a class="btn btn-primary" href="funções/addcurso.php?"">Lista de Cursos</a>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
