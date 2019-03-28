@@ -62,7 +62,7 @@
              <div class="row">
 
       <div class="col-12 text-center my-5">
-        <h1 class="display-4"><i class="fa fa-paper-plane text-primary mr-3" aria-hidden="true"></i>Cadastro de Entrega de Documentos</h1>
+        <h1 style="font-weight: 330;"><i class="fa fa-paper-plane text-primary mr-3" aria-hidden="true" ></i>Cadastro de Entrega de Documentos</h3>
       </div>
     </div>
     <div class="row mb-5 justifiy-content-center">

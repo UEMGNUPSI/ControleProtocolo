@@ -64,8 +64,9 @@
 
 
           <div class="col-12 text-center my-5">
-               <h1 class="display-4"><i class="fa fa-paper-plane text-primary mr-3 mb-5" aria-hidden="true"></i>Lista de Entrega Documentos</h1>
-           </div>
+
+                               <h1 style="font-weight: 330;"><i class="fa fa-paper-plane text-primary mr-3" aria-hidden="true" ></i>Lista de Entrega Documentos</h1>
+
 
            <div class="row">
             

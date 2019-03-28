@@ -73,7 +73,7 @@
        <div class="row">
 
       <div class="col-12 text-center my-4">
-        <h1 style="font-weight: 330;"><i class="fa fa-paper-plane text-primary mr-3" aria-hidden="true" ></i>Cadastro de Protocolos</h3>
+        <h1 style="font-weight: 330;"><i class="fa fa-paper-plane text-primary mr-3" aria-hidden="true" ></i>Cadastro de Protocolos</h1>
       </div>
     </div>
     
