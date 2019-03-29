@@ -12,10 +12,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-</head>
-<body id="page-top">
+    <script type="text/javascript">
+      function time() {
+        today=new Date();
+        h=today.getHours();
+        m=today.getMinutes();
+        s=today.getSeconds();
+        document.getElementById('inputHora').value=h+":"+m;
+        setTimeout('time()',500);
+      }
+    </script>
 
-   <body id="page-top">
+</head>
+<body id="page-top" onload="time()">
+
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
       <i class="fas fa-university text-light mr-1"></i>
@@ -163,12 +173,10 @@
             </script> 
 
         
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-6" >
               
               <label for="inputHora">Hora:</label>
-              <input type="time" class="form-control" id="inputHora" name="hora" required="">
-
-               
+              <input type="text" class="form-control" id="inputHora" name="hora" required="">              
 
             </div>
           </div>

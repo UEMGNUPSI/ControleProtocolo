@@ -58,6 +58,11 @@
       <?php include_once 'side_bar.php';?>   
       <div id="content-wrapper">
 
+           <?php 
+        
+          $login = $_SESSION['login'];
+           ?>
+
         <div class="container-fluid">
 
            <div class="row">
@@ -105,7 +110,7 @@
                             <div class="form-group col-sm-6">
                             
                               <label for="inputNomeAtendente">Atendente:</label>
-                              <input type="text" class="form-control" id="inputAluno" name="nomeatendente" placeholder="Digite o Nome Atendente" required="">
+                              <input type="text" class="form-control" id="inputAluno" name="nomeatendente" value="<?php echo $login; ?>" required="">
                             
                             </div>
 
