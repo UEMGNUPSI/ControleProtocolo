@@ -112,7 +112,7 @@
                                 
                                 echo "<tr>";                      
 
-                                echo "<td>"."</td>";
+                                echo "<td>".$dados['numproto']."</td>";
                                 $dt = $dados['data']; 
                                 echo "<td>".date('d/m/Y',strtotime($dt))."</td>";         
                                 echo "<td>" .$dados['ra']."</td>";

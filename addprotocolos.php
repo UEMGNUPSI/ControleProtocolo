@@ -19,7 +19,7 @@
         m=today.getMinutes();
         s=today.getSeconds();
         document.getElementById('inputHora').value=h+":"+m;
-        setTimeout('time()',500);
+        setTimeout('time()',9000);
       }
     </script>
 
@@ -129,7 +129,7 @@
 
               <div class="form-group col-sm-6">
               
-              <label for="inputEncaminhamento">Destinatário:</label>
+              <label for="inputEncaminhamento">Destinação:</label>
               <select id="inputEncaminhamento" class="form-control" name="encaminhamento">
 
                 <option selected>Selecione...</option>
@@ -312,7 +312,7 @@
 
             <div class="form-group col-sm-4">
               
-                          <label for="inputEncaminhamentoColegiado">Destinatário:</label>
+                          <label for="inputEncaminhamentoColegiado">Destinação:</label>
                           <select id="inputEncaminhamentoColegiado" class="form-control" name="encaminhamentocolegiado">
 
                           <option selected>Selecione...</option>

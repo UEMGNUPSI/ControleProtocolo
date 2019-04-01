@@ -26,7 +26,6 @@
   }
   td {
     text-align: center;
-    width: 50%;
   }
   button{
      background-color: white;
@@ -116,9 +115,9 @@
                           while( $dados = mysqli_fetch_assoc($consulta)){                                    
                                 echo "<tbody>";
                                 echo "<tr>";                                
-                                echo "<td>" .$dados['encaminhamento']."</td>";                                                 
+                                echo "<td style = 'width: 70%;'>" .$dados['encaminhamento']."</td>";                                                 
                                    
-                                echo "<td>";                               
+                                echo "<td >";                               
                                 
                                 $id=$dados['id'];
                               ?>                                  

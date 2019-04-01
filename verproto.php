@@ -93,7 +93,7 @@
                       <th>Data</th>
                       <th>Hora</th>
                       <th>Observação</th>
-                      <th>Encaminhamento</th>
+                      <th>Destinação</th>
                     </tr>
                   </thead>
 

@@ -96,7 +96,7 @@
                       <th>Descrição</th>
                       <th>Observação</th>
                       <th>DAE</th>
-                      <th>Encaminhamento</th>
+                      <th>Destinação</th>
                     </tr>
                   </thead>
 
