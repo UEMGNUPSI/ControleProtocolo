@@ -41,12 +41,15 @@
 	$sql = $conn->query("SELECT * FROM addentregaprotocolos WHERE  numproto='$numproto'");
 			
 		if(mysqli_num_rows($sql) > 0){
+      echo '2';
 				//echo "<script>alert('Este curso já está cadastrado');</script>";
-				echo"<script language='javascript' type='text/javascript'>window.location.href='/protocolos/addprotocolos.php?o=Este número de Protocolo já foi cadastrado!';</script>";
-		exit();
+				//echo"<script language='javascript' type='text/javascript'>window.location.href='/protocolos/addprotocolos.php?o=Este número de Protocolo já foi cadastrado!';</script>";
+		
 		} else {
-			 if(!$conn->query("INSERT INTO addentregaprotocolos(numproto,nome,atendente,curso,periodo,data,dataretirada,entregue,descricao,observacao,dae,encaminhamento,vencimento,datavencimento) VALUES ('$numproto','$nomeatendido','$nomeatendente','$curso','$periodo','$data','$dataretirada','$entregue','$descricao','$observacao' ,'$DAE','$encaminhamento','$vencimento','$datavencimento')")) die ('Os dados não foram inseridos');
-			  header('Location: /protocolos/addentregaproto.php');
+      if(!$conn->query("INSERT INTO addentregaprotocolos(numproto,nome,atendente,curso,periodo,data,dataretirada,entregue,descricao,observacao,dae,encaminhamento,vencimento,datavencimento) VALUES ('$numproto','$nomeatendido','$nomeatendente','$curso','$periodo','$data','$dataretirada','$entregue','$descricao','$observacao' ,'$DAE','$encaminhamento','$vencimento','$datavencimento')")) die ('Os dados não foram inseridos');
+
+      echo '1';
+			  //header('Location: /protocolos/addentregaproto.php');
 		}
  ?>
 

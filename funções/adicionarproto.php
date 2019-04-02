@@ -43,15 +43,17 @@
             echo $salvadata;       
         }
     
-    $sql = $conn->query("SELECT * FROM addprotocolos WHERE  id='$numproto'");
+    $sql = $conn->query("SELECT * FROM addprotocolos WHERE  numproto='$numproto'");
             
         if(mysqli_num_rows($sql) > 0){
+            echo '2';
                 //echo "<script>alert('Este curso já está cadastrado');</script>";
-                echo"<script language='javascript' type='text/javascript'>window.location.href='/protocolos/addprotocolos.php?o=Este número de Protocolo já foi cadastrado!';</script>";
-        exit();
+                //echo"<script language='javascript' type='text/javascript'>window.location.href='/protocolos/addprotocolos.php?o=Este número de Protocolo já foi cadastrado!';</script>";
+        
         } else {
-            if(!$conn->query("INSERT INTO addprotocolos(numproto,nome,atendente,curso,historico,data,hora,observacao,ra,cursocolegiado,obsevacaocolegiado,encaminhamento,encaminhamentocolegiado,vencimento,dataretirada,datavencimento) VALUES ('$numproto','$nomeatendido','$nomeatendente','$curso','$historico','$data','$hora','$observacao','$ra','$cursocolegiado','$observacaocolegiado','$encaminhamento','$encaminhamentocolegiado','$vencimento','$dataretirada','$salvadata')")) die ('Os dados não foram inseridos');
-             header('Location: /protocolos/addprotocolos.php');
+             if(!$conn->query("INSERT INTO addprotocolos(numproto,nome,atendente,curso,historico,data,hora,observacao,ra,cursocolegiado,obsevacaocolegiado,encaminhamento,encaminhamentocolegiado,vencimento,dataretirada,datavencimento) VALUES ('$numproto','$nomeatendido','$nomeatendente','$curso','$historico','$data','$hora','$observacao','$ra','$cursocolegiado','$observacaocolegiado','$encaminhamento','$encaminhamentocolegiado','$vencimento','$dataretirada','$salvadata')")) die ('Os dados não foram inseridos');
+            echo '1';             
+             //header('Location: /protocolos/addprotocolos.php');
         }   
 
        
