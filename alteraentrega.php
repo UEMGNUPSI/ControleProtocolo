@@ -119,7 +119,7 @@
 
                 <div class="form-group col-sm-6">
               
-              <label for="inputEncaminhamento">Encaminhamento:</label>
+              <label for="inputEncaminhamento">Destinação:</label>
               <select id="inputEncaminhamento" class="form-control" name="encaminhamento">
 
                 <option selected>Selecione...</option>

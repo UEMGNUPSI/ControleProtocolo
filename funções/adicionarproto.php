@@ -51,8 +51,9 @@
                 //echo"<script language='javascript' type='text/javascript'>window.location.href='/protocolos/addprotocolos.php?o=Este número de Protocolo já foi cadastrado!';</script>";
         
         } else {
+            echo '1';
              if(!$conn->query("INSERT INTO addprotocolos(numproto,nome,atendente,curso,historico,data,hora,observacao,ra,cursocolegiado,obsevacaocolegiado,encaminhamento,encaminhamentocolegiado,vencimento,dataretirada,datavencimento) VALUES ('$numproto','$nomeatendido','$nomeatendente','$curso','$historico','$data','$hora','$observacao','$ra','$cursocolegiado','$observacaocolegiado','$encaminhamento','$encaminhamentocolegiado','$vencimento','$dataretirada','$salvadata')")) die ('Os dados não foram inseridos');
-            echo '1';             
+                         
              //header('Location: /protocolos/addprotocolos.php');
         }   
 

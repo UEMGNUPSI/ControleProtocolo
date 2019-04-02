@@ -120,8 +120,8 @@
                               ?>                         
                               <form>    
                                 <input type="hidden" name="id" value="<?php echo $dados['id']; ?>"> 
-                                <button type="submit" class=" mr-3 mb-3" formaction="/protocolos/alterasolicitacao.php" ><i class="fas fa-pen-square" aria-hidden="true"></i></button>  
-                                <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['id']; ?>" onclick="excluirModal()"><i class="fa fa-trash " aria-hidden="true" ></i></button>
+                                <button type="submit" class=" mr-3 mb-3" formaction="/protocolos/alterasolicitacao.php" ><i class="fas fa-pen-square" aria-hidden="true" style="cursor: pointer;"></i></button>  
+                                <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['id']; ?>" onclick="excluirModal()"><i class="fa fa-trash " aria-hidden="true" style="cursor: pointer;"></i></button>
                                                                
                                 </form>
 

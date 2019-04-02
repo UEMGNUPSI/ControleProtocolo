@@ -19,7 +19,7 @@
             h = today.getHours();
             m = today.getMinutes();
             s = today.getSeconds();
-            document.getElementById('inputHora').value = h + ":" + m;
+            document.getElementById('hora').value = h + ":" + m;
             setTimeout('time()', 9000);
         }
     </script>
@@ -202,7 +202,7 @@
 
                                 </div>
                                 <script type="text/javascript">
-                                    document.getElementById('inputData').valueAsDate = new Date();
+                                    document.getElementById('data').valueAsDate = new Date();
                                 </script>
 
 

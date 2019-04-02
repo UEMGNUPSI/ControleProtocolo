@@ -127,8 +127,8 @@
                               ?>                         
                               <form>    
                                 <input type="hidden" name="id" value="<?php echo $dados['Id']; ?>"> 
-                                <button type="submit" class=" mr-3 mb-3" formaction="altera_protocolos.php" ><i class="fas fa-pen-square" title="Editar" aria-hidden="true"></i></button>  
-                                <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['ra']; ?>" onclick="excluirModal()"><i class="fa fa-trash" title="Excluir" aria-hidden="true" ></i></button>                             
+                                <button type="submit" class=" mr-3 mb-3" formaction="altera_protocolos.php" ><i class="fas fa-pen-square" title="Editar" aria-hidden="true" style="cursor: pointer;"></i></button>  
+                                <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['ra']; ?>" onclick="excluirModal()"><i class="fa fa-trash" title="Excluir" aria-hidden="true" style="cursor: pointer;"></i></button>                             
                              </form>
 
                               <!-- EXCLUIR PROTOCOLO-->  
