@@ -52,18 +52,6 @@
         <i class="fas fa-university text-light mr-1"></i>
         <a class="navbar-brand mr-1" href="menu.php">Uemg</a>
 
-
-
-        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-            <ul class="navbar-nav ml-auto ml-md-0">
-                <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle text-white" href="menu.php" id="userDropdown" role="button">
-                        Início
-                    </a>
-                </li>
-            </ul>
-        </form>
-
         <!-- Navbar Search -->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             <ul class="navbar-nav ml-auto ml-md-0">
@@ -109,7 +97,7 @@
 
                     <div class="form-row ml-5 mb-3">
                         <div class="col-sm-10">
-                        <input  class = "btn btn-primary"type="button" value="Adicionar" id="adicionar" />
+                        <input  class = "btn btn-primary"type="button" value="Cadastrar" id="adicionar" />
 
                         </div>
                     </div>
@@ -139,7 +127,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
-                            <a class="text-white" href="listaencaminahmento.php"><button type="button" class="btn btn-info">Lista de Destinatários</a>
+                            <a class="text-white" href="listaencaminahmento.php"><button type="button" class="btn btn-info">Listar destinatários</a>
                         </div>
                     </div>
                 </div>

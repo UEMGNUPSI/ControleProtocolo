@@ -34,18 +34,6 @@
         <i class="fas fa-university text-light mr-1"></i>
         <a class="navbar-brand mr-1" href="menu.php">Uemg</a>
 
-
-
-        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-            <ul class="navbar-nav ml-auto ml-md-0">
-                <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle text-white" href="menu.php" id="userDropdown" role="button">
-                        Início
-                    </a>
-                </li>
-            </ul>
-        </form>
-
         <!-- Navbar Search -->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             <ul class="navbar-nav ml-auto ml-md-0">
@@ -77,7 +65,7 @@
 
         <div id="content-wrapper">
 
-            <div class="container-fluid">
+            <div class="container-fluid" >
 
 
 
@@ -87,7 +75,7 @@
                         <i class="fas fa-table"></i>
                         Lista de Cursos</div>
                     <div class="card-body">
-                        <div class="table-responsive">
+                        <div class="table-responsive"  style="width: 90%; padding:1%; margin:auto">
                             <form action="addcurso.php">
                                 <input type="submit" style="cursor: pointer;" class="mb-3 btn btn-primary" value="Cadastrar">
                                 <form>
