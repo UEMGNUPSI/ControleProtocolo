@@ -200,7 +200,7 @@
                         <h4 class="modal-title" id="myModalLabel">Certificado cadastrado com Sucesso!</h4>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+                        <a href="addcertificado.php"><button type="button" class="btn btn-danger">Voltar</button></a>
                         <a  class="text-white"href="verificacertificados.php"><button type="button" class="btn btn-info">Certificados</a>
                     </div>
                 </div>

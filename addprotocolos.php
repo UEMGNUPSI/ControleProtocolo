@@ -410,7 +410,7 @@
                         <h4 class="modal-title" id="myModalLabel">Protocolo cadastrado com Sucesso!</h4>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+                       <a href="addprotocolos.php"><button type="button" class="btn btn-danger">Voltar</button></a>
                         <a class="text-white" href="verificaprotocolos.php"><button type="button" class="btn btn-info">Protocolos</a>
                     </div>
                 </div>

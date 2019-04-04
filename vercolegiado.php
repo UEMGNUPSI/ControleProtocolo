@@ -74,8 +74,11 @@
 
         	 <div class="card mb-3">
             <div class="card-header">
-              <i class="fas fa-table"></i>
-              Lista de Documentos Colegiado</div>
+               <a href="doccolegiado.php" style="color: black;font-size: 17px;">
+              <i class="fas fa-arrow-left" title="Voltar" style=""></i>&emsp;
+               Documentos Colegiado
+            </a>
+            </div>
             <div class="card-body">
               <div class="table-responsive">             
               

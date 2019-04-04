@@ -184,7 +184,7 @@
                         <h4 class="modal-title" id="myModalLabel">Diploma cadastrado com Sucesso!</h4>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+                       <a href="solicitacaodiploma.php"><button type="button" class="btn btn-danger">Voltar</button></a>
                         <a  class="text-white"href="verificadiploma.php"><button type="button" class="btn btn-info">Diplomas</a>
                     </div>
                 </div>
