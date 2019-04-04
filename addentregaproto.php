@@ -303,8 +303,13 @@
                         <h4 class="modal-title" id="myModalLabel">Documento cadastrado com Sucesso!</h4>
                     </div>
                     <div class="modal-footer">
+<<<<<<< HEAD
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
                         <a  class="text-white"href="verficaentregaproto.php"><button type="button" class="btn btn-info">Listar Documentos</a>
+=======
+                        <a href="addentregaproto.php"><button type="button" class="btn btn-danger">Voltar</button></a>
+                        <a  class="text-white"href="verficaentregaproto.php"><button type="button" class="btn btn-info">Documentos</a>
+>>>>>>> 1d53764072c972e75bd4f41034f84fc05c3fff9f
                     </div>
                 </div>
             </div>

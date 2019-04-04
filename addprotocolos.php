@@ -19,7 +19,7 @@
             h = today.getHours();
             m = today.getMinutes();
             s = today.getSeconds();
-            document.getElementById('inputHora').value = h + ":" + m;
+            document.getElementById('hora').value = h + ":" + m;
             setTimeout('time()', 9000);
         }
     </script>
@@ -191,7 +191,7 @@
 
                                 </div>
                                 <script type="text/javascript">
-                                    document.getElementById('inputData').valueAsDate = new Date();
+                                    document.getElementById('data').valueAsDate = new Date();
                                 </script>
 
 
@@ -399,8 +399,13 @@
                         <h4 class="modal-title" id="myModalLabel">Protocolo cadastrado com Sucesso!</h4>
                     </div>
                     <div class="modal-footer">
+<<<<<<< HEAD
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
                         <a class="text-white" href="verificaprotocolos.php"><button type="button" class="btn btn-info">Listar Protocolos</a>
+=======
+                       <a href="addprotocolos.php"><button type="button" class="btn btn-danger">Voltar</button></a>
+                        <a class="text-white" href="verificaprotocolos.php"><button type="button" class="btn btn-info">Protocolos</a>
+>>>>>>> 1d53764072c972e75bd4f41034f84fc05c3fff9f
                     </div>
                 </div>
             </div>

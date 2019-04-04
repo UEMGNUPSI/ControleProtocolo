@@ -65,8 +65,11 @@
 
         	 <div class="card mb-3">
             <div class="card-header">
-              <i class="fas fa-table"></i>
-              Lista de Entrega Documentos</div>
+              <a href="verficaentregaproto.php" style="color: black;font-size: 17px;">
+              <i class="fas fa-arrow-left" title="Voltar" style=""></i>&emsp;
+               Entrega Documentos
+            </a>
+            </div>
             <div class="card-body">
               <div class="table-responsive">             
               
@@ -128,8 +131,8 @@
                               ?>                         
                               <form>    
                                 <input type="hidden" name="id" value="<?php echo $dados['id']; ?>"> 
-                                <button type="submit" class=" mr-3 mb-3" formaction="alteraentrega.php" ><i class="fas fa-pen-square text-dark" title="Editar" aria-hidden="true"></i></button>  
-                                <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['numproto']; ?>" onclick="excluirModal()"><i class="fa fa-trash text-dark" title="Excluir" aria-hidden="true" ></i></button>                              
+                                <button type="submit" class=" mr-3 mb-3" formaction="alteraentrega.php" ><i class="fas fa-pen-square text-dark" title="Editar" aria-hidden="true" style="cursor: pointer;"></i></button>  
+                                <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['numproto']; ?>" onclick="excluirModal()"><i class="fa fa-trash text-dark" title="Excluir" aria-hidden="true" style="cursor: pointer;" ></i></button>                              
                                 </form>
                                 
 

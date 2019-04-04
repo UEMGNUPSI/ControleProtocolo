@@ -44,6 +44,7 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
           </div>
+<<<<<<< HEAD
         </li>
       </ul>
       </div>
@@ -152,6 +153,115 @@
 
               </table>
 
+=======
+        </div>
+      </form>
+
+      <!-- Navbar -->
+     
+
+    </nav>
+
+    <div id="wrapper">
+
+      <?php include_once 'side_bar.php'; ?>
+      
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+        	 <div class="card mb-3">
+            <div class="card-header">
+               <a href="verificadiploma.php" style="color: black;font-size: 17px;">
+              <i class="fas fa-arrow-left" title="Voltar" style=""></i>&emsp;
+             Solicitação de Diplomas
+            </a>  
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">             
+              
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Nº Protocolo</th>
+                      <th>Requerente</th>                     
+                      <th>Atendente</th>                      
+                      <th>Data Solicitação</th>                      
+                    </tr>
+                  </thead>
+
+                  
+                   <?php 
+                              
+                        $servername = "127.0.0.1";
+                        $database = "protocolos";
+                        $username = "root";
+                        $password = "";
+
+                        $id=$_GET['id'];
+                                        
+                          $conn = mysqli_connect($servername, $username, $password, $database);
+                                //Carrega os dados
+                          $sql = "SELECT * FROM solicitacaodiplomas WHERE id='$id'";
+                          $consulta = mysqli_query($conn, $sql);
+                            
+                          while( $dados = mysqli_fetch_assoc($consulta)){                                    
+                                echo "<tbody>";
+                                
+                                echo "<tr>";                                
+                                
+                                echo "<td>" .$dados['numproto']."</td>";
+                                echo "<td>" .$dados['requerente']."</td>";
+                                echo "<td>" .$dados['atendente']."</td>";                                 
+                                echo "<td>" .date("d/m/Y", strtotime ($dados['datasolicitada']))."</td>";                                                                         
+                                
+                                echo "</tr>";   
+                                                      
+                                echo "</tbody>";
+                                
+                              ?>                         
+                              <form>    
+                                <input type="hidden" name="id" value="<?php echo $dados['id']; ?>"> 
+                                <button type="submit" class=" mr-3 mb-3" formaction="/protocolos/alterasolicitacao.php" ><i class="fas fa-pen-square" aria-hidden="true" style="cursor: pointer;"></i></button>  
+                                <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['id']; ?>" onclick="excluirModal()"><i class="fa fa-trash " aria-hidden="true" style="cursor: pointer;"></i></button>
+                                                               
+                                </form>
+
+                              <!-- EXCLUIR PROTOCOLO-->  
+
+                                <div class="modal fade" id="excluirModal<?php echo $dados['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir este curso?</h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">×</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <p>
+                                          Número de Protocolo: <?php echo $dados['numproto']; ?>                                            
+                                        </p>
+                                      </div>
+                                      <div class="modal-footer">        
+                                        <form>                                               
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                                            <a class="btn btn-primary" href="funções/exclui_solit.php?id=<?php echo $dados['id']; ?>">Excluir</a>            
+                                        </form>
+                                      </div>
+                                   
+                                   </div>
+                                  
+                                  </div>   
+                              
+                               </div> 
+
+                    <?php } ?>                                          
+                          
+                      </table>              
+                      
+>>>>>>> 1d53764072c972e75bd4f41034f84fc05c3fff9f
 
             </div>
 
