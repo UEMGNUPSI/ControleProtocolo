@@ -15,7 +15,6 @@
 </head>
 <body id="page-top">
 
-<<<<<<< HEAD
 	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 		<i class="fas fa-university text-light mr-1"></i>
 		<a class="navbar-brand mr-1" href="#">Uemg</a>
@@ -35,38 +34,8 @@
 			</ul>
 		</div>
 	</div>
-=======
-<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-<i class="fas fa-university text-light mr-1"></i>
-<a class="navbar-brand mr-1" href="#">Uemg</a>
 
 
-<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">        
-<ul class="navbar-nav ml-auto ml-md-0">
-<li class="nav-item dropdown no-arrow">
-<a class="nav-link dropdown-toggle text-white" href="menu.php" id="userDropdown" role="button" >
-Início
-</a>
-</li>
-</ul>
-</form>
-
-<!-- Navbar Search -->
-<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">        
-<ul class="navbar-nav ml-auto ml-md-0">
-<li class="nav-item dropdown no-arrow">
-<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	<i class="fas fa-user-circle fa-fw"></i>
-</a>
-<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-	<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-</div>
-</li>
-</ul>
-</div>
-</div>
->>>>>>> 1d53764072c972e75bd4f41034f84fc05c3fff9f
-</form>
 
 <!-- Navbar -->
 
