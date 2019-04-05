@@ -134,7 +134,7 @@
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
                         <a  class="text-white"href="listacursos.php"><button type="button" class="btn btn-info">Listar Cursos</a>
                     </div>
-                </div>
+   x             </div>
             </div>
         </div>
         <!-- Modal já Cadastrado -->

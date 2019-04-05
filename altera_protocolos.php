@@ -124,7 +124,7 @@
 											$password = "";
 
 											$conn = mysqli_connect($servername, $username, $password, $database);
-//Carrega os dados
+										//Carrega os dados
 											$sql = "SELECT * FROM curso";
 											$consulta = mysqli_query($conn, $sql);
 
