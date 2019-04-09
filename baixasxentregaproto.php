@@ -36,7 +36,7 @@
 
                     $sql=$mysqli->prepare('select id,encaminhamento,nome,data,datavencimento from addentregaprotocolos WHERE status=1 ORDER BY datavencimento ASC');
                     $sql->execute();
-                    $sql->bind_result($id,$encaminhamento,$nome,$data,$vencimento);
+                    $sql->bind_result($idDocs,$encaminhamento,$nome,$data,$vencimento);
 
                     echo "
                         <table>
@@ -69,7 +69,7 @@
                                 <td>$datapostada</td>                            
                                 <td>$datavencimento3</td>"; ?>
                                 <td>
-                                  <button id="confirmar" onclick="estadoDocs(<?php echo $id; ?>)" style="cursor: pointer;">
+                                  <button id="confirmar"  style="cursor: pointer;" data-toggle="modal" data-target="#baixaModal">
                                    <i class="fas fa-times" style="font-size: 20px;color: red;" title="Cancelar"></i>
                                   </button>
                                 </td>
@@ -88,6 +88,24 @@
 
            	</div>
 </div>
+
+<!-- Baixas Modal-->
+    <div class="modal fade" id="baixaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo finalizar essa destinação?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-primary" type="button" data-dismiss="modal" onclick="estadoDocs(<?php echo $idDocs; ?>)">Finalizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 </body>
 </html>

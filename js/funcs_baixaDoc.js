@@ -2,7 +2,7 @@ var req;
  
 // FUNÇÃO PARA BUSCA NOTICIA
 function estadoDocs(valor) {
- 
+
 // Verificando Browser
 if(window.XMLHttpRequest) {
    req = new XMLHttpRequest();
@@ -11,6 +11,7 @@ else if(window.ActiveXObject) {
    req = new ActiveXObject("Microsoft.XMLHTTP");
 }
  
+
 // Arquivo PHP juntamente com o valor digitado no campo (método GET)
 var url = "busca_baixaDoc.php?valor="+valor;
  
@@ -36,5 +37,6 @@ req.onreadystatechange = function() {
 	}
 }
 req.send(null);
+
 }
 

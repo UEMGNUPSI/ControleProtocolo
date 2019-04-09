@@ -51,7 +51,7 @@
 	            <td>$datapostada</td>                            
 	            <td>$datavencimento3</td>"; ?>
 	            <td>
-	              <button id="confirmar" onclick="estadoDocs(<?php echo $id; ?>)" style="cursor: pointer;">
+	              <button id="confirmar"  style="cursor: pointer;" data-toggle="modal" data-target="#baixaModal">
 	               <i class="fas fa-times" style="font-size: 20px;color: red;" title="Cancelar"></i>
 	              </button>
 	            </td>

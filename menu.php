@@ -178,182 +178,207 @@
                     <button class="btn btn-primary " type="submit" style="float: right;" formaction="baixasxentregaproto.php">Ver Encaminhamentos</button>
                 </form>                        
 
-                <div id="resultadoDocs">
-                  <?php 
-                 
-                    $servidor="localhost";
-                    $usuario="root";
-                    $senha="";
-                    $bancodedados="protocolos";
+  <div id="resultadoDocs">
+    <?php 
+   
+      $servidor="localhost";
+      $usuario="root";
+      $senha="";
+      $bancodedados="protocolos";
 
-                    $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
+      $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-                    $sql=$mysqli->prepare('select id,encaminhamento,nome,data,datavencimento from addentregaprotocolos WHERE status=0 ORDER BY datavencimento ASC');
-                    $sql->execute();
-                    $sql->bind_result($id,$encaminhamento,$nome,$data,$vencimento);
+      $sql=$mysqli->prepare('select id,encaminhamento,nome,data,datavencimento from addentregaprotocolos WHERE status=0 ORDER BY datavencimento ASC');
+      $sql->execute();
+      $sql->bind_result($idDocs,$encaminhamento,$nome,$data,$vencimento);
 
-                    echo "
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td >Encaminhamento</td>
-                                    <td>Requerente</td>
-                                    <td>Data</td>
-                                    <td>Data de Vencimento</td>
-                                    <td></td>
-                                </tr>
-                            </thead>
+      echo "
+          <table>
+              <thead>
+                  <tr>
+                      <td >Encaminhamento</td>
+                      <td>Requerente</td>
+                      <td>Data</td>
+                      <td>Data de Vencimento</td>
+                      <td></td>
+                  </tr>
+              </thead>
 
-                            <tbody>
-                    ";
+              <tbody>
+      ";
 
-                    while($sql->fetch()){
-                      $datapostada = date("d/m/Y", strtotime ($data)); 
-                      $datavencimento3 = date("d/m/Y", strtotime ($vencimento));      
+      while($sql->fetch()){
+        $datapostada = date("d/m/Y", strtotime ($data)); 
+        $datavencimento3 = date("d/m/Y", strtotime ($vencimento));      
 
-                      $dataapc = date("Y-m-d");
-                      $timestaamp = strtotime("$dataapc +1days");
-                      $dataaam = date("Y-m-d",$timestaamp);        
+        $dataapc = date("Y-m-d");
+        $timestaamp = strtotime("$dataapc +1days");
+        $dataaam = date("Y-m-d",$timestaamp);        
+      
+        if ($dataaam >= $vencimento){
+          echo "
+              <tr style='color: red;'>
+                  <td>$encaminhamento</td>
+                  <td>$nome</td>
+                  <td>$datapostada</td>                            
+                  <td>$datavencimento3</td>"; ?>
+                  <td>
                     
-                      if ($dataaam >= $vencimento){
-                        echo "
-                            <tr style='color: red;'>
-                                <td>$encaminhamento</td>
-                                <td>$nome</td>
-                                <td>$datapostada</td>                            
-                                <td>$datavencimento3</td>"; ?>
-                                <td>
-                                  <!-- onclick="estadoDocs(<?php echo $id; ?>)" -->
-                                  <button id="confirmar"  style="cursor: pointer;" data-toggle="modal" data-target="#logoutModal">
-                                   <i class='fas fa-check-circle'></i>
-                                  </button>
-                                </td>
-                            </tr>
-                      <?php 
-                      }else {
-                         echo "
-                          <tr>
-                              <td>$encaminhamento</td>
-                              <td>$nome</td>
-                              <td>$datapostada</td>                            
-                              <td>$datavencimento3</td> ";?>
-                               <td>
-                                  <button id="confirmar"  style="cursor: pointer;" data-toggle="modal" data-target="#logoutModal">
-                                   <i class='fas fa-check-circle'></i>
-                                  </button>
-                                </td>
-                            </tr>
-                     <?php     
-                      }
-                    }
+                    <button id="confirmar"  style="cursor: pointer;" data-toggle="modal" data-target="#baixaModal<?php $idDocs; ?>">
+                     <i class='fas fa-check-circle'></i>
+                    </button>
+                  </td>
+              </tr>
+        <?php 
+        }else {
+           echo "
+            <tr>
+                <td>$encaminhamento</td>
+                <td>$nome</td>
+                <td>$datapostada</td>                            
+                <td>$datavencimento3</td> ";?>
+                 <td>
+                    <button id="confirmar"  style="cursor: pointer;" data-toggle="modal" data-target="#baixaModal<?php $idDocs; ?>">
+                     <i class='fas fa-check-circle'></i>
+                    </button>
 
-                    echo "
-                        </tbody>
-                    </table>
-                    ";
+                  </td>
+              </tr>
+
+              <!-- Baixas Modal-->
+    <div class="modal fade" id="baixaModal<?php $idDocs; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo finalizar essa destinação?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-primary" type="button" data-dismiss="modal" onclick="estadoDocs(<?php $idDocs; ?>)">Finalizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+               
+       <?php     
+        }
+      }
+
+      echo "
+          </tbody>
+      </table>
+      ";
                     
 
                     ?>
+
+
+
                 </div>             
           </div>  
         </div>
       </div>    
 <!--------------------------------------------------------- Colegiado ----------------------------------------->
-          <div id="encaminhamentoColegiado" style="display: none;">            
-             <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-table"></i>
-              Colegiado
-              </div>
+<div id="encaminhamentoColegiado" style="display: none;">            
+   <div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-table"></i>
+    Colegiado
+    </div>
 
-            <div class="card-body">
-              
-              <form class="form-group mb-3">        
-                    <input class="form-control" type="search" placeholder="Buscar..." id="buscaColeg"  onkeyup="buscarColegiado(this.value)" style="display: inline;width: 15%;">
-                    <button class="btn btn-primary " type="submit" style="float: right;" formaction="baixasColegiado.php">Ver Encaminhamentos</button>
-                </form>
-                
-              
-                <div id="resultado1">
-                  <?php 
-                    $servidor="localhost";
-                    $usuario="root";
-                    $senha="";
-                    $bancodedados="protocolos";
+  <div class="carSSSSSSSd-body">
+    
+    <form class="form-group mb-3">        
+          <input class="form-control" type="search" placeholder="Buscar..." id="buscaColeg"  onkeyup="buscarColegiado(this.value)" style="display: inline;width: 15%;">
+          <button class="btn btn-primary " type="submit" style="float: right;" formaction="baixasColegiado.php">Ver Encaminhamentos</button>
+      </form>
+      
+    
+      <div id="resultado1">
+        <?php 
+          $servidor="localhost";
+          $usuario="root";
+          $senha="";
+          $bancodedados="protocolos";
 
-                    $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
+          $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 
-                    $sql=$mysqli->prepare('select id,encaminhamentocolegiado,nome,data,datavencimento from addprotocolos WHERE statusColeg=0 ORDER BY datavencimento ASC');
-                    $sql->execute();
-                    $sql->bind_result($id,$encaminhamentocolegiado,$nome,$data1,$vencimento1);
+          $sql=$mysqli->prepare('select id,encaminhamentocolegiado,nome,data,datavencimento from addprotocolos WHERE statusColeg=0 ORDER BY datavencimento ASC');
+          $sql->execute();
+          $sql->bind_result($idColeg,$encaminhamentocolegiado,$nome,$data1,$vencimento1);
 
-                    echo "
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>Encaminhamento</td>
-                                    <td>Requerente</td>
-                                    <td>Data</td>
-                                    <td>Data de Vencimento</td>
-                                    <td></td>
-                                </tr>
-                            </thead>
+    echo "
+        <table>
+            <thead>
+                <tr>
+                    <td>Encaminhamento</td>
+                    <td>Requerente</td>
+                    <td>Data</td>
+                    <td>Data de Vencimento</td>
+                    <td></td>
+                </tr>
+            </thead>
 
-                            <tbody>
-                    ";
+            <tbody>
+    ";
 
-                    while($sql->fetch()){
-                    $datapostada1 = date("d/m/Y", strtotime ($data1)); 
-                    $datavencimento2 = date("d/m/Y", strtotime ($vencimento1));    
+    while($sql->fetch()){
+    $datapostada1 = date("d/m/Y", strtotime ($data1)); 
+    $datavencimento2 = date("d/m/Y", strtotime ($vencimento1));    
 
-                      $dataapc = date("Y-m-d");
-                      $timestaamp = strtotime("$dataapc +1days");
-                      $dataaam = date("Y-m-d",$timestaamp);        
-                    
-                      if ($dataaam >= $vencimento1){
-                        echo "
-                            <tr style='color: red;'>
-                                <td >$encaminhamentocolegiado</td>
-                                <td>$nome</td>
-                                <td>$datapostada1</td>                            
-                                <td>$datavencimento2</td>";?>
-                               <td>
-                                  <button id="confirmar" onclick="estadoDocsProto(<?php echo $id; ?>)" style="cursor: pointer;">
-                                   <i class='fas fa-check-circle'></i>
-                                  </button>
-                                </td>
-                            </tr>
-                     <?php  
-                           
-                        
-                      }else {
-                         echo "
-                          <tr>
-                              <td>$encaminhamentocolegiado</td>
-                              <td>$nome</td>
-                              <td>$datapostada1</td>                            
-                              <td>$datavencimento2</td>" ;?>
-                               <td>
-                                  <button id="confirmar" onclick="estadoDocsProto(<?php echo $id; ?>)" style="cursor: pointer;">
-                                   <i class='fas fa-check-circle'></i>
-                                  </button>
-                                </td>
-                            </tr>
+      $dataapc = date("Y-m-d");
+      $timestaamp = strtotime("$dataapc +1days");
+      $dataaam = date("Y-m-d",$timestaamp);        
+    
+      if ($dataaam >= $vencimento1){
+        echo "
+            <tr style='color: red;'>
+                <td >$encaminhamentocolegiado</td>
+                <td>$nome</td>
+                <td>$datapostada1</td>                            
+                <td>$datavencimento2</td>";?>
+               <td>
+                  <button id="confirmar" style="cursor: pointer;" data-toggle="modal" data-target="#baixaModalColeg" >
+                   <i class='fas fa-check-circle'></i>
+                  </button>
+                </td>
+            </tr>
+     <?php  
+           
+        
+      }else {
+         echo "
+          <tr>
+              <td>$encaminhamentocolegiado</td>
+              <td>$nome</td>
+              <td>$datapostada1</td>                            
+              <td>$datavencimento2</td>" ;?>
+               <td>
+                  <button id="confirmar" style="cursor: pointer;" data-toggle="modal" data-target="#baixaModalColeg">
+                   <i class='fas fa-check-circle'></i>
+                  </button>
+                </td>
+            </tr>
+
+
                      <?php    
-                          
-                       
-                      }
-                    }
+                  
+               
+              }
+            }
 
-                    echo "
-                        </tbody>
-                    </table>
-                    ";
-                      ?>
-                </div>             
-          </div>  
-        </div>
-      </div>     
+            echo "
+                </tbody>
+            </table>
+            ";
+              ?>
+        </div>             
+    </div>  
+  </div>
+</div>     
 
 <!---------------------------------------------------------Protocolos----------------------------------------->
           <div id="encaminhamentoProto" style="display: none;">
@@ -381,7 +406,7 @@
 
                     $sql=$mysqli->prepare('select id,encaminhamento,nome,data,datavencimento from addprotocolos WHERE status=0 ORDER BY datavencimento ASC');
                     $sql->execute();
-                    $sql->bind_result($id,$encaminhamento,$nome,$data2,$vencimento2);
+                    $sql->bind_result($idProtocolos,$encaminhamento,$nome,$data2,$vencimento2);
 
                     echo "
                         <table>
@@ -414,7 +439,7 @@
                                 <td>$datapostada</td>                            
                                 <td>$datavencimento</td>";?>
                                <td>
-                                  <button id="confirmar" onclick="estadoProto(<?php echo $id; ?>)" style="cursor: pointer;">
+                                  <button id="confirmar" style="cursor: pointer;" data-toggle="modal" data-target="#baixaModalProto">
                                    <i class='fas fa-check-circle'></i>
                                   </button>
                                 </td>
@@ -429,7 +454,7 @@
                               <td>$datavencimento</td>
                           ";?>
                                <td>
-                                  <button id="confirmar" onclick="estadoProto(<?php echo $id; ?>)" style="cursor: pointer;">
+                                  <button id="confirmar"  style="cursor: pointer;" data-toggle="modal" data-target="#baixaModalProto">
                                    <i class='fas fa-check-circle'></i>
                                   </button>
                                 </td>
@@ -533,19 +558,42 @@
       </div>
     </div>
   
-    <!-- Baixas Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   
+<!-- Baixas Colegiado-->
+
+    <div class="modal fade" id="baixaModalColeg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo ?</h5>
+           <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo finalizar essa destinação?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
           </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="index.php"></a>
+            <button class="btn btn-primary" type="button" data-dismiss="modal" onclick="estadoDocsProto(<?php echo $idColeg; ?>)">Finalizar</button>
+          </div>
+        </div>
+      </div>
+    </div>  
+   
+
+
+     <!-- Baixas Protocolos-->
+
+    <div class="modal fade" id="baixaModalProto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo finalizar essa destinação?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-primary" type="button" data-dismiss="modal" onclick="estadoProto(<?php echo $idProtocolos; ?>)">Finalizar</button>
           </div>
         </div>
       </div>
