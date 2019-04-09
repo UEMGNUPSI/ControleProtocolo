@@ -98,6 +98,7 @@
                     <div class="form-row ml-5 mb-3">
                         <div class="col-sm-10">
                         <input  class = "btn btn-primary"type="button" value="Cadastrar" id="adicionar" />
+                        <input type='button' class="btn btn-danger" value='Cancelar' onclick='history.go(-1)' /> 
 
                         </div>
                     </div>

@@ -196,7 +196,8 @@
               
             <div class="col-sm-12">
               <input type="hidden" name="id" value="<?php echo $dados['Id']; ?>">  
-              <button type="submit" class="btn btn-primary" formaction="funções/mudaproto.php">Alterar</button>         
+              <button type="submit" class="btn btn-primary" formaction="funções/mudaproto.php">Alterar</button> 
+              <input type='button' class="btn btn-danger" value='Cancelar' onclick='history.go(-1)' />         
 
           </div>
       <?php } ?>

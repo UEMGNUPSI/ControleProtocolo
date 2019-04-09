@@ -85,6 +85,7 @@
             <div class="col-sm-10">                
 
               <button type="submit" class="btn btn-primary" formaction="funções/mudaencaminhamento.php">Alterar</button>
+              <input type='button' class="btn btn-danger" value='Cancelar' onclick='history.go(-1)' /> 
             </div>
           </div>
          

@@ -152,6 +152,7 @@
                                 <div class="col-sm-12">
 
                                 <input  class = "btn btn-primary"type="button" value="Cadastrar" id="porcaria" /> 
+                                <a class="btn btn-danger" id="voltar" href="menu.php">Cancelar</a>
 
                                 </div>
 
@@ -173,13 +174,8 @@
                         <h4 class="modal-title" id="myModalLabel">Diploma cadastrado com Sucesso!</h4>
                     </div>
                     <div class="modal-footer">
-<<<<<<< HEAD
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
                         <a  class="text-white"href="verificadiploma.php"><button type="button" class="btn btn-info">Listar Diplomas</a>
-=======
-                       <a href="solicitacaodiploma.php"><button type="button" class="btn btn-danger">Voltar</button></a>
-                        <a  class="text-white"href="verificadiploma.php"><button type="button" class="btn btn-info">Diplomas</a>
->>>>>>> 1d53764072c972e75bd4f41034f84fc05c3fff9f
                     </div>
                 </div>
             </div>
