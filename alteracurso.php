@@ -83,7 +83,7 @@
           <div class="form-row ml-5 mb-3">              
             <div class="col-sm-10">                    
               <button type="submit" class="btn btn-primary" formaction="funções/mudacurso.php">Alterar</button>
-              <button type="submit" class="btn btn-primary" formaction="listacursos.php">Voltar</button>
+              <button type="submit" class="btn btn-danger" formaction="listacursos.php">Cancelar</button>
             </div>
           </div>          
          

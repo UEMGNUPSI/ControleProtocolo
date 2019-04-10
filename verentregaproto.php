@@ -132,13 +132,13 @@
                               <form>    
                                 <input type="hidden" name="id" value="<?php echo $dados['id']; ?>"> 
                                 <button type="submit" class=" mr-3 mb-3" formaction="alteraentrega.php" ><i class="fas fa-pen-square text-dark" title="Editar" aria-hidden="true" style="cursor: pointer;"></i></button>  
-                                <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['numproto']; ?>" onclick="excluirModal()"><i class="fa fa-trash text-dark" title="Excluir" aria-hidden="true" style="cursor: pointer;" ></i></button>                              
+                                <button type="submit" data-toggle="modal" data-target="#excluirModal<?php echo $dados['numproto'] ?>" onclick="excluirModal()"><i class="fa fa-trash text-dark" title="Excluir" aria-hidden="true" style="cursor: pointer;" ></i></button>                              
                                 </form>
                                 
 
                               <!-- EXCLUIR PROTOCOLO-->  
 
-                                <div class="modal fade" id="excluirModal<?php echo $dados['numproto']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="excluirModal<?php echo $dados['numproto'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
@@ -149,7 +149,7 @@
                                       </div>
                                       <div class="modal-body">
                                         <p>
-                                          Número de Protocolo: <?php echo $dados['numproto']; ?>                                            
+                                          Número de Protocolo: <?php echo $dados['numproto'] ?>                                            
                                         </p>
                                       </div>
                                       <div class="modal-footer">        

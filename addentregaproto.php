@@ -281,7 +281,7 @@
                                 <div class="col-sm-12">
 
                                 <input  class = "btn btn-primary"type="button" value="Cadastrar" id="salvar" />
-
+                                <a class="btn btn-danger" id="voltar" href="menu.php">Cancelar</a>
 
                                 </div>
                             </div>
