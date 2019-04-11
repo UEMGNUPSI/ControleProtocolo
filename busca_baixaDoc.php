@@ -67,7 +67,7 @@
               </button>
             </div>
             <div class="modal-footer">
-              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+              <button class="btn btn-danger" type="button" data-dismiss="modal">Cancelar</button>
               <button class="btn btn-primary" type="button" data-dismiss="modal" onclick="estadoDocs(<?php echo $idDocs ?>)">Finalizar</button>
             </div>
           </div>
