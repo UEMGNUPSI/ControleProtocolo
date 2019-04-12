@@ -42,12 +42,17 @@
     <div id="content-wrapper">
 
       <div class="container-fluid ml-3">
-
-        <ol class="breadcrumb">
+         
+      <div class="card-header text-center mb-3 mt-1">
+            
+      Encaminhamentos
+          </div>
+        <!-- <ol class="breadcrumb text-center">
           <li class="breadcrumb-item">
-            <i class="fas fa-table mr-1"></i>Envios
+            Encaminhamentos
           </li>
-        </ol>
+        </ol> -->
+        
         <div class="content">
           <?php
 
@@ -551,9 +556,9 @@
         <!--    Gerando Relatorio colegiado   -->
 
         <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-table"></i>
-            Gerar Relatório Colegiado
+          <div class="card-header text-center">
+            
+            Relatório Colegiado
           </div>
           <div class="row mb-3 justifiy-content-center">
 
