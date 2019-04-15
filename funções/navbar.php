@@ -1,8 +1,8 @@
  <!-- Navbar Search -->
 
  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-    <i class="fas fa-university text-light  my-3 mr-1"></i>
-    <a class="navbar-brand mr-1"href="menu.php">Universidade do estado de Minas Gerais - Campus Frutal</a>
+    <i class="fas fa-home text-light  my-3 mr-1"></i>
+    <a class="navbar-brand mr-1" href="menu.php" style="position: fixed; top: 0; width: 100%;font-size: 17px; text-align:center; display: inline;margin: 0 auto;">Universidade do Estado de Minas Gerais - Campus Frutal<br>Setor Atendimento</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
 

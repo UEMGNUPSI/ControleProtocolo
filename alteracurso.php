@@ -15,11 +15,8 @@
 </head>
 <body id="page-top">
 
-   
-  
-
-      <!-- Navbar Search -->
-      <<?php include_once "funções/navbar.php"; ?>
+         <!-- Navbar Search -->
+      <?php include_once "funções/navbar.php"; ?>
 
       <!-- Navbar -->
      
@@ -64,10 +61,9 @@
           
 
           <div class="form-row ml-5 mb-3">              
-            <div class="col-sm-10">                    
-              <button type="submit" class="btn btn-primary" formaction="funções/mudacurso.php">Alterar</button>
-              <button type="submit" class="btn btn-danger" formaction="listacursos.php">Cancelar</button>
-            </div>
+            <div class="col-sm-6">                    
+              <button type="submit" class="btn btn-primary" formaction="funções/mudacurso.php" style="float: right;">Alterar</button>
+              <a class="btn btn-danger text-white" id="voltar" data-toggle="modal" data-target="#Cancelar">Cancelar</a> 
           </div>          
          
         </form>     
@@ -76,7 +72,19 @@
 
     </div>
         
-      
+      <div class="modal fade" id="Cancelar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Deseja mesmo cancelar este cadastro?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+                        <input type='button' class="btn btn-primary" value='Cancelar' onclick='history.go(-1)' />
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <!-- Logout Modal-->
     <?php include_once "funções/logout.php" ;?>

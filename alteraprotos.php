@@ -50,7 +50,7 @@
     <div class="row">
 
       <div class="col-12 text-center my-5">
-        <h1 class="display-4"><i class="fa fa-paper-plane text-primary mr-3" aria-hidden="true"></i>Alteração de Protocolos</h1>
+       <h1 style="font-weight: 330;"><i class="fa fa-paper-plane text-primary mr-3" aria-hidden="true"></i>Alteração de Protocolos</h1>
       </div>
     </div>
     <div class="row mb-5 justifiy-content-center">
@@ -179,8 +179,9 @@
               
             <div class="col-sm-12">
               <input type="hidden" name="id" value="<?php echo $dados['Id']; ?>">  
-              <button type="submit" class="btn btn-primary" formaction="funções/mudaproto.php">Alterar</button> 
-              <input type='button' class="btn btn-danger" value='Cancelar' onclick='history.go(-1)' />         
+              <button type="submit" class="btn btn-primary" formaction="funções/mudaproto.php" style="float: right;">Alterar</button> 
+                   
+              <a class="btn btn-danger text-white" id="voltar" data-toggle="modal" data-target="#Cancelar">Cancelar</a>    
 
           </div>
       <?php } ?>
@@ -194,7 +195,19 @@
         </div>
 </div>
 
-      
+       <div class="modal fade" id="Cancelar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Deseja mesmo cancelar este cadastro?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+                        <input type='button' class="btn btn-primary" value='Cancelar' onclick='history.go(-1)' />
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <!-- Logout Modal-->
     <?php include_once "funções/logout.php" ;?>

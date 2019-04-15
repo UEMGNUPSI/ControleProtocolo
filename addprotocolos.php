@@ -360,8 +360,8 @@
 
                                 <div class="col-sm-12">
                                     
-                                    <input class="btn btn-primary" type="button" value="Cadastrar" id="salvar" />
-                                    <a class="btn btn-danger" id="voltar" href="menu.php">Cancelar</a>
+                                    <input class="btn btn-primary" type="button" value="Cadastrar" id="salvar" style="float: right;" />
+                                    <a class="btn btn-danger text-white" id="voltar"  data-toggle="modal" data-target="#Cancelar">Cancelar</a>
 
                                 </div>
                             </div>
@@ -398,6 +398,20 @@
                     </div>
                     <div class="modal-footer">
                         <a href="addprotocolos.php"><button type="button" class="btn btn-danger">Voltar</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="Cancelar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Deseja mesmo cancelar este cadastro?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+                        <a class="text-white" href="menu.php"><button type="button" class="btn btn-info">Cancelar</a>
                     </div>
                 </div>
             </div>

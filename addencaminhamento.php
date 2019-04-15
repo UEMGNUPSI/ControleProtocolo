@@ -48,17 +48,11 @@
 <body id="page-top">
 
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-        <i class="fas fa-university text-light mr-1"></i>
-        <a class="navbar-brand mr-1" href="menu.php">Uemg</a>
-
+    
         <!-- Navbar Search -->
         <?php include_once "funções/navbar.php"; ?>
 
-        <!-- Navbar -->
-
-
-    </nav>
+        
 
     <div id="wrapper">
 
@@ -83,9 +77,9 @@
 
 
                     <div class="form-row ml-5 mb-3">
-                        <div class="col-sm-10">
-                        <input  class = "btn btn-primary"type="button" value="Cadastrar" id="adicionar" />
-                        <input type='button' class="btn btn-danger" value='Cancelar' onclick='history.go(-1)' /> 
+                        <div class="col-sm-6">
+                        <input  class = "btn btn-primary"type="button" value="Cadastrar" id="adicionar" style="float: right;" />
+                        <a class="btn btn-danger text-white" id="voltar" data-toggle="modal" data-target="#Cancelar">Cancelar</a>  
 
                         </div>
                     </div>
@@ -94,7 +88,7 @@
                     if (isset($_GET['o'])) {
                       ?>
 
-                    <p class="ml-5"><?php echo  $_GET['o']; ?></p>
+                    <p class="ml-5"> <?php echo  $_GET['o']; ?> </p>
 
                     <?php 
                   }
@@ -106,7 +100,7 @@
 
         </div>
 
-        < <!-- Cadastro Modal -->
+         <!-- Cadastro Modal -->
             <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -134,7 +128,19 @@
                 </div>
             </div>
 
-
+            <div class="modal fade" id="Cancelar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Deseja mesmo cancelar este cadastro?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+                        <input type='button' class="btn btn-primary" value='Cancelar' onclick='history.go(-1)' />
+                    </div>
+                </div>
+            </div>
+        </div>
 
             <!-- Logout Modal-->
             <?php include_once "funções/logout.php" ;?>

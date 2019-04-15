@@ -43,7 +43,7 @@
 
       <div class="container-fluid ml-3">
          
-      <div class="card-header text-center mb-3 mt-1">
+      <div class="card-header text-center mb-3 mt-1" >
             
       Encaminhamentos
           </div>
@@ -72,7 +72,7 @@
           ?>
           <!-- Icon Cards-->
 
-          <div class="row ">
+          <div class="row" style="justify-content: center;">
 
             <div class="col-xl-3 col-sm-6 mb-3">
               <div class="card text-white <?php if (!$dados == NULL) {
