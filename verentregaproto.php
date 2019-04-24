@@ -77,15 +77,10 @@
                   
                    <?php 
                               
-                        $servername = "127.0.0.1";
-                        $database = "protocolos";
-                        $username = "root"; 
-                        $password = "";
-
+                       
                         $id=$_GET['id'];
                                         
-                          $conn = mysqli_connect($servername, $username, $password, $database);
-                                //Carrega os dados
+                         
                           $sql = "SELECT * FROM addentregaprotocolos WHERE id='$id' ORDER BY nome ASC";
                           $consulta = mysqli_query($conn, $sql);
                             

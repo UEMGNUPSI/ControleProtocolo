@@ -4,16 +4,18 @@
 <?php
 
 	session_start();
-    $servername = "127.0.0.1";
-    $database = "protocolos";
-    $username = "root";
-    $password = "";
+   $servername = "10.93.10.10";
+  $database = "protocolos";
+  $username = "protocolos";
+  $password = "protocolos*01";
+                   
+    $conn = mysqli_connect($servername, $username, $password, $database);
     
     $login = $_POST['login'];
     $senha = $_POST['senha'];
     $_SESSION['login'] = $login;
 
-  $conn = mysqli_connect($servername, $username, $password, $database);
+
  
 
     $result_usuario = "SELECT * FROM login WHERE login = '$login' && senha = '$senha' LIMIT 1";

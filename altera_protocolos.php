@@ -36,12 +36,7 @@
 
 				<?php 
 
-				$servername = "localhost";
-				$database = "protocolos";
-				$username = "root";
-				$password = "";
-
-				$conn = mysqli_connect($servername, $username, $password, $database);
+				
 				$id = $_GET['id'];
 //Carrega os dados
 				$sql = "SELECT * FROM addprotocolos WHERE Id = '$id'";
@@ -101,15 +96,7 @@
 											<option selected>Selecione...</option>
 
 											<?php 
-
-											$servername = "127.0.0.1";
-											$database = "protocolos";
-											$username = "root";
-											$password = "";
-
-											$conn = mysqli_connect($servername, $username, $password, $database);
-										//Carrega os dados
-											$sql = "SELECT * FROM curso";
+ 											$sql = "SELECT * FROM curso";
 											$consulta = mysqli_query($conn, $sql);
 
 											while( $dados = mysqli_fetch_assoc($consulta)){                                    

@@ -1,9 +1,10 @@
-<?php 
-	
-	$servername = "127.0.0.1";
-    $database = "protocolos";
-    $username = "root";
-    $password = "";
+<?php  
+ $servername = "10.93.10.10";
+  $database = "protocolos";
+  $username = "protocolos";
+  $password = "protocolos*01";
+                   
+    $conn = mysqli_connect($servername, $username, $password, $database);
 
 
     $numproto = $_POST['numproto'];
@@ -24,7 +25,7 @@
     $encaminhamentocolegiado = $_POST['encaminhamentocolegiado'];
     
      
-    $conn = mysqli_connect($servername, $username, $password, $database);
+    
 
     if($vencimento=='5 dias'){    
            $conversao = strtotime($data);   

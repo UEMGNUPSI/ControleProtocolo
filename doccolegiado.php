@@ -16,20 +16,7 @@
 </head>
 <body id="page-top">
 
-   <?php 
-                              
-                        $servername = "127.0.0.1";
-                        $database = "protocolos";
-                        $username = "root";
-                        $password = "";
-                                         
-                          $conn = mysqli_connect($servername, $username, $password, $database);
-    ?>
-
-  
-
-
-      <!-- Navbar Search -->
+        <!-- Navbar Search -->
       <?php include_once "funções/navbar.php"; ?>
       <!-- Navbar -->
      

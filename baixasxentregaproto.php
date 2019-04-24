@@ -27,10 +27,10 @@
       <div id="resultadoDocs">
         <?php 
 
-        $servidor="localhost";
-        $usuario="root";
-        $senha="";
-        $bancodedados="protocolos";
+         $servername = "10.93.10.10";
+        $database = "protocolos";
+        $username = "protocolos";
+        $password = "protocolos*01";
 
         $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 

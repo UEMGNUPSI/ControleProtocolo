@@ -69,10 +69,7 @@
                   
                    <?php 
                               
-                              $servername = "127.0.0.1";
-                              $database = "protocolos";
-                              $username = "root";
-                              $password = "";
+                              
       
                               $id=$_GET['id'];
                                               

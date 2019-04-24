@@ -47,13 +47,13 @@
 
 <body id="page-top">
 
-        <!-- Navbar Search -->
-        <?php include_once "funções/navbar.php"; ?>
+    <!-- Navbar Search -->
+    <?php include_once "funções/navbar.php"; ?>
 
-        <!-- Navbar -->
+    <!-- Navbar -->
 
 
-   
+
 
     <div id="wrapper">
 
@@ -73,81 +73,77 @@
 
                     <div class="col-12 text-center my-5">
                         <h1 style="font-weight: 330;"><i class="fa fa-paper-plane text-primary mr-3" aria-hidden="true"></i>Entrega de Documentos</h3>
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-5 justifiy-content-center">
+                    <div class="row mb-5 justifiy-content-center">
 
-                    <div class="col-sm-12 col-md-10 col-lg-8">
+                        <div class="col-sm-12 col-md-10 col-lg-8">
 
-                        <form method="post" id = "cadDocumento" action="">
+                            <form method="post" id = "cadDocumento" action="">
 
-                            <div class="form-row ml-5">
+                                <div class="form-row ml-5">
 
-                                <div class="form-group col-sm-6 ">
-                                    <?php 
-
-                                    $sql = "SELECT Id FROM addentregaprotocolos ORDER BY Id DESC LIMIT 1";
-                                    $execute = mysqli_query($conn, $sql);
-                                    $dados = mysqli_fetch_assoc($execute);
-                                    $dadosId =  $dados['Id'] + 1;
-
-                                    ?>
-
-                                    <label for="inputNumProto">Número Protocolo:</label>
-                                    <input type="text" class="form-control" id="inputNumProto" name="numproto" placeholder="Digite número do protocolo" value="<?php echo date('Ym') . str_pad($dadosId, 4, "0", STR_PAD_LEFT); ?>" readonly="true">
-
-                                </div>
-
-                                <div class="form-group col-sm-6">
-
-                                    <label for="inputNomeAtendente">Atendente:</label>
-                                    <input type="text" class="form-control" id="inputNomeAtendetne" name="nomeatendente" value="<?php echo $login; ?>" required="">
-
-                                </div>
-
-                            </div>
-
-                            <div class="form-row ml-5">
-
-                                <div class="form-group col-sm-6 ">
-
-                                    <label for="inputNomeAten">Requerente:</label>
-                                    <input type="text" class="form-control" id="inputNomeAten" name="nomeatendido" placeholder="Digite o nome do Requerente" required="">
-
-                                </div>
-
-                                <div class="form-group col-sm-6">
-
-                                    <label for="inputEncaminhamento">Destinação:</label>
-                                    <select id="inputEncaminhamento" class="form-control" name="encaminhamento">
-
-                                        <option selected>Selecione...</option>
-
+                                    <div class="form-group col-sm-6 ">
                                         <?php 
 
-                                        $servername = "127.0.0.1";
-                                        $database = "protocolos";
-                                        $username = "root";
-                                        $password = "";
+                                        $sql = "SELECT Id FROM addentregaprotocolos ORDER BY Id DESC LIMIT 1";
+                                        $execute = mysqli_query($conn, $sql);
+                                        $dados = mysqli_fetch_assoc($execute);
+                                        $dadosId =  $dados['Id'] + 1;
 
-                                        $conn = mysqli_connect($servername, $username, $password, $database);
-                                        //Carrega os dados
-                                        $sql = "SELECT * FROM encaminhamento";
-                                        $consulta = mysqli_query($conn, $sql);
-
-                                        while ($dados = mysqli_fetch_assoc($consulta)) {
-
-                                          echo "<option>" . $dados['encaminhamento'] . "</option>";
-                                        }
                                         ?>
 
-                                    </select>
+                                        <label for="inputNumProto">Número Protocolo:</label>
+                                        <input type="text" class="form-control" id="inputNumProto" name="numproto" placeholder="Digite número do protocolo" value="<?php echo date('Ym') . str_pad($dadosId, 4, "0", STR_PAD_LEFT); ?>" readonly="true">
+
+                                    </div>
+
+                                    <div class="form-group col-sm-6">
+
+                                        <label for="inputNomeAtendente">Atendente:</label>
+                                        <input type="text" class="form-control" id="inputNomeAtendetne" name="nomeatendente" value="<?php echo $login; ?>" required="">
+
+                                    </div>
 
                                 </div>
 
-                            </div>
+                                <div class="form-row ml-5">
 
-                            <div class="form-row ml-5">
+                                    <div class="form-group col-sm-6 ">
+
+                                        <label for="inputNomeAten">Requerente:</label>
+                                        <input type="text" class="form-control" id="inputNomeAten" name="nomeatendido" placeholder="Digite o nome do Requerente" required="">
+
+                                    </div>
+
+                                    <div class="form-group col-sm-6">
+
+                                        <label for="inputEncaminhamento">Destinação:</label>
+                                        <select id="inputEncaminhamento" class="form-control" name="encaminhamento">
+
+                                            <option selected>Selecione...</option>
+
+                                            <?php 
+
+
+
+                                                                                 //Carrega os dados
+                                            $sql = "SELECT * FROM encaminhamento";
+                                            $consulta = mysqli_query($conn, $sql);
+
+                                            while ($dados = mysqli_fetch_assoc($consulta)) {
+
+                                              echo "<option>" . $dados['encaminhamento'] . "</option>";
+                                          }
+                                          ?>
+
+                                      </select>
+
+                                  </div>
+
+                              </div>
+
+                              <div class="form-row ml-5">
 
                                 <div class="form-group col-sm-6">
 
@@ -180,12 +176,7 @@
 
                                         <?php 
 
-                                        $servername = "127.0.0.1";
-                                        $database = "protocolos";
-                                        $username = "root";
-                                        $password = "";
-
-                                        $conn = mysqli_connect($servername, $username, $password, $database);
+                                  
                                         //Carrega os dados
                                         $sql = "SELECT * FROM curso";
                                         $consulta = mysqli_query($conn, $sql);
@@ -193,104 +184,104 @@
                                         while ($dados = mysqli_fetch_assoc($consulta)) {
 
                                           echo "<option>" . $dados['curso'] . "</option>";
-                                        }
-                                        ?>
+                                      }
+                                      ?>
 
-                                    </select>
+                                  </select>
 
-                                </div>
-                                <div class="form-group col-sm-4">
+                              </div>
+                              <div class="form-group col-sm-4">
 
-                                    <label for="inputCurso">Vencimento:</label>
-                                    <select id="inputCurso" class="form-control" name="vencimento">
+                                <label for="inputCurso">Vencimento:</label>
+                                <select id="inputCurso" class="form-control" name="vencimento">
 
-                                        <option selected>Selecione...</option>
-                                        <option>3 Dias</option>
-                                        <option> 5 Dias</option>
+                                    <option selected>Selecione...</option>
+                                    <option>3 Dias</option>
+                                    <option> 5 Dias</option>
 
-                                    </select>
-
-                                </div>
-
-
-                                <div class="form-group col-sm-4">
-
-                                    <label for="inputDAE">DAE:</label>
-                                    <input type="text" id="inputDAE" class="form-control" name="DAE" required="" placeholder="">
-
-                                </div>
-
-                            </div>
-
-                            <div class="form-row ml-5">
-
-                                <div class="form-group col-sm-3">
-
-                                    <label for="inputPeriodo">Período:</label>
-                                    <input type="text" class="form-control" id="inputPeriodo" name="periodo" required="">
-
-                                </div>
-
-
-                                <div class="form-group col-sm-9">
-
-                                    <label for="inputEntregue">Entregue Por: </label>
-                                    <input type="text" class="form-control" id="inputEntregue" name="entregue" required="">
-
-                                </div>
-                            </div>
-
-                            <div class="form-row ml-5">
-
-                                <div class="form-group col-sm-6 ">
-
-                                    <label for="inputDescricao">Descrição:</label>
-                                    <textarea class="form-control" id="inputDescricao" name="descricao"></textarea>
-
-                                </div>
-
-                                <div class="form-group col-sm-6 ">
-
-                                    <label for="inputObservacao">Observação:</label>
-                                    <textarea class="form-control" id="inputObservacao" name="observacao"></textarea>
-
-                                </div>
+                                </select>
 
                             </div>
 
 
-                            <div class="form-row ml-5">
+                            <div class="form-group col-sm-4">
 
-                                <div class="col-sm-12">
+                                <label for="inputDAE">DAE:</label>
+                                <input type="text" id="inputDAE" class="form-control" name="DAE" required="" placeholder="">
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-row ml-5">
+
+                            <div class="form-group col-sm-3">
+
+                                <label for="inputPeriodo">Período:</label>
+                                <input type="text" class="form-control" id="inputPeriodo" name="periodo" required="">
+
+                            </div>
+
+
+                            <div class="form-group col-sm-9">
+
+                                <label for="inputEntregue">Entregue Por: </label>
+                                <input type="text" class="form-control" id="inputEntregue" name="entregue" required="">
+
+                            </div>
+                        </div>
+
+                        <div class="form-row ml-5">
+
+                            <div class="form-group col-sm-6 ">
+
+                                <label for="inputDescricao">Descrição:</label>
+                                <textarea class="form-control" id="inputDescricao" name="descricao"></textarea>
+
+                            </div>
+
+                            <div class="form-group col-sm-6 ">
+
+                                <label for="inputObservacao">Observação:</label>
+                                <textarea class="form-control" id="inputObservacao" name="observacao"></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-row ml-5">
+
+                            <div class="col-sm-12">
 
                                 <input  class = "btn btn-primary"type="button" value="Cadastrar" id="salvar" style="float: right;"/>
                                 <a class="btn btn-danger text-white" id="voltar" data-toggle="modal" data-target="#Cancelar">Cancelar</a>
 
-                                </div>
                             </div>
+                        </div>
 
-                        </form>
-                    </div>
+                    </form>
                 </div>
-
             </div>
 
         </div>
 
+    </div>
 
- <!-- Cadastro Modal -->
- <div class="modal fade" id="myodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Documento cadastrado com Sucesso!</h4>
-                    </div>
-                    <div class="modal-footer">
 
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
-                        <a  class="text-white"href="verficaentregaproto.php"><button type="button" class="btn btn-info">Listar Documentos</a>
+    <!-- Cadastro Modal -->
+    <div class="modal fade" id="myodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Documento cadastrado com Sucesso!</h4>
+                </div>
+                <div class="modal-footer">
 
-                        
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+                    <a  class="text-white"href="verficaentregaproto.php"><button type="button" class="btn btn-info">Listar Documentos</a>
+
+
 
                     </div>
                 </div>
@@ -298,36 +289,36 @@
         </div>
         <!-- Modal já Cadastrado -->
         <div class="modal fade" id="myodal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title" id="myModalLabel">Protocolo já cadastrado!</h4>
-						</div>
-						<div class="modal-footer">
-							<a href="addentregaproto.php"><button type="button" class="btn btn-danger">Voltar</button></a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-        <div class="modal fade" id="Cancelar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Deseja mesmo cancelar este cadastro?</h4>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
-                        <a class="text-white" href="menu.php"><button type="button" class="btn btn-info">Cancelar</a>
-                    </div>
+             <div class="modal-content">
+              <div class="modal-header">
+               <h4 class="modal-title" id="myModalLabel">Protocolo já cadastrado!</h4>
+           </div>
+           <div class="modal-footer">
+               <a href="addentregaproto.php"><button type="button" class="btn btn-danger">Voltar</button></a>
+           </div>
+       </div>
+   </div>
+</div>
+
+<div class="modal fade" id="Cancelar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Deseja mesmo cancelar este cadastro?</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+                <a class="text-white" href="menu.php"><button type="button" class="btn btn-info">Cancelar</a>
                 </div>
             </div>
         </div>
+    </div>
 
 
 
-        <!-- Logout Modal-->
-        <?php include_once "funções/logout.php" ;?>
+    <!-- Logout Modal-->
+    <?php include_once "funções/logout.php" ;?>
 
 </body>
 

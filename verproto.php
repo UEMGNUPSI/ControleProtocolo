@@ -73,14 +73,10 @@
 
                 <?php
 
-                $servername = "127.0.0.1";
-                $database = "protocolos";
-                $username = "root";
-                $password = "";
 
                 $id = $_GET['id'];
 
-                $conn = mysqli_connect($servername, $username, $password, $database);
+          
 
                 $sql = "SELECT * FROM addprotocolos WHERE Id='$id'";
                 $consulta = mysqli_query($conn, $sql);

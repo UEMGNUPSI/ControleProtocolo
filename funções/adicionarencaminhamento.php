@@ -1,13 +1,10 @@
 <?php 
-	
-	 $servername = "127.0.0.1";
-    $database = "protocolos";
-    $username = "root";
-    $password = "";
-    $encaminhamento = $_POST['encaminhamento'];
-    
-
-  	$conn = mysqli_connect($servername, $username, $password, $database);
+  $servername = "10.93.10.10";
+  $database = "protocolos";
+  $username = "protocolos";
+  $password = "protocolos*01";
+                   
+    $conn = mysqli_connect($servername, $username, $password, $database);
 
 
 	$sql = $conn->query("SELECT * FROM encaminhamento WHERE encaminhamento='$encaminhamento'");

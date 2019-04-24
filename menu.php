@@ -55,13 +55,6 @@
         
         <div class="content">
           <?php
-
-          $servername = "127.0.0.1";
-          $database = "protocolos";
-          $username = "root";
-          $password = "";
-
-          $conn = mysqli_connect($servername, $username, $password, $database);
           $datapc = date("Y-m-d");
           $timestamp = strtotime("$datapc +1days");
           $dataam = date("Y-m-d", $timestamp);
@@ -180,12 +173,12 @@
               <div id="resultadoDocs">
                 <?php
 
-                $servidor = "localhost";
-                $usuario = "root";
-                $senha = "";
-                $bancodedados = "protocolos";
+                 $servername = "10.93.10.10";
+        $database = "protocolos";
+        $username = "protocolos";
+        $password = "protocolos*01";
 
-                $mysqli = new mysqli($servidor, $usuario, $senha, $bancodedados);
+                $mysqli = new mysqli($servername, $username, $password, $database);
 
                 $sql = $mysqli->prepare('select id,encaminhamento,nome,data,datavencimento from addentregaprotocolos WHERE status=0 ORDER BY datavencimento ASC');
                 $sql->execute();
@@ -311,12 +304,12 @@
 
               <div id="resultado1">
                 <?php
-                $servidor = "localhost";
-                $usuario = "root";
-                $senha = "";
-                $bancodedados = "protocolos";
+                 $servername = "10.93.10.10";
+        $database = "protocolos";
+        $username = "protocolos";
+        $password = "protocolos*01";
 
-                $mysqli = new mysqli($servidor, $usuario, $senha, $bancodedados);
+                $mysqli = new mysqli($servername, $username, $password, $database);
 
                 $sql = $mysqli->prepare('select id,encaminhamentocolegiado,nome,data,datavencimento from addprotocolos WHERE statusColeg=0 ORDER BY datavencimento ASC');
                 $sql->execute();
@@ -439,12 +432,12 @@
 
               <div id="resultado">
                 <?php
-                $servidor = "localhost";
-                $usuario = "root";
-                $senha = "";
-                $bancodedados = "protocolos";
+               $servername = "10.93.10.10";
+        $database = "protocolos";
+        $username = "protocolos";
+        $password = "protocolos*01";
 
-                $mysqli = new mysqli($servidor, $usuario, $senha, $bancodedados);
+                $mysqli = new mysqli($servername, $username, $password, $database);
 
                 $sql = $mysqli->prepare('select id,encaminhamento,nome,data,datavencimento from addprotocolos WHERE status=0 ORDER BY datavencimento ASC');
                 $sql->execute();
@@ -594,12 +587,7 @@
 
                       <?php
 
-                      $servername = "127.0.0.1";
-                      $database = "protocolos";
-                      $username = "root";
-                      $password = "";
-
-                      $conn = mysqli_connect($servername, $username, $password, $database);
+                      
                       //Carrega os dados
                       $sql = "SELECT * FROM curso";
                       $consulta = mysqli_query($conn, $sql);

@@ -51,10 +51,10 @@ for ($i = 0; $i < count($array); $i++ ){
 
 //buscando protocolos
 
-$servername = "127.0.0.1";
+$servername = "10.93.10.10";
 $database = "protocolos";
-$username = "root";
-$password = "";
+$username = "protocolos";
+$password = "protocolos*01";
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 

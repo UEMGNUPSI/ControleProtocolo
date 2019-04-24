@@ -141,13 +141,6 @@
 
                                         <?php 
 
-                                        $servername = "127.0.0.1";
-                                        $database = "protocolos";
-                                        $username = "root";
-                                        $password = "";
-
-                                        $conn = mysqli_connect($servername, $username, $password, $database);
-                                        //Carrega os dados
                                         $sql = "SELECT * FROM encaminhamento";
                                         $consulta = mysqli_query($conn, $sql);
 
@@ -223,13 +216,6 @@
 
                                         <?php 
 
-                                        $servername = "127.0.0.1";
-                                        $database = "protocolos";
-                                        $username = "root";
-                                        $password = "";
-
-                                        $conn = mysqli_connect($servername, $username, $password, $database);
-                                        //Carrega os dados
                                         $sql = "SELECT * FROM curso";
                                         $consulta = mysqli_query($conn, $sql);
 
@@ -295,13 +281,6 @@
 
                                         <?php 
 
-                                        $servername = "127.0.0.1";
-                                        $database = "protocolos";
-                                        $username = "root";
-                                        $password = "";
-
-                                        $conn = mysqli_connect($servername, $username, $password, $database);
-                                        //Carrega os dados
                                         $sql = "SELECT * FROM curso";
                                         $consulta = mysqli_query($conn, $sql);
 
@@ -323,14 +302,6 @@
                                         <option selected>Selecione...</option>
 
                                         <?php 
-
-                                        $servername = "127.0.0.1";
-                                        $database = "protocolos";
-                                        $username = "root";
-                                        $password = "";
-
-                                        $conn = mysqli_connect($servername, $username, $password, $database);
-                                        //Carrega os dados
                                         $sql = "SELECT * FROM encaminhamento";
                                         $consulta = mysqli_query($conn, $sql);
 

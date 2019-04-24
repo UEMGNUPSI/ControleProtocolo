@@ -1,17 +1,17 @@
 <?php 
     //Recebe os dados com as alterações feitas
       
-    $servername = "127.0.0.1";
-	$database = "protocolos";
-	$username = "root";
-	$password = "";
+      $servername = "10.93.10.10";
+  $database = "protocolos";
+  $username = "protocolos";
+  $password = "protocolos*01";
+                   
+    $conn = mysqli_connect($servername, $username, $password, $database);
     $id =  $_POST['id'];  
     $curso = $_POST['curso'];
 
 
-    //Estabelece a conexão com o mysql
-    $conn = mysqli_connect($servername, $username, $password, $database);
-    
+   
     $sql = "UPDATE curso SET curso='$curso' WHERE id='$id'";
     $update = mysqli_query($conn, $sql);
     

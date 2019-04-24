@@ -38,12 +38,7 @@
           
           <div class="form-row ml-5">
              <?php 
-                $servername = "127.0.0.1";
-                $database = "protocolos";
-                $username = "root";
-                $password = "";
-                //Estabelece a conexão com o mysql
-                $conn = mysqli_connect($servername, $username, $password, $database);
+               
 
                  $id =  $_GET['id']; 
                  

@@ -1,10 +1,10 @@
 <?php 
-		$servername = "127.0.0.1";
-        $database = "protocolos";
-        $username = "root";
-        $password = "";
-                                         
-            $conn = mysqli_connect($servername, $username, $password, $database);
+	  $servername = "10.93.10.10";
+  $database = "protocolos";
+  $username = "protocolos";
+  $password = "protocolos*01";
+                   
+    $conn = mysqli_connect($servername, $username, $password, $database);
 
         $protocolo = $_POST['numproto'];
         $nome = $_POST['nomealuno'];

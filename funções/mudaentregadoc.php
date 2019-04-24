@@ -1,9 +1,10 @@
 <?php 
-	
-	$servername = "127.0.0.1";
-    $database = "protocolos";
-    $username = "root";
-    $password = "";
+  $servername = "10.93.10.10";
+  $database = "protocolos";
+  $username = "protocolos";
+  $password = "protocolos*01";
+                   
+    $conn = mysqli_connect($servername, $username, $password, $database);
 
     $id=$_GET['id'];   
 
@@ -21,7 +22,6 @@
     $encaminhamento = $_POST['encaminhamento'];
     
 
-  	$conn = mysqli_connect($servername, $username, $password, $database);	
 			
 	$sql = "UPDATE addentregaprotocolos SET numproto='$numproto',nome='$nomeatendido', atendente ='$nomeatendente',curso='$curso',dataretirada='$dataretirada',data='$data',dae='$DAE',observacao='$observacao',periodo='$periodo',descricao='$descricao',entregue='$entregue',encaminhamento = '$encaminhamento' WHERE id='$id'";
     $update = mysqli_query($conn, $sql);
