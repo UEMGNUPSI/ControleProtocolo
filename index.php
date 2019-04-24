@@ -30,7 +30,7 @@
 				</div>
 
 				<div class="col-12 form-input" >
-					<form method="post" action="funções/login.php">
+					<form method="post" action="funcoes/login.php">
 
 						<div class="form-group col-sm-12 mt-2 ">					
 							
