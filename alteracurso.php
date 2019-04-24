@@ -16,13 +16,13 @@
 <body id="page-top">
 
          <!-- Navbar Search -->
-      <?php include_once "funções/navbar.php"; ?>
+      <?php include_once "funcoes/navbar.php"; ?>
 
       <!-- Navbar -->
      
 
     <div id="wrapper">
-
+<?php include_once "conexao.php"; ?>
       <!-- Sidebar -->
       <?php include_once 'side_bar.php';?>
 
@@ -57,7 +57,7 @@
 
           <div class="form-row ml-5 mb-3">              
             <div class="col-sm-6">                    
-              <button type="submit" class="btn btn-primary" formaction="funções/mudacurso.php" style="float: right;">Alterar</button>
+              <button type="submit" class="btn btn-primary" formaction="funcoes/mudacurso.php" style="float: right;">Alterar</button>
               <a class="btn btn-danger text-white" id="voltar" data-toggle="modal" data-target="#Cancelar">Cancelar</a> 
           </div>          
          
@@ -82,7 +82,7 @@
         </div>
 
     <!-- Logout Modal-->
-    <?php include_once "funções/logout.php" ;?>
+    <?php include_once "funcoes/logout.php" ;?>
 
   </body>
 

@@ -18,12 +18,12 @@
   
 
       <!-- Navbar Search -->
-      <?php include_once "funções/navbar.php"; ?>
+      <?php include_once "funcoes/navbar.php"; ?>
 
       <!-- Navbar -->
   
     <div id="wrapper">
-
+<?php include_once "conexao.php"; ?>
       <!-- Sidebar -->
       <?php include_once 'side_bar.php';?>
   <div id="content-wrapper">
@@ -50,7 +50,7 @@
                 
                 <div class="col-sm-12 col-md-10 col-lg-8">
                   
-                  <form method="post" action="funções/mudapos.php?id=<?php echo $dados['id'];?>">
+                  <form method="post" action="funcoes/mudapos.php?id=<?php echo $dados['id'];?>">
 
                       <div class="form-row ml-5">
 
@@ -143,7 +143,7 @@
 
 
     <!-- Logout Modal-->
-    <?php include_once "funções/logout.php" ;?>
+    <?php include_once "funcoes/logout.php" ;?>
     
 
   </body>

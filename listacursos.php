@@ -33,7 +33,7 @@
 
 
         <!-- Navbar Search -->
-        <?php include_once "funções/navbar.php"; ?>
+        <?php include_once "funcoes/navbar.php"; ?>
         <!-- Navbar -->
 
 
@@ -44,7 +44,7 @@
         <?php include_once 'side_bar.php'; ?>
 
 
-
+<?php include_once "conexao.php"; ?>
 
         <div id="content-wrapper">
 
@@ -145,7 +145,7 @@
 
             <!-- LogOut -->
 
-            <?php include_once "funções/logout.php" ;?>
+            <?php include_once "funcoes/logout.php" ;?>
         </div>
 
     </div>

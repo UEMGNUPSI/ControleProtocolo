@@ -20,7 +20,7 @@
 
 
       <!-- Navbar Search -->
-      <?php include_once "funções/navbar.php"; ?>
+      <?php include_once "funcoes/navbar.php"; ?>
 
       <!-- Navbar -->
      
@@ -78,7 +78,7 @@
       
 
     <!-- Logout Modal-->
-    <?php include_once "funções/logout.php" ;?>
+    <?php include_once "funcoes/logout.php" ;?>
 
     
 

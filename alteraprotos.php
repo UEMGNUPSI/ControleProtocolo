@@ -17,7 +17,7 @@
 
 
       <!-- Navbar Search -->
-      <?php include_once "funções/navbar.php"; ?>
+      <?php include_once "funcoes/navbar.php"; ?>
 
       <!-- Navbar -->
      
@@ -29,7 +29,7 @@
       <?php include_once 'side_bar.php';?>
 
 <div id="content-wrapper">
-
+<?php include_once "conexao.php"; ?>
         <div class="container-fluid">     
 
           <?php 
@@ -168,7 +168,7 @@
               
             <div class="col-sm-12">
               <input type="hidden" name="id" value="<?php echo $dados['Id']; ?>">  
-              <button type="submit" class="btn btn-primary" formaction="funções/mudaproto.php" style="float: right;">Alterar</button> 
+              <button type="submit" class="btn btn-primary" formaction="funcoes/mudaproto.php" style="float: right;">Alterar</button> 
                    
               <a class="btn btn-danger text-white" id="voltar" data-toggle="modal" data-target="#Cancelar">Cancelar</a>    
 
@@ -199,7 +199,7 @@
         </div>
 
     <!-- Logout Modal-->
-    <?php include_once "funções/logout.php" ;?>
+    <?php include_once "funcoes/logout.php" ;?>
 
     
 

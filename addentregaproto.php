@@ -24,7 +24,7 @@
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
-                    url: 'funções/adicionarentregaproto.php',
+                    url: 'funcoes/adicionarentregaproto.php',
                     async: true,
                     data: dados,
                     success: function(response) {
@@ -46,9 +46,9 @@
 </head>
 
 <body id="page-top">
-
+    <?php include_once "conexao.php"; ?>
     <!-- Navbar Search -->
-    <?php include_once "funções/navbar.php"; ?>
+    <?php include_once "funcoes/navbar.php"; ?>
 
     <!-- Navbar -->
 
@@ -318,7 +318,7 @@
 
 
     <!-- Logout Modal-->
-    <?php include_once "funções/logout.php" ;?>
+    <?php include_once "funcoes/logout.php" ;?>
 
 </body>
 

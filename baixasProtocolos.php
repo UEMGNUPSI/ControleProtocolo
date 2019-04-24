@@ -27,10 +27,10 @@
       <div id="resultados">
         <?php 
 
-         $servername = "10.93.10.10";
+         $servername = "10.93.10.12";
         $database = "protocolos";
-        $username = "protocolos";
-        $password = "protocolos*01";
+        $username = "root";
+        $password = "root";
 
         $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
 

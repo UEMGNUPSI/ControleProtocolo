@@ -19,7 +19,7 @@
 
     
       <!-- Navbar Search -->
-      <?php include_once "funções/navbar.php"; ?>
+      <?php include_once "funcoes/navbar.php"; ?>
 
       <!-- Navbar -->
      
@@ -30,7 +30,7 @@
       <?php include_once 'side_bar.php';?>
 
      <div id="content-wrapper">
-
+        <?php include_once "conexao.php"; ?>
         <div class="container-fluid">     
          
          
@@ -61,7 +61,7 @@
           <div class="form-row ml-5 mb-3">              
             <div class="col-sm-6">                
 
-              <button type="submit" class="btn btn-primary" formaction="funções/mudaencaminhamento.php" style="float: right;">Alterar</button>
+              <button type="submit" class="btn btn-primary" formaction="funcoes/mudaencaminhamento.php" style="float: right;">Alterar</button>
              <a class="btn btn-danger text-white" id="voltar" data-toggle="modal" data-target="#Cancelar">Cancelar</a>  
             </div>
           </div>

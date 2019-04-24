@@ -13,14 +13,8 @@
   <script src="https://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
 </head>
 <body>
+<?php include_once "conexao.php"; ?>
   <?php 
- $servername = "10.93.10.10";
-        $database = "protocolos";
-        $username = "protocolos";
-        $password = "protocolos*01";
-
-  $conn = mysqli_connect($servername, $username, $password, $database);
-
 
 // Recebe o valor enviado
   $id_estado = $_GET['valor'];

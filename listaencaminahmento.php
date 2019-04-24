@@ -43,7 +43,7 @@
 
 
     <!-- Navbar Search -->
-    <?php include_once "funções/navbar.php"; ?>
+    <?php include_once "funcoes/navbar.php"; ?>
     <!-- Navbar -->
 
   <div id="wrapper">
@@ -52,7 +52,7 @@
     <?php include_once 'side_bar.php'; ?>
 
 
-
+<?php include_once "conexao.php"; ?>
     <div id="content-wrapper">
 
       <div class="container-fluid">
@@ -146,7 +146,7 @@
 
       <!-- LogOut -->
 
-      <?php include_once "funções/logout.php" ;?>
+      <?php include_once "funcoes/logout.php" ;?>
 
     </div>
 

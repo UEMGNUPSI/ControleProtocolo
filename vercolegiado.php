@@ -28,12 +28,12 @@
 <body id="page-top">
 
    
-      <?php include_once "funções/navbar.php"; ?>
+      <?php include_once "funcoes/navbar.php"; ?>
 
       <!-- Navbar -->
      
 
-    
+    <?php include_once "conexao.php"; ?>
 
     <div id="wrapper">
 
@@ -121,7 +121,7 @@
                                       <div class="modal-footer">        
                                         <form>                                               
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                            <a class="btn btn-primary" href="funções/exclui_doc_coleg.php?id=<?php echo $dados['Id']; ?>">Excluir</a>            
+                                            <a class="btn btn-primary" href="funcoes/exclui_doc_coleg.php?id=<?php echo $dados['Id']; ?>">Excluir</a>            
                                         </form>
                                       </div>
                                    
@@ -213,7 +213,7 @@
       </div>
 
  <!-- Logout Modal-->
- <?php include_once "funções/logout.php" ;?>
+ <?php include_once "funcoes/logout.php" ;?>
 
     
 

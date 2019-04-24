@@ -31,7 +31,7 @@
 
 
     <!-- Navbar Search -->
-    <?php include_once "funções/navbar.php"; ?>
+    <?php include_once "funcoes/navbar.php"; ?>
 
     <!-- Navbar -->
 
@@ -128,7 +128,7 @@
                       <div class="modal-footer">
                         <form>
                           <button class="btn btn-danger" type="button" data-dismiss="modal">Cancelar</button>
-                          <a class="btn btn-primary" href="funções/excluiproto.php?id=<?php echo $dados['Id']; ?>">Excluir</a>
+                          <a class="btn btn-primary" href="funcoes/excluiproto.php?id=<?php echo $dados['Id']; ?>">Excluir</a>
                         </form>
                       </div>
 
@@ -214,7 +214,7 @@
   </div>
 
   <!-- Logout Modal-->
-  <?php include_once "funções/logout.php" ;?>
+  <?php include_once "funcoes/logout.php" ;?>
 
 
 </body>

@@ -1,3 +1,4 @@
+<?php include_once "conexao.php"; ?>
 <?php
 session_start();
 $array = $_SESSION['id'];
@@ -50,13 +51,6 @@ for ($i = 0; $i < count($array); $i++ ){
 }
 
 //buscando protocolos
-
-$servername = "10.93.10.10";
-$database = "protocolos";
-$username = "protocolos";
-$password = "protocolos*01";
-
-$conn = mysqli_connect($servername, $username, $password, $database);
 
 $consulta = mysqli_query($conn, $sql);
 

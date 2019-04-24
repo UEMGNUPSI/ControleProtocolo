@@ -1,13 +1,8 @@
+<?php include_once "conexao.php"; ?>
 <?php 
   session_start();      
 
- $servername = "10.93.10.10";
-        $database = "protocolos";
-        $username = "protocolos";
-        $password = "protocolos*01";
-      
-  $conn = mysqli_connect($servername, $username, $password, $database);
-
+ 
   $curso = $_POST['curso'];
   $datainicial = $_POST['inicial'];
   $datafinal = $_POST['final'];

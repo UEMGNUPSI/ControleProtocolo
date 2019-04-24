@@ -34,7 +34,7 @@
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
-                    url: 'funções/adicionarproto.php',
+                    url: 'funcoes/adicionarproto.php',
                     async: true,
                     data: formi,
                     success: function(response) {
@@ -60,10 +60,10 @@
 <body id="page-top" onload="time()">
 
 
-    
+    <?php include_once "conexao.php"; ?>
 
         <!-- Navbar Search -->
-        <?php include_once "funções/navbar.php"; ?>
+        <?php include_once "funcoes/navbar.php"; ?>
 
         <!-- Navbar -->
 
@@ -389,7 +389,7 @@
         </div>
 
         <!-- Logout Modal-->
-        <?php include_once "funções/logout.php" ;?>
+        <?php include_once "funcoes/logout.php" ;?>
 
 
 </body>

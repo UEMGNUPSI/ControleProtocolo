@@ -29,7 +29,7 @@
   
 
 
-   <?php include_once "funções/navbar.php"; ?>
+   <?php include_once "funcoes/navbar.php"; ?>
 
 
   
@@ -39,6 +39,7 @@
     <!--Começo Sidebar -->
     <?php include_once 'side_bar.php'; ?>
     <!-- Final SideBar -->
+    <?php include_once "conexao.php"; ?>
     <div id="content-wrapper">
 
       <div class="container-fluid ml-3">
@@ -173,10 +174,10 @@
               <div id="resultadoDocs">
                 <?php
 
-                 $servername = "10.93.10.10";
+                 $servername = "10.93.10.12";
         $database = "protocolos";
-        $username = "protocolos";
-        $password = "protocolos*01";
+        $username = "root";
+        $password = "root";
 
                 $mysqli = new mysqli($servername, $username, $password, $database);
 
@@ -304,10 +305,10 @@
 
               <div id="resultado1">
                 <?php
-                 $servername = "10.93.10.10";
+                 $servername = "10.93.10.12";
         $database = "protocolos";
-        $username = "protocolos";
-        $password = "protocolos*01";
+        $username = "root";
+        $password = "root";
 
                 $mysqli = new mysqli($servername, $username, $password, $database);
 
@@ -432,10 +433,10 @@
 
               <div id="resultado">
                 <?php
-               $servername = "10.93.10.10";
+               $servername = "10.93.10.12";
         $database = "protocolos";
-        $username = "protocolos";
-        $password = "protocolos*01";
+        $username = "root";
+        $password = "root";
 
                 $mysqli = new mysqli($servername, $username, $password, $database);
 
@@ -628,7 +629,7 @@
           </div>
 
           <!-- Logout Modal-->
-          <?php include_once "funções/logout.php" ;?>
+          <?php include_once "funcoes/logout.php" ;?>
 
 
 </body>

@@ -23,7 +23,7 @@
               $.ajax({
                 type: 'POST',
                 dataType: 'json',
-                url: 'funções/adicionarcertificado.php',
+                url: 'funcoes/adicionarcertificado.php',
                 async: true,
                 data: certificado,
                 success: function(response) {
@@ -51,7 +51,8 @@
        
 
         <!-- Navbar Search -->
-        <?php include_once "funções/navbar.php"; ?>
+        <?php include_once "funcoes/navbar.php"; ?>
+        <?php include_once "conexao.php"; ?>
 
 
         <div id="wrapper">
@@ -205,7 +206,7 @@
         </div>
       </div>		
 
-      <?php include_once "funções/logout.php" ;?>
+      <?php include_once "funcoes/logout.php" ;?>
       
 
     </body>

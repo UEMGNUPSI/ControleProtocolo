@@ -24,7 +24,7 @@
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
-                    url: 'funções/adicionarencaminhamento.php',
+                    url: 'funcoes/adicionarencaminhamento.php',
                     async: true,
                     data: dados,
                     success: function(response) {
@@ -48,7 +48,7 @@
 <body id="page-top">
 
 
-    
+        <?php include_once "conexao.php"; ?>
         <!-- Navbar Search -->
         <?php include_once "funções/navbar.php"; ?>
 
@@ -143,7 +143,7 @@
         </div>
 
             <!-- Logout Modal-->
-            <?php include_once "funções/logout.php" ;?>
+            <?php include_once "funcoes/logout.php" ;?>
 
 
 
