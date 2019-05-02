@@ -50,7 +50,7 @@
 
         <?php include_once "conexao.php"; ?>
         <!-- Navbar Search -->
-        <?php include_once "funções/navbar.php"; ?>
+        <?php include_once "funcoes/navbar.php"; ?>
 
         
 

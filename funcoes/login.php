@@ -1,8 +1,7 @@
 
-<?php include_once "/protocolos/conexao.php"; ?>
 
 <?php
-
+include_once "..\conexao.php";
 	session_start();
   
     $login = $_POST['login'];
@@ -18,9 +17,9 @@
 
    if(isset($resultado)){
    
-    header('Location: /protocolos/menu.php?login='.$_SESSION['login'].'');
+   header('Location: /protocolos/menu.php?login='.$_SESSION['login'].'');
    }else {    
-    echo"<script language='javascript' type='text/javascript'>window.location.href='/protocolos/index.php?l=Usuário ou senha Inválido!';</script>"; 
+   echo"<script language='javascript' type='text/javascript'>window.location.href='/protocolos/index.php?l=Usuário ou senha Inválido!';</script>"; 
    }
 
 ?>

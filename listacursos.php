@@ -115,7 +115,7 @@
                                                         <div class="modal-footer">
                                                             <form>
                                                                 <button class="btn btn-danger" type="button" data-dismiss="modal">Cancelar</button>
-                                                                <a class="btn btn-primary" href="funções/excluicurso.php?id=<?php echo $dados['id']; ?>">Excluir</a>
+                                                                <a class="btn btn-primary" href="funcoes/excluicurso.php?id=<?php echo $dados['id']; ?>">Excluir</a>
                                                             </form>
                                                         </div>
 

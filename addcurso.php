@@ -32,12 +32,9 @@
                     data: dados,
                     success: function(response) {
                         if (response == '1') {
-
                             $('#myModal').modal('show');
-                            
-
                         } else {
-                           $('#myModal2').modal('show');
+                            $('#myModal2').modal('show');
                         }
                     }
                 });
@@ -53,7 +50,7 @@
 
         <?php include_once "conexao.php"; ?>
         <!-- Navbar Search -->
-        <?php include_once "funções/navbar.php"; ?>
+        <?php include_once "funcoes/navbar.php"; ?>
 
         <!-- Navbar -->
 
@@ -75,7 +72,7 @@
 
                         <div class="form-group col-sm-6 ">
                             <label for="curso">Curso:</label>
-                            <input type="text" class="form-control" maxlength="15" minlength="5" name="curso" id="curso" placeholder="Digite nome do curso" required="">
+                            <input type="text" class="form-control" maxlength="50" minlength="5" name="curso" id="curso" placeholder="Digite nome do curso" required="">
                         </div>
 
                     </div>
@@ -117,7 +114,7 @@
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
                         <a  class="text-white"href="listacursos.php"><button type="button" class="btn btn-info">Listar Cursos</a>
                     </div>
-   x             </div>
+               </div>
             </div>
         </div>
         <!-- Modal já Cadastrado -->

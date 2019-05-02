@@ -39,11 +39,8 @@
                     data: formi,
                     success: function(response) {
                         if (response == '1') {
-
                             $('#myModal').modal('show');
-
-
-                        } else {
+                        } else {                        
                             $('#myModal2').modal('show');
                         }
                     }

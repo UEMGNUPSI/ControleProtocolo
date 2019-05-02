@@ -89,7 +89,7 @@
         </div>
 
     <!-- Logout Modal-->
-    <?php include_once "funções/logout.php" ;?>
+    <?php include_once "funcoes/logout.php" ;?>
 
     
 

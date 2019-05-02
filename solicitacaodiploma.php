@@ -135,7 +135,7 @@
 
                                 <div class="col-sm-12">
 
-                                <input  class = "btn btn-primary"type="button" value="Cadastrar" id="cadastro" style="float: right;" /> 
+                                <input  class = "btn btn-primary" type="button" value="Cadastrar" id="cadastro" style="float: right;" /> 
                                 <a class="btn btn-danger text-white" id="voltar" data-toggle="modal" data-target="#Cancelar">Cancelar</a>
 
                                 </div>

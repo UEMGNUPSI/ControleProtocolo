@@ -1,7 +1,10 @@
-<?php include_once "/protocolos/conexao.php"; ?>
+<?php include_once "../conexao.php"; ?>
 <?php 
+	
 
-	$sql = $conn->query("SELECT * FROM encaminhamento WHERE encaminhamento='$encaminhamento'");
+	$encaminhamento = $_POST['encaminhamento'];
+	
+		$sql = $conn->query("SELECT * FROM encaminhamento WHERE encaminhamento='$encaminhamento'");
 			
 		if(mysqli_num_rows($sql) > 0){
 			echo '2';	
