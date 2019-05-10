@@ -1,8 +1,8 @@
  <?php                               
-  $servername = "10.93.10.12";
+  $servername = "10.93.10.10";
   $database = "protocolos";
-  $username = "root";
-  $password = "root";
+  $username = "protocolos";
+  $password = "protocolos*01";
                    
     $conn = mysqli_connect($servername, $username, $password,  $database);
 

@@ -18,7 +18,7 @@
 	
 
 		<!-- Navbar Search -->
-		<?php include_once "funces/navbar.php"; ?>
+		<?php include_once "funcoes/navbar.php"; ?>
 
 
 <!-- Navbar -->

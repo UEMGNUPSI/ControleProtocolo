@@ -1,4 +1,4 @@
-<?php include_once "/protocolos/conexao.php"; ?>
+<?php include_once "../conexao.php"; ?>
 <?php 
 
 $id = $_GET['id'];

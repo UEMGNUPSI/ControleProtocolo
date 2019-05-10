@@ -43,11 +43,11 @@ if($vencimento=='5 dias'){
 $sql = $conn->query("SELECT * FROM addprotocolos WHERE  numproto='$numproto'");
 
 if(mysqli_num_rows($sql) > 0){
-    echo '2';               
+    echo json_encode('2');               
 } else {
-    echo '1'; 
-    if(!$conn->query("INSERT INTO addprotocolos(numproto,nome,atendente,curso,historico,data,hora,observacao,ra,cursocolegiado,obsevacaocolegiado,encaminhamento,encaminhamentocolegiado,vencimento,dataretirada,datavencimento) VALUES ('$numproto','$nomeatendido','$nomeatendente','$curso','$historico','$data','$hora','$observacao','$ra','$cursocolegiado','$observacaocolegiado','$encaminhamento','$encaminhamentocolegiado','$vencimento','$dataretirada','$salvadata')")) die ('Os dados não foram inseridos');
-                
+     
+    if(!$conn->query("INSERT INTO addprotocolos(numproto,nome,atendente,curso,historico,data,hora,observacao,ra,cursocolegiado,obsevacaocolegiado,encaminhamento,encaminhamentocolegiado,vencimento,dataretirada,datavencimento,status,statusColeg) VALUES ('$numproto','$nomeatendido','$nomeatendente','$curso','$historico','$data','$hora','$observacao','$ra','$cursocolegiado','$observacaocolegiado','$encaminhamento','$encaminhamentocolegiado','$vencimento','$dataretirada','$salvadata','0','0')")) die ('Os dados não foram inseridos');
+    echo json_encode('1');            
 
 }   
 

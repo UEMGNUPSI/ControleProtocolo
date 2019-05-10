@@ -5,13 +5,14 @@
   			font-family: 'Roboto', sans-serif;
         margin: 0px;
         height: 100vh;        
-  		  background-image:  linear-gradient(to bottom,#4682B4, #ADD8E6,#FFFFFF);
+  	   	background-image: url("uemg.png");
         padding: 0;
   		}
       .main-section{
         margin: 0 auto;
-        margin-top: 130px;
+        
         padding: 0;
+        margin-top: 15%;
       } 
   		.modal-content{
   			background-color: #43e5a;
@@ -20,18 +21,19 @@
   			border-radius: 10px;
 
   		}
-  		.user-img img{
-  			width: 120px;
-  			height: 120px;
-  			border-radius: 50%;
-  			border: 1px solid #555e60;
-  		}
+      .btn-azul{
+        background-color: #4682B4;
+        color: white;
+
+      }
+  		
   		.user-img{
-  			margin-top: -60px;
-  			margin-bottom: 45px;
+  			
+  			margin-bottom: 35px;
   		}
   		.form-group{
-  			margin-bottom: 39px;
+  			
+        margin-bottom: 39px;
   		}
   		.form-group input {
   			height: 10px;

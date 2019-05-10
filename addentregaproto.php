@@ -22,9 +22,10 @@
 
                  var dados = $('#cadDocumento').serialize();
 
+
                  $.ajax({
                     type: 'POST',
-                    dataType: 'html',
+                    dataType: 'json',
                     url: 'funcoes/adicionarentregaproto.php',
                     async: true,
                     data: dados,
