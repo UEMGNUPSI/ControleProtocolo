@@ -5,9 +5,6 @@
   $password = "";
                    
     $conn = mysqli_connect($servername, $username, $password,  $database);
-    $mysqli=new mysqli($servername,$username,$password,$database);
+
 
 ?>
-
-<!-- $username = "protocolos";
-$password = "protocolos*01"; -->
