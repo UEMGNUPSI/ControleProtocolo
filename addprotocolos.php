@@ -38,7 +38,7 @@
                     async: true,
                     data: formi,
                     success: function(response) {
-                        if (response == '1') {
+                        if (response == true) {
                             $('#myModal').modal('show');
                         } else {                        
                             $('#myModal2').modal('show');
@@ -184,25 +184,14 @@
                                     <select id="vencimento" class="form-control" name="vencimento">
 
                                         <option selected>Selecione...</option>
+                                        <option>Indefinido</option>
+
                                         <option>3 dias</option>
                                         <option>5 dias</option>
-
-
+                                       
                                     </select>
 
-                                </div>
-
-
-                                <div class="form-group col-sm-6">
-
-                                    <label for="retirada">Data de Retirada:</label>
-                                    <input type="date" id="retirada" class="form-control" name="retirada" required="" placeholder="">
-
-                                </div>
-
-                            </div>
-
-                            <div class="form-row ml-5">
+                                </div>                           
 
                                 <div class="form-group col-sm-6">
 
@@ -210,6 +199,7 @@
                                     <select id="curso" class="form-control" name="curso">
 
                                         <option selected>Selecione...</option>
+                                        
 
                                         <?php 
 
@@ -221,13 +211,16 @@
                                             echo "<option>" . $dados['curso'] . "</option>";
                                         }
                                         ?>
-
+                                       
+                                        
                                     </select>
 
                                 </div>
+                            </div>
 
+                                <div class="form-row ml-5">
 
-                                <div class="form-group col-sm-6">
+                                <div class="form-group col-sm-12">
 
                                     <label for="historico">Histórico:</label>
                                     <input type="text" id="historico" class="form-control" name="historico" placeholder="">
@@ -246,7 +239,6 @@
                                 </div>
 
 
-
                             </div>
 
 
@@ -260,7 +252,7 @@
                             </div>
                             <div class="form-row ml-5">
 
-                                <div class="form-group col-sm-4 ">
+                                <div class="form-group col-sm-6 ">
 
                                     <label for="numra">Número RA:</label>
                                     <input type="text" class="form-control" id="numra" name="numra" placeholder="Digite número do RA" required="" minlength="1" maxlength="10">
@@ -269,7 +261,7 @@
 
 
 
-                                <div class="form-group col-sm-4">
+                                <div class="form-group col-sm-6">
 
                                     <label for="cursocolegiado">Curso:</label>
                                     <select id="cursocolegiado" class="form-control" name="cursocolegiado">
@@ -284,27 +276,6 @@
                                         while ($dados = mysqli_fetch_assoc($consulta)) {
 
                                             echo "<option>" . $dados['curso'] . "</option>";
-                                        }
-                                        ?>
-
-                                    </select>
-
-                                </div>
-
-                                <div class="form-group col-sm-4">
-
-                                    <label for="encaminhamentocolegiado">Destinação:</label>
-                                    <select id="encaminhamentocolegiado" class="form-control" name="encaminhamentocolegiado">
-
-                                        <option selected>Selecione...</option>
-
-                                        <?php 
-                                        $sql = "SELECT * FROM encaminhamento";
-                                        $consulta = mysqli_query($conn, $sql);
-
-                                        while ($dados = mysqli_fetch_assoc($consulta)) {
-
-                                            echo "<option>" .($dados['encaminhamento']) . "</option>";
                                         }
                                         ?>
 

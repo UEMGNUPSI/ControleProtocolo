@@ -27,12 +27,7 @@
       <div id="resultadoDocs">
         <?php 
 
-         $servername = "10.93.10.12";
-        $database = "protocolos";
-        $username = "root";
-        $password = "root";
-
-        $mysqli=new mysqli($servidor,$usuario,$senha,$bancodedados);                  
+        include_once "..\conexao.php";                         
 
         $sql=$mysqli->prepare('select id,encaminhamento,nome,data,datavencimento from addentregaprotocolos WHERE status=1 ORDER BY datavencimento ASC');
         $sql->execute();
